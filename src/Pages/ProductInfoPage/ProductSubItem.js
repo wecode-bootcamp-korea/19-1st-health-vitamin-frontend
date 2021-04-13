@@ -2,28 +2,29 @@ import React, { Component } from 'react';
 import './ProductSubItem.scss';
 
 export default class ProductSubItem extends Component {
+  optionSelectOnChange = e => {
+    if (e.target.options.selectedIndex) {
+      this.props.addSubItemList(this.props.subItem);
+    }
+  };
   render() {
     return (
       <div className="productSubItem">
-        <img
-          className="itemImage"
-          src="//duftndoft.com/web/product/tiny/202102/bf66ab0bcc27c4b74a5be18a21787cb4.jpg"
-          alt=""
-        />
+        <img className="itemImage" src={this.props.subItem.imageUrl} alt="" />
         <div>
           <div className="information">
-            <p className="informationTitle">
-              소피소피 휴대용 손소독제 핸드 새니타이저
-            </p>
-            <p className="informationPrice">3,000원</p>
+            <p className="informationTitle">{this.props.subItem.name}</p>
+            <p className="informationPrice">{this.props.subItem.price}원</p>
           </div>
           <div className="option">
             <p className="optionName">상품선택</p>
-            <select className="optionSelect" name="optionSelect">
+            <select
+              className="optionSelect"
+              name="optionSelect"
+              onChange={this.optionSelectOnChange}
+            >
               <option value="optionItem">- [필수] 상품 선택 -</option>
-              <option value="optionItem">
-                소피소피 휴대용 손소독제 핸드 새니타이저
-              </option>
+              <option value="optionItem">{this.props.subItem.name}</option>
             </select>
           </div>
         </div>
