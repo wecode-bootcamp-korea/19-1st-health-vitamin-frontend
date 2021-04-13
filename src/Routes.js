@@ -14,6 +14,6 @@ export default class Routes extends Component {
           <SignUp/>
         </Switch>
       </Router>
-    )
+    );
   }
 }
