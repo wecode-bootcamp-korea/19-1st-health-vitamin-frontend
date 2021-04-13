@@ -16,6 +16,6 @@ export default class Routes extends Component {
           {/* <Route exact path="/VitaminList"  component={VitaminList}> */}
         </Switch>
       </Router>
-    )
+    );
   }
 }
