@@ -1,0 +1,135 @@
+a {
+  text-decoration: none;
+  color: inherit;
+}
+.ProductList {
+  margin: 0px 200px;
+  height: 200vh;
+  // 카테고리
+  .kategori {
+    text-align: right;
+    margin: 30px 0 20px 0;
+  }
+
+  // titles
+  .title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 120px;
+    .kategori_title {
+      font-size: 30px;
+      text-align: center;
+      margin: 20px;
+    }
+    .kategori_sub {
+      display: flex;
+      .sub_title {
+        display: block;
+        background-color: #F3F3F3;
+        color: grey;
+        padding: 14px 35px ;
+        margin: 5px;
+        border-radius: 25px;
+        text-align: center;
+      }
+    }
+  }
+
+  // Products
+  .Products {
+      margin-top: 140px;
+      
+    // 상단 정렬 부분
+    .Products_info {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 30px;
+      .num {
+        font-weight: 700;
+      }
+      .P_filters > button{
+        background: none;
+        border: none;
+        font-size: 14px;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+
+    // 메인
+    .PL_items {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      width: 100%;
+      grid-gap: 50px;
+      .PL_item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 10px;
+        justify-content: space-between;
+        .item_img {
+          width: 287px;
+        }
+        .info {
+          margin: 12px 0px 8px 0px;
+        }
+        .info_icon {
+          color: #d3d0d0;
+        }
+        .fab {
+          margin: 3px 5px;
+        }
+        .item_discount {
+          margin: 5px 5px 5px 10px;
+          font-weight: 700;
+        }
+      }
+    }
+
+    // Next page
+    .change_page {
+      margin: 100px auto 0 auto;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      
+      width: 270px;
+      justify-content: space-between;
+      .page {
+        font-size: 20px;
+        line-height: 2.2;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        background-color: rgba(223, 219, 219, 0.61);
+      }
+      .change {
+        display: flex;
+        flex-direction: row;
+        .change-btn {
+          border: 1px solid lightgray;
+          display: flex;
+          
+          width: 40px;
+          height: 40px;
+        }
+        .change-btn > button {
+          background: none;
+          
+          border: none;
+          margin: 0 auto;
+        }
+        .change-icon {
+          color: rgb(182, 180, 180);
+          line-height: 17px;
+        }
+      }
+      
+    }
+  }
+}
+

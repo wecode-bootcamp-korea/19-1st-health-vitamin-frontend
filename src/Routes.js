@@ -4,14 +4,16 @@ import {
   Switch,
   Route,
 } from 'react-router-dom';
+import ProductList from './Pages/ProductListPage/ProductList';
+// import VitaminList from './Pages/'
 
 export default class Routes extends Component {
   render() {
     return (
       <Router>
         <Switch>
-          {/* <Route exact path="/login-jongho" component={LoginJongho} />
-          <Route exact path="/main-jongho" component={MainJongho} /> */}
+          <Route exact path="/ProductList" component={ProductList} />
+          {/* <Route exact path="/VitaminList"  component={VitaminList}> */}
         </Switch>
       </Router>
     )
