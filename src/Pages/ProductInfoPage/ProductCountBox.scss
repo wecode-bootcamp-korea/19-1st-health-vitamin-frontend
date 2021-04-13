@@ -1,0 +1,79 @@
+.productCountBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 57px;
+  margin-top: 5px;
+  background-color: rgba(240, 240, 240, 0.322);
+
+  .name {
+    font-size: 12px;
+    font-family: 'Noto Sans KR';
+    line-height: 57px;
+  }
+
+  .inputBox {
+    display: flex;
+    position: relative;
+    align-items: center;
+
+    .input {
+      width: 23px;
+      height: 20px;
+      outline: none;
+      border: 1px solid rgb(221, 221, 221);
+    }
+
+    .arrowBox {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+    }
+
+    .fa-sort-up,
+    .fa-sort-down {
+      width: 20px;
+      height: 10px;
+      padding-left: 9px;
+      color: rgb(122, 122, 122);
+      background-color: white;
+      border: 1px solid rgb(221, 221, 221);
+      font-size: 4px;
+      cursor: pointer;
+    }
+    .fa-sort-up::before {
+      position: relative;
+      top: 1px;
+      left: -3px;
+    }
+
+    .fa-sort-down {
+      top: 30px;
+    }
+
+    .fa-sort-down::before {
+      position: relative;
+      top: -2px;
+      left: -3px;
+    }
+
+    .x {
+      width: 15px;
+      height: 15px;
+      margin-left: 15px;
+      color: white;
+      background-color: rgb(155, 155, 155);
+      text-align: center;
+      line-height: 12px;
+      cursor: pointer;
+    }
+  }
+
+  .price {
+    color: #333;
+    font-size: 12px;
+    font-family: 'Noto Sans KR';
+    font-weight: 200;
+  }
+}

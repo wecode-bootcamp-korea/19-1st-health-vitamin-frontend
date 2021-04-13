@@ -1,0 +1,56 @@
+.productSubItem {
+  display: flex;
+  width: 568px;
+  padding: 19px 20px 10px 20px;
+  border-bottom: 1px solid rgb(233, 233, 233);
+
+  .itemImage {
+    width: 100px;
+    height: 100px;
+    border: 1px solid rgba(218, 218, 218, 0.664);
+  }
+
+  .information {
+    margin-left: 20px;
+  }
+
+  .informationTitle {
+    height: 17px;
+    margin: 0 0 5px 0;
+    font-size: 14px;
+    font-family: 'Noto Sans KR';
+  }
+
+  .informationPrice {
+    display: inline-block;
+    height: 17px;
+    margin: 0 0 5px 0;
+    font-size: 12px;
+  }
+
+  .option {
+    margin-left: 20px;
+
+    .optionName {
+      margin: 10px 0 5px 0;
+      font-size: 12px;
+    }
+
+    .optionSelect {
+      width: 414px;
+      padding: 5px;
+      outline: none;
+      border: 1px solid rgb(194, 194, 194);
+      border-radius: 3px;
+      color: #333;
+      font-family: 'Noto Sans KR';
+      font-size: 12px;
+      font-weight: 200;
+    }
+
+    .optionItem {
+      font-size: 12px;
+      font-weight: 200;
+    }
+  }
+}

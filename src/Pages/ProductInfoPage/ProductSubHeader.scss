@@ -1,0 +1,18 @@
+.productSubHeader {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  padding-left: 20px;
+  background-color: rgba(238, 238, 238, 0.561);
+  font-family: 'Noto Sans KR';
+
+  .title {
+    color: #757575;
+    font-size: 14px;
+  }
+  .content {
+    margin-left: 10px;
+    color: #757575;
+    font-size: 12px;
+  }
+}

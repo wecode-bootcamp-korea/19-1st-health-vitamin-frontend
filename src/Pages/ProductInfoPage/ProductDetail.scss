@@ -1,0 +1,68 @@
+.productDetail {
+  display: flex;
+  justify-content: center;
+
+  margin-top: 100px;
+
+  .imageBox {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 50%;
+    padding-right: 60px;
+
+    .productImage {
+      max-width: 580px;
+      min-width: 430px;
+      max-height: 580px;
+      min-height: 430px;
+    }
+
+    .expandImageBox {
+      height: 39.7px;
+      margin-top: 5px;
+      background-color: rgba(246, 246, 246, 0.712);
+      border: 1px solid rgb(209, 209, 209);
+      color: #787878;
+      text-align: center;
+      line-height: 39.7px;
+      font-size: 12px;
+      font-family: 'Noto Sans KR';
+      font-weight: 200;
+      cursor: pointer;
+    }
+  }
+
+  .infoBox {
+    flex-basis: 50%;
+
+    .guideArea {
+      padding-top: 12px;
+
+      font-family: 'Noto Sans KR';
+      font-weight: 300;
+      font-size: 12px;
+      color: #757575;
+    }
+
+    .alertCount {
+      height: 17px;
+      margin-top: 20px;
+      color: #f76560;
+      font-size: 11px;
+      font-family: 'Noto Sans KR';
+      line-height: 17px;
+
+      .alertCountSpan {
+        display: inline-block;
+        width: 14px;
+        height: 15px;
+        border: 1px solid rgb(221, 221, 221);
+        border-radius: 2px;
+        font-weight: bold;
+        font-size: 12px;
+        text-align: center;
+        line-height: 10px;
+      }
+    }
+  }
+}

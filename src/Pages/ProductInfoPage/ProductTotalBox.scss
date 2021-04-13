@@ -1,0 +1,21 @@
+.productTotalBox {
+  display: flex;
+  flex-direction: row-reverse;
+  height: 60px;
+  align-items: center;
+  font-family: 'Noto Sans KR';
+
+  .description {
+    color: #333;
+    font-size: 14px;
+  }
+
+  .price {
+    font-size: 21px;
+    font-weight: bold;
+  }
+
+  .count {
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,25 @@
+.productInfoButtonBox {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  height: 60px;
+
+  .btn {
+    flex-basis: 32.5%;
+    height: 47px;
+    margin-left: 3px;
+    color: #333;
+    background-color: white;
+    border: 1px solid rgb(214, 214, 214);
+    border-radius: 3px;
+    font-family: 'Noto Sans KR';
+    font-size: 13px;
+    cursor: pointer;
+  }
+
+  .btnBuy {
+    border: none;
+    background-color: #333;
+    color: white;
+  }
+}
