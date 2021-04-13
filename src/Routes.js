@@ -4,14 +4,14 @@ import {
   Switch,
   Route,
 } from 'react-router-dom';
+import SignUp from './Pages/AccountPage/SignUp';
 
 export default class Routes extends Component {
   render() {
     return (
       <Router>
         <Switch>
-          {/* <Route exact path="/login-jongho" component={LoginJongho} />
-          <Route exact path="/main-jongho" component={MainJongho} /> */}
+          <SignUp/>
         </Switch>
       </Router>
     )

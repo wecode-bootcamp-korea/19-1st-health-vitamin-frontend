@@ -1,0 +1,222 @@
+.icon {
+  width: 980px;
+}
+.olBox {
+  padding-top: 30px;
+  padding-bottom: 20px;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.list {
+  list-style: none;
+  color: lightgray;
+  display: flex;
+  flex-direction: row;
+}
+.linkSignUp {
+  font-size: 12px;
+}
+.signUp {
+  font-size: 30px;
+  padding-top: 100px;
+  padding-bottom: 40px;
+}
+
+h2 {
+  text-align: center;
+}
+
+.type {
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  border-color: #e8e8e8;
+}
+
+.memberColor {
+  background-color: #fafafa;
+  width: 200px;
+  text-align: -webkit-center;
+  padding: 18px 0px;
+}
+
+.division {
+  color: #999;
+}
+.memberShip {
+  padding: 18px 15px;
+  width: 100%;
+}
+.company {
+  margin-left: 10px;
+}
+.inform {
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.informBox {
+  padding: 50px 0px 15px;
+}
+
+.idBox {
+  border-top: 1px solid #e8e8e8;
+}
+.oneBox {
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.idColor {
+  text-align: center;
+  width: 200px;
+  background-color: #fafafa;
+  color: #999;
+}
+
+.idEnglish {
+  padding: 18px 15px;
+  display: flex;
+
+  .id {
+    border-radius: 5px;
+    border: 1px solid #e8e8e8;
+  }
+}
+.english {
+  font-size: 12px;
+  margin-left: 10px;
+}
+.pwColor {
+  color: #999;
+  text-align: center;
+  width: 200px;
+  background-color: #fafafa;
+}
+.pwKo {
+  background-color: #fafafa;
+}
+
+.pwBox {
+  display: flex;
+  padding: 18px 15px;
+}
+
+.pw {
+  border-radius: 5px;
+  border: 1px solid #e8e8e8;
+}
+.pwEnglish {
+  font-size: 12px;
+  margin-left: 10px;
+}
+.write {
+  border-top: 1px solid #e8e8e8;
+}
+.writeName {
+  background-color: #fafafa;
+}
+
+.name {
+  color: #999;
+  text-align: center;
+  width: 200px;
+}
+.naming {
+  display: flex;
+  padding: 18px 15px;
+}
+
+.nameBox {
+  border-radius: 5px;
+  border: 1px solid #e8e8e8;
+}
+
+.phoneBox {
+  border-top: 1px solid #e8e8e8;
+  display: flex;
+}
+.writePhone {
+  background-color: #fafafa;
+}
+.phoneKo {
+  color: #999;
+  text-align: center;
+  width: 200px;
+}
+.callingBox {
+  display: flex;
+}
+.calling {
+  display: flex;
+  padding: 18px 15px;
+}
+.phone {
+  border-radius: 5px;
+  border: 1px solid #e8e8e8;
+}
+.emailBox {
+  border-top: 1px solid #e8e8e8;
+  display: flex;
+}
+.writeEmail {
+  background-color: #fafafa;
+}
+.emailKo {
+  color: #999;
+  text-align: center;
+  width: 200px;
+}
+.writing {
+  display: flex;
+  padding: 18px 15px;
+  margin-left: 8px;
+}
+.email {
+  border-radius: 5px;
+  border: 1px solid #e8e8e8;
+}
+.addInform {
+  padding: 50px 0px 15px;
+}
+.plus {
+  border-top: 1px solid #e8e8e8;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.gender {
+  text-align: -webkit-center;
+  background-color: #fafafa;
+  color: #999;
+}
+
+.other {
+  padding: 18px 0px;
+  width: 196px;
+}
+.mw {
+  padding: 18px 15px;
+  width: 100%;
+}
+.Woman {
+  margin-left: 10px;
+}
+.addTable {
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.birthDay {
+  text-align: -webkit-center;
+  background-color: #fafafa;
+  color: #999;
+  width: 200px;
+  padding: 18px 0px;
+}
+
+.dailyMonth {
+  padding: 18px 15px;
+}
+.daily {
+  margin-left: 5px;
+  border-radius: 5px;
+  border: 1px solid #e8e8e8;
+  font-size: 16px;
+}
