@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import SignUp from './Pages/AccountPage/SignUp';
 
 export default class Routes extends Component {
@@ -11,7 +7,7 @@ export default class Routes extends Component {
     return (
       <Router>
         <Switch>
-          <SignUp/>
+          <SignUp />
         </Switch>
       </Router>
     );

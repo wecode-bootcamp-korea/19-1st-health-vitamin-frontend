@@ -1,3 +1,7 @@
+.home {
+  display: flex;
+  justify-content: center;
+}
 .icon {
   width: 980px;
 }
@@ -14,7 +18,17 @@
   display: flex;
   flex-direction: row;
 }
+.link {
+  text-decoration: none;
+  color: #aaaaaa;
+}
+.fa-home {
+  font-size: 15px;
+  margin-right: 5px;
+}
 .linkSignUp {
+  margin-top: 3px;
+  margin-left: 5px;
   font-size: 12px;
 }
 .signUp {
@@ -84,6 +98,7 @@ h2 {
 .english {
   font-size: 12px;
   margin-left: 10px;
+  margin-top: 4px;
 }
 .pwColor {
   color: #999;
@@ -107,6 +122,7 @@ h2 {
 .pwEnglish {
   font-size: 12px;
   margin-left: 10px;
+  margin-top: 4px;
 }
 .write {
   border-top: 1px solid #e8e8e8;
@@ -184,10 +200,9 @@ h2 {
 
 .gender {
   text-align: -webkit-center;
-  background-color: #fafafa;
+  // background-color: #fafafa;
   color: #999;
 }
-
 .other {
   padding: 18px 0px;
   width: 196px;
@@ -199,20 +214,24 @@ h2 {
 .Woman {
   margin-left: 10px;
 }
-.addTable {
+.bigAdd {
   border-bottom: 1px solid #e8e8e8;
 }
-
+// .birthDayBox {
+//   border-bottom: 1px solid #e8e8e8;
+// }
 .birthDay {
   text-align: -webkit-center;
   background-color: #fafafa;
   color: #999;
-  width: 200px;
+  width: 196px;
   padding: 18px 0px;
 }
 
 .dailyMonth {
   padding: 18px 15px;
+  position: relative;
+  // left: -112px;
 }
 .daily {
   margin-left: 5px;

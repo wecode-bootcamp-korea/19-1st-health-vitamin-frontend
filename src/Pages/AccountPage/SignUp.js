@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import "../AccountPage/SignUp.scss";
+import React, { Component } from 'react';
+import '../AccountPage/SignUp.scss';
 
 class SignUp extends Component {
   render() {
@@ -10,7 +10,7 @@ class SignUp extends Component {
             <header className="olBox">
               <ol className="list">
                 <li>
-                  <a href="">
+                  <a className="link" href="">
                     <i class="fas fa-home" />
                   </a>
                 </li>
@@ -138,33 +138,35 @@ class SignUp extends Component {
               <tr>
                 <div className="genderBox">
                   <div className="gender">
-                    <td className="another">
+                    <td>
                       <div className="other">성별*</div>
                     </td>
                   </div>
                 </div>
                 <td className="mw">
-                  <input className="Man" name="button" type="radio" />
+                  <input className="Man" name="buttoni" type="radio" />
                   <label for="manMember">남자</label>
-                  <input className="Woman" name="button" type="radio" />
+                  <input className="Woman" name="buttoni" type="radio" />
                   <label for="womanMember">여자</label>
                 </td>
               </tr>
             </table>
-            <table className="addTable">
-              <tr>
-                <div>
-                  <div className="birthDay">
-                    <td className="dailyBox">
-                      <div className="birth">생년월일*</div>
-                    </td>
+            <div className="bigAdd">
+              <table className="addTable">
+                <tr className="birthDayBox">
+                  <div>
+                    <div className="birthDay">
+                      <td className="dailyBox">
+                        <div className="birth">생년월일*</div>
+                      </td>
+                    </div>
                   </div>
-                </div>
-                <td className="dailyMonth">
-                  <input className="daily" type="date" />
-                </td>
-              </tr>
-            </table>
+                  <td className="dailyMonth">
+                    <input className="daily" type="date" />
+                  </td>
+                </tr>
+              </table>
+            </div>
           </div>
         </div>
       </div>
