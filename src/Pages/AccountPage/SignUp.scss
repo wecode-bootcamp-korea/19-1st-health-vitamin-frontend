@@ -200,26 +200,24 @@
 
   .gender {
     text-align: -webkit-center;
-    // background-color: #fafafa;
     color: #999;
   }
   .other {
     padding: 18px 0px;
     width: 196px;
+    background-color: #fafafa;
   }
-  .mw {
+  .manWoman {
     padding: 18px 15px;
     width: 100%;
   }
-  .Woman {
+  .woman {
     margin-left: 10px;
   }
   .bigAdd {
     border-bottom: 1px solid #e8e8e8;
   }
-  // .birthDayBox {
-  //   border-bottom: 1px solid #e8e8e8;
-  // }
+
   .birthDay {
     text-align: -webkit-center;
     background-color: #fafafa;
@@ -231,7 +229,6 @@
   .dailyMonth {
     padding: 18px 15px;
     position: relative;
-    // left: -112px;
   }
   .daily {
     margin-left: 5px;
