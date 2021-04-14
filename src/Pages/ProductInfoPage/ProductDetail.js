@@ -7,6 +7,24 @@ import ProductImageBox from './ProductImageBox';
 import ProductDescript from './ProductDescript';
 import './ProductDetail.scss';
 
+const BUTTONS = [
+  {
+    id: 1,
+    name: '바로 구매하기',
+    className: 'btnBuy btn',
+  },
+  {
+    id: 2,
+    name: '장바구니',
+    className: 'btnBasket btn',
+  },
+  {
+    id: 3,
+    name: '관심상품',
+    className: 'btnInterest btn',
+  },
+];
+
 export default class ProductDetail extends Component {
   constructor() {
     super();
@@ -16,8 +34,7 @@ export default class ProductDetail extends Component {
       currentImageUrl: '',
       subItemList: [],
       subItemAddList: [],
-      originPrice: 0, //
-      totalPrice: 0,
+      price: 0,
     };
   }
 
@@ -31,7 +48,7 @@ export default class ProductDetail extends Component {
           imageList: data.imageList,
           currentImageUrl: data.imageList[0].imageUrl,
           subItemList: data.subItemList,
-          originPrice: data.price,
+          price: data.price,
         });
       });
   }
@@ -46,39 +63,33 @@ export default class ProductDetail extends Component {
   // 뭔가 더 단축시킬 수 있는 방법은 없는지 궁금합니다!
   addSubItemList = item => {
     let { subItemAddList } = this.state;
-    let isDistint = false;
 
-    for (let i = 0; i < subItemAddList.length; i++) {
-      if (subItemAddList[i].id === item.id) {
-        isDistint = true;
-        break;
-      }
-    }
-
-    if (!isDistint) {
+    if (!subItemAddList.includes(item.id)) {
       this.setState({
-        subItemAddList: [...subItemAddList, item],
+        subItemAddList: [...subItemAddList, item.id],
       });
     }
   };
 
   updateSubItemList = (count, index) => {
-    let { subItemAddList } = this.state;
+    let { subItemList } = this.state;
 
     this.setState({
-      subItemAddList: subItemAddList.map(el => {
-        if (el.id === index) {
-          el.count = count;
-        }
+      subItemList: subItemList.map(el => {
+        el.count = el.id === index ? count : el.count;
         return el;
       }),
     });
   };
 
   deleteSubItemList = index => {
-    let { subItemAddList } = this.state;
+    let { subItemList, subItemAddList } = this.state;
     this.setState({
-      subItemAddList: subItemAddList.filter(el => el.id !== index),
+      subItemAddList: subItemAddList.filter(el => el !== index),
+      subItemList: subItemList.map(el => {
+        el.count = el.id === index ? 1 : el.count;
+        return el;
+      }),
     });
   };
 
@@ -112,25 +123,30 @@ export default class ProductDetail extends Component {
             <span className="alertCountSpan">!</span>
             &nbsp;&nbsp;수량을 선택해주세요.
           </p>
-          {this.state.subItemAddList.map(el => {
-            return (
-              <ProductCountBox
-                key={el.id}
-                item={el}
-                updateSubItemList={this.updateSubItemList}
-                deleteSubItemList={this.deleteSubItemList}
-              />
-            );
-          })}
+          {this.state.subItemList
+            .filter(el => this.state.subItemAddList.includes(el.id))
+            .map(el => {
+              return (
+                <ProductCountBox
+                  key={el.id}
+                  item={el}
+                  updateSubItemList={this.updateSubItemList}
+                  deleteSubItemList={this.deleteSubItemList}
+                />
+              );
+            })}
           <ProductTotalBox
             totalPrice={
-              this.state.originPrice +
-              this.state.subItemAddList.reduce((acc, cur) => {
-                return acc + cur.price * cur.count;
-              }, 0)
+              this.state.price +
+              this.state.subItemList
+                .filter(el => this.state.subItemAddList.includes(el.id))
+                .reduce((acc, cur) => {
+                  if (!cur.count) cur.count = 1;
+                  return acc + cur.price * cur.count;
+                }, 0)
             }
           />
-          <ProductInfoButtonBox />
+          <ProductInfoButtonBox BUTTONS={BUTTONS} />
         </div>
       </div>
     );
@@ -138,7 +154,7 @@ export default class ProductDetail extends Component {
 }
 
 // updateTotalPrice = subList => {
-//   let tp = this.state.originPrice;
+//   let tp = this.state.price;
 //   subList.forEach(el => {
 //     tp += el.price;
 //   });

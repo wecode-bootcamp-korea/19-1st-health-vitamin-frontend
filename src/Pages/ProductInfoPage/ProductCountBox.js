@@ -36,7 +36,7 @@ export default class ProductCountBox extends Component {
           <input
             className="input"
             type="number"
-            value={this.props.item.count}
+            value={count ? count : 1}
             onChange={this.inputOnChange}
           />
           <div className="arrowBox">
@@ -47,7 +47,7 @@ export default class ProductCountBox extends Component {
             x
           </p>
         </div>
-        <span className="price">{price * count}원</span>
+        <span className="price">{price * (count ? count : 1)}원</span>
       </div>
     );
   }
