@@ -16,29 +16,22 @@ export default class ProductDetail extends Component {
       currentImageUrl: '',
       subItemList: [],
       subItemAddList: [],
+      originPrice: 0, //
+      totalPrice: 0,
     };
   }
 
   componentDidMount() {
-    fetch('/data/ProductInfoData/mainImageList.json', {
+    fetch('/data/ProductInfoData/productDetail.json', {
       method: 'GET',
     })
       .then(res => res.json())
       .then(data => {
         this.setState({
-          imageList: data,
-          currentImageUrl: data[0].imageUrl,
-        });
-      });
-
-    // subItemList
-    fetch('/data/ProductInfoData/subItemList.json', {
-      method: 'GET',
-    })
-      .then(res => res.json())
-      .then(data => {
-        this.setState({
-          subItemList: data,
+          imageList: data.imageList,
+          currentImageUrl: data.imageList[0].imageUrl,
+          subItemList: data.subItemList,
+          originPrice: data.price,
         });
       });
   }
@@ -49,32 +42,45 @@ export default class ProductDetail extends Component {
     });
   };
 
+  // TODO: 배열의 값이 중복이 없으면 추가하는로직인데,
+  // 뭔가 더 단축시킬 수 있는 방법은 없는지 궁금합니다!
   addSubItemList = item => {
-    this.setState(
-      {
-        subItemAddList: [...this.state.subItemAddList, item],
-      },
-      () => {
-        let example = this.state.subItemAddList;
-        this.setState(
-          {
-            subItemAddList: example.filter((item, i) => {
-              return (
-                example.findIndex((item2, j) => {
-                  return item.id === item2.id;
-                }) === i
-              );
-            }),
-          },
-          () => {
-            // console.log(this.state.subItemAddList);
-          }
-        );
+    let { subItemAddList } = this.state;
+    let isDistint = false;
+
+    for (let i = 0; i < subItemAddList.length; i++) {
+      if (subItemAddList[i].id === item.id) {
+        isDistint = true;
+        break;
       }
-    );
+    }
+
+    if (!isDistint) {
+      this.setState({
+        subItemAddList: [...subItemAddList, item],
+      });
+    }
   };
 
-  updateSubItemList = (count, index) => {};
+  updateSubItemList = (count, index) => {
+    let { subItemAddList } = this.state;
+
+    this.setState({
+      subItemAddList: subItemAddList.map(el => {
+        if (el.id === index) {
+          el.count = count;
+        }
+        return el;
+      }),
+    });
+  };
+
+  deleteSubItemList = index => {
+    let { subItemAddList } = this.state;
+    this.setState({
+      subItemAddList: subItemAddList.filter(el => el.id !== index),
+    });
+  };
 
   render() {
     return (
@@ -107,12 +113,36 @@ export default class ProductDetail extends Component {
             &nbsp;&nbsp;수량을 선택해주세요.
           </p>
           {this.state.subItemAddList.map(el => {
-            return <ProductCountBox key={el.id} item={el} />;
+            return (
+              <ProductCountBox
+                key={el.id}
+                item={el}
+                updateSubItemList={this.updateSubItemList}
+                deleteSubItemList={this.deleteSubItemList}
+              />
+            );
           })}
-          <ProductTotalBox />
+          <ProductTotalBox
+            totalPrice={
+              this.state.originPrice +
+              this.state.subItemAddList.reduce((acc, cur) => {
+                return acc + cur.price * cur.count;
+              }, 0)
+            }
+          />
           <ProductInfoButtonBox />
         </div>
       </div>
     );
   }
 }
+
+// updateTotalPrice = subList => {
+//   let tp = this.state.originPrice;
+//   subList.forEach(el => {
+//     tp += el.price;
+//   });
+//   this.setState({
+//     totalPrice: tp,
+//   });
+// };

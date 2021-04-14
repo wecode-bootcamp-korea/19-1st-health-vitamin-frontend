@@ -14,7 +14,9 @@ export default class ProductSubItem extends Component {
         <div>
           <div className="information">
             <p className="informationTitle">{this.props.subItem.name}</p>
-            <p className="informationPrice">{this.props.subItem.price}원</p>
+            <p className="informationPrice">
+              {this.props.subItem.price.toLocaleString()}원
+            </p>
           </div>
           <div className="option">
             <p className="optionName">상품선택</p>

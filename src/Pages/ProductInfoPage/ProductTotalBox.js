@@ -6,8 +6,10 @@ export default class ProductTotalBox extends Component {
     return (
       <div className="productTotalBox">
         <div className="box">
-          <span className="description">총 상품금액(수량)</span>
-          <span className="price">7,900원</span>
+          <span className="description">총 상품금액(수량)&nbsp;</span>
+          <span className="price">
+            {this.props.totalPrice.toLocaleString()}원
+          </span>
           <span className="count">(1개)</span>
         </div>
       </div>
