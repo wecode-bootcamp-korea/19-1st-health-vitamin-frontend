@@ -4,7 +4,7 @@ import '../AccountPage/SignUp.scss';
 class SignUp extends Component {
   render() {
     return (
-      <div className="signUpHome">
+      <div className="home">
         <div className="icon">
           <div className="homeIcon">
             <header className="olBox">
@@ -153,7 +153,7 @@ class SignUp extends Component {
             </table>
             <div className="bigAdd">
               <table className="addTable">
-                <tr>
+                <tr className="birthDayBox">
                   <div>
                     <div className="birthDay">
                       <td className="dailyBox">

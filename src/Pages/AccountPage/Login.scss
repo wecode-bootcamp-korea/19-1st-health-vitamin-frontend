@@ -1,28 +1,99 @@
 .loginHome {
   display: flex;
   justify-content: center;
-}
-.icon {
-  width: 980px;
-}
-.olBox {
-  padding-top: 30px;
-  padding-bottom: 20px;
-  display: flex;
-  flex-direction: row-reverse;
-}
+  width: 1180px;
 
-.list {
-  list-style: none;
-  color: lightgray;
-  display: flex;
-  flex-direction: row;
-}
-.link {
-  text-decoration: none;
-  color: #aaaaaa;
-}
-.fa-home {
-  font-size: 15px;
-  margin-right: 5px;
+  .loginIcon {
+    width: 980px;
+    padding-bottom: 50px;
+    padding: 0 100px;
+  }
+  .olLonginBox {
+    padding-top: 30px;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: row-reverse;
+  }
+  .loginList {
+    list-style: none;
+    color: lightgray;
+    display: flex;
+    flex-direction: row;
+  }
+  .goLink {
+    text-decoration: none;
+    color: #aaaaaa;
+  }
+  .fa-home {
+    font-size: 15px;
+    margin-right: 5px;
+  }
+  .loginKo {
+    text-align: center;
+    width: 980px;
+    padding: 100px 0px 40px;
+    font-size: 30px;
+    line-height: 42px;
+    height: 50px;
+  }
+  .idPw {
+    padding: 35px 0px;
+    margin: 0px 150px;
+    border-top: 1px solid #aaa;
+    width: 680px;
+    display: flex;
+  }
+  .idBox {
+    display: flex;
+    line-height: 44px;
+  }
+  .idKo {
+    width: 100px;
+    height: 44px;
+    font-size: 14px;
+    font-weight: normal;
+  }
+  .writeId {
+    border-radius: 5px;
+    width: 430px;
+    height: 44px;
+    font-size: 14px;
+    padding: 0 10px;
+    background-color: #f8f8f8;
+    border: 0;
+  }
+  .pwBox {
+    display: flex;
+    line-height: 44px;
+  }
+  .pwKo {
+    width: 100px;
+    height: 44px;
+    font-size: 14px;
+    font-weight: normal;
+  }
+  .writePw {
+    border-radius: 5px;
+    width: 430px;
+    height: 44px;
+    font-size: 14px;
+    padding: 0 10px;
+    background-color: #f8f8f8;
+    border: 0;
+  }
+  .loginBtBox {
+    width: 92px;
+    height: 75px;
+    line-height: 78px;
+
+    background-color: #333;
+    text-align: center;
+    border-radius: 3px;
+    border: 1px solid transparent;
+    padding: 6px 8px;
+  }
+  .loginBt {
+    text-decoration: none;
+    color: #fff;
+  }
 }
