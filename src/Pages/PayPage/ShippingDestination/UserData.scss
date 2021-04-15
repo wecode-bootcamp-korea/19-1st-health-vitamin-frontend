@@ -1,0 +1,120 @@
+.userData {
+  form {
+    margin: 0 14px;
+  }
+  input {
+    color: #333;
+  }
+  .titleBox {
+    padding: 16px 14px 16px 14px;
+    border-bottom: 1px solid rgb(228, 228, 228);
+    display: flex;
+    justify-content: space-between;
+  }
+  .header {
+    height: 54px;
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgb(228, 228, 228);
+    padding: 0 15px;
+  }
+  // .fa-chevron-up {
+  //   position: relative;
+
+  //   width: 19px;
+  //   height: 11px;
+  //   transform-origin: 35% 75%;
+  //   transition-duration: 0.3s;
+  // }
+
+  .sameDelivery {
+    font-size: 16px;
+    color: #666;
+  }
+  .radioLabel {
+    position: relative;
+    top: -15px;
+    color: #666;
+  }
+
+  .radio {
+    width: 25px;
+  }
+  input,
+  select,
+  button {
+    height: 40px;
+    padding: 7px;
+    background: #fff;
+
+    font-size: 16px;
+    border: 1px solid rgb(209, 209, 209);
+  }
+  select {
+    width: 245px;
+  }
+  button {
+    background: #f0f0f0;
+  }
+  .addressNumber {
+    width: 130px;
+    text-align: center;
+    margin-right: 10px;
+  }
+  .addBtn {
+    position: relative;
+    top: 1px;
+  }
+  .addressMain,
+  .addressSub {
+    display: block;
+    width: 780px;
+    margin-left: 100px;
+    margin-bottom: 5px;
+  }
+  .addressSub {
+    margin-bottom: 15px;
+  }
+  .receiver {
+    width: 750px;
+    height: 40px;
+    padding: 7px;
+    background: #fff;
+
+    font-size: 16px;
+    border: 1px solid rgb(209, 209, 209);
+  }
+
+  .homeSelect {
+    width: 226px;
+    height: 40px;
+  }
+  .homeSelectFirst {
+    margin-bottom: 15px;
+  }
+
+  .lb {
+    display: inline-block;
+    width: 100px;
+    height: 40px;
+  }
+  .phoneSelectFirst {
+    margin-bottom: 15px;
+  }
+
+  .emailFirst {
+    width: 343px;
+  }
+  .emailSelect {
+    width: 340px;
+  }
+
+  .emailSub {
+    font-size: 13px;
+    margin-left: 105px;
+    margin-top: 0px;
+  }
+}
