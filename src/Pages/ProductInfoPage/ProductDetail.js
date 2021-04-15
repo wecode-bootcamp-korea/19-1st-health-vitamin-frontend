@@ -152,13 +152,3 @@ export default class ProductDetail extends Component {
     );
   }
 }
-
-// updateTotalPrice = subList => {
-//   let tp = this.state.price;
-//   subList.forEach(el => {
-//     tp += el.price;
-//   });
-//   this.setState({
-//     totalPrice: tp,
-//   });
-// };
