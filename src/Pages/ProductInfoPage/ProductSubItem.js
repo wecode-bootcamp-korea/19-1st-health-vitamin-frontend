@@ -10,7 +10,11 @@ export default class ProductSubItem extends Component {
   render() {
     return (
       <div className="productSubItem">
-        <img className="itemImage" src={this.props.subItem.imageUrl} alt="" />
+        <img
+          className="itemImage"
+          src={this.props.subItem.imageUrl}
+          alt="product"
+        />
         <div>
           <div className="information">
             <p className="informationTitle">{this.props.subItem.name}</p>

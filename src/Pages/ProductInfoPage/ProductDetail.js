@@ -101,8 +101,7 @@ export default class ProductDetail extends Component {
             className="productImage"
             src={this.state.currentImageUrl}
             alt="main"
-          ></img>
-
+          />
           <ProductImageBox
             imageList={this.state.imageList}
             changeCurrentImage={this.changeCurrentImage}
