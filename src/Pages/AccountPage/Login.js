@@ -2,19 +2,47 @@ import React, { Component } from 'react';
 import '../AccountPage/Login.scss';
 
 class Login extends Component {
+  constructor() {
+    super();
+    this.state = {
+      color: '',
+      text: '',
+      password: '',
+      userId: '',
+      userPw: '',
+    };
+  }
+
+  handleColor = () => {
+    this.setState({
+      color: 'lightgray',
+    });
+  };
+
+  handleChange = e => {
+    e.preventDefault();
+    // console.log(e.target.name);
+    // console.log(e.target);
+    // console.log(e.target.className);
+
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
+  };
+
   render() {
     return (
-      <div className="loginHome">
+      <div onClick={this.handleChange} className="loginHome">
         <div className="loginIcon">
           <header className="olLonginBox">
             <ol className="loginList">
               <li>
                 <a className="goLink" href="">
-                  <i class="fas fa-home" />
+                  <i className="fas fa-home" />
                 </a>
               </li>
               <li>
-                <i class="fas fa-angle-right" />
+                <i className="fas fa-angle-right" />
               </li>
               <li className="goSignUp">로그인</li>
             </ol>
@@ -31,7 +59,10 @@ class Login extends Component {
                     <input
                       className="writeId"
                       type="text"
+                      name="userId"
                       placeholder="아이디"
+                      value={this.state.userId}
+                      onChange={this.handleChange}
                     />
                   </div>
                 </div>
@@ -41,6 +72,9 @@ class Login extends Component {
                     <input
                       className="writePw"
                       type="password"
+                      name="userPw"
+                      value={this.state.userPw}
+                      onChange={this.handleChange}
                       placeholder="비밀번호"
                     />
                   </div>
@@ -75,7 +109,9 @@ class Login extends Component {
                   회원가입하고 다양한 혜택과 서비스를 이용해보세요!
                 </span>
               </p>
-              <button className="memberBt">회원가입</button>
+              <button className="memberBt" onClick={this.handleColor}>
+                <h4 style={{ color: this.state.color }}>회원가입</h4>
+              </button>
             </div>
           </div>
         </div>
