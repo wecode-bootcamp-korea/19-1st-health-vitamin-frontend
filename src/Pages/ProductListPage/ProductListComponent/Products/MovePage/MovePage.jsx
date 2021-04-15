@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './Move_page.scss';
+import './MovePage.scss';
 
-class Move_page extends Component {
+class MovePage extends Component {
   render() {
     return (
       <div className="change_page">
@@ -35,4 +35,4 @@ class Move_page extends Component {
   }
 }
 
-export default Move_page;
+export default MovePage;

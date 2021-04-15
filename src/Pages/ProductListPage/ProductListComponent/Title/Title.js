@@ -5,8 +5,8 @@ class Title extends Component {
   render() {
     return (
       <header className="title">
-        <div className="kategori_title">VITAMIN</div>
-        <ul className="kategori_sub">
+        <div className="categori_title">PRODUCTS</div>
+        <ul className="categori_sub">
           <a>
             <li className="sub_title">
               비타민A <span>(10)</span>

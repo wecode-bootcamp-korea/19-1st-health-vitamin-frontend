@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import './Products_info.scss';
+import './ProductsInfo.scss';
 
-class Products_info extends Component {
+class ProductsInfo extends Component {
   render() {
     return (
       <div className="products_info">
         <div className="product_count">
-          <span className="num">20</span> ITEMS
+          <span className="num">{20}</span> ITEMS
         </div>
         <div className="product_filters">
           <button>신상품</button>
@@ -19,4 +19,4 @@ class Products_info extends Component {
   }
 }
 
-export default Products_info;
+export default ProductsInfo;

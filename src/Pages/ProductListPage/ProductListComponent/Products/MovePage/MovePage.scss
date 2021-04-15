@@ -1,36 +1,37 @@
 .productList {
   .change_page {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 270px;
     margin: 100px auto 0 auto;
     text-align: center;
-    display: flex;
-    align-items: center;
 
-    width: 270px;
-    justify-content: space-between;
     .page {
-      font-size: 20px;
-      line-height: 2.2;
-      border-radius: 50%;
       width: 40px;
       height: 40px;
       background-color: rgba(223, 219, 219, 0.61);
+      line-height: 2.2;
+      font-size: 20px;
+      border-radius: 50%;
     }
+
     .change {
       display: flex;
-      flex-direction: row;
-      .change-btn {
-        border: 1px solid lightgray;
-        display: flex;
 
+      .change-btn {
+        display: flex;
         width: 40px;
         height: 40px;
+        border: 1px solid lightgray;
       }
+
       .change-btn > button {
         background: none;
-
-        border: none;
         margin: 0 auto;
+        border: none;
       }
+
       .change-icon {
         color: rgb(182, 180, 180);
         line-height: 17px;

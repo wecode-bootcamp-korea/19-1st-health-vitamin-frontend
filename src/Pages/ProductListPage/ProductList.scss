@@ -1,16 +1,17 @@
-a {
-  text-decoration: none;
-  color: inherit;
-}
 .productList {
   margin: 0px 200px;
   height: 200vh;
-  // 카테고리
-  .kategori {
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .categori {
     text-align: right;
     margin: 30px 0 20px 0;
   }
-  // Products
+
   .Products {
     margin-top: 140px;
   }
