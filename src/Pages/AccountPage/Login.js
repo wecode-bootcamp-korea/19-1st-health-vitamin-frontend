@@ -32,7 +32,7 @@ class Login extends Component {
 
   render() {
     return (
-      <div onClick={this.handleChange} className="loginHome">
+      <div className="loginHome">
         <div className="loginIcon">
           <header className="olLonginBox">
             <ol className="loginList">
