@@ -9,8 +9,8 @@ import ProductDetail from './ProductDetail';
 export default class ProductInfo extends Component {
   render() {
     return (
-      <div className="product-info-container">
-        <div className="inner-container">
+      <div className="productInfoContainer">
+        <div className="innerContainer">
           <ProductInfoHeader />
           <ProductDetail />
         </div>
