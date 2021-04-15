@@ -81,11 +81,11 @@ class Login extends Component {
                 </div>
               </div>
               <div>
-                <div className="loginBtBox">
+                <button className="loginBtBox" onClick={this.handleColor}>
                   <a className="loginBt" href="">
                     로그인
                   </a>
-                </div>
+                </button>
               </div>
             </div>
             <div className="searchBox">
