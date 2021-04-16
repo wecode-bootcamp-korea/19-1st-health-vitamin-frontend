@@ -3,10 +3,29 @@
 }
 
 // Color
-$dark-gray: #aaa;
-$light-gray: #eeeeee8f;
-$border-gray: #e8e8e8;
+$black: #333;
+$gray: #666;
+$red: #ff0000;
+$tomato: #f76560;
+$blue: #508bed;
+$border: 1px solid #e8e8e8;
+$shadow: inset 0 0 6px rgba(255, 255, 255, 0.5);
 
-// CategoryLink
-// Nav
-// Footer
+// FontSize
+$fs04: 4px;
+$fs2: 12px;
+$fs3: 13px;
+$fs4: 14px;
+$fs6: 16px;
+$fs7: 17px;
+$fs20: 20px;
+$fs21: 21px;
+
+// FontWeight
+$fw2: 200;
+$fw3: 300;
+$fw4: 400;
+$fwB: bold;
+
+// FontFamily
+$NotoKR: 'Noto Sans KR';
