@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import SafeNumberService from './SafeNumberService';
-import './ShippingDestination';
-import UserData from './UserData';
+import PayBody from './PayBody';
+import './PayContainer.scss';
+import PayHeader from './PayHeader';
 
-export default class ShippingDestination extends Component {
+export default class PayContainer extends Component {
   constructor() {
     super();
 
@@ -19,12 +19,13 @@ export default class ShippingDestination extends Component {
   };
   render() {
     return (
-      <div class="shippingDestination">
-        <UserData
+      <div>
+        <PayHeader
           isDiplay={this.state.isDiplay}
+          type={this.props.type}
           changeIsDiplay={this.changeIsDiplay}
         />
-        <SafeNumberService isDiplay={this.state.isDiplay} />
+        {this.state.isDiplay && <PayBody type={this.props.type} />}
       </div>
     );
   }
