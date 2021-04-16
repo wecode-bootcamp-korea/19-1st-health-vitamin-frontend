@@ -1,0 +1,68 @@
+.basket_page_body {
+  display: flex;
+  justify-content: center;
+
+  .basket_page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    height: 100vh;
+    font-size: 25px;
+    background-color: rgb(185, 210, 196);
+
+    .main_basket {
+      .first_box {
+        background-color: sandybrown;
+        width: 1300px;
+        margin: 100px 0px;
+        .basket_top {
+          background-color: rgb(174, 173, 173);
+        }
+        .check_info {
+          display: flex;
+          flex-direction: column;
+          .info_list {
+            display: flex;
+            justify-content: space-around;
+          }
+          .basket_items {
+            .item {
+              display: flex;
+              justify-content: space-around;
+              margin: 30px 0px;
+            }
+          }
+          .delivery_box {
+            display: flex;
+            justify-content: space-between;
+            background-color: rgb(197, 192, 192);
+          }
+          .move_item {
+            display: flex;
+            justify-content: space-between;
+            background-color: white;
+          }
+        }
+      }
+
+      .second_box {
+        margin: 30px 0px;
+        background-color: rgb(183, 219, 110);
+        .sum_categori {
+          display: flex;
+          justify-content: space-between;
+          background-color: rgb(201, 193, 193);
+        }
+        .sum_number {
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+    }
+
+    .btns {
+      background-color: yellow;
+    }
+  }
+}
