@@ -6,17 +6,26 @@ class Login extends Component {
     super();
     this.state = {
       color: '',
-      text: '',
-      password: '',
+      // text: '',
+      // password: '',
       userId: '',
       userPw: '',
+      isBtnAble: 'offColor',
     };
   }
 
   handleColor = () => {
     this.setState({
-      color: 'lightgray',
+      color: 'red',
     });
+    this.goToMembership();
+  };
+
+  handleClick = e => {
+    this.setState({
+      color: 'yellow',
+    });
+    this.goToMain();
   };
 
   handleChange = e => {
@@ -25,9 +34,30 @@ class Login extends Component {
     // console.log(e.target);
     // console.log(e.target.className);
 
-    this.setState({
-      [e.target.name]: e.target.value,
-    });
+    this.setState(
+      {
+        [e.target.name]: e.target.value,
+      },
+      () => {
+        if (this.state.userId.includes('@') && this.state.userPw.length > 5) {
+          this.setState({
+            isBtnAble: 'onColor',
+          });
+        } else {
+          this.setState({
+            isBtnAble: 'offColor',
+          });
+        }
+      }
+    );
+  };
+
+  goToMain = () => {
+    this.props.history.push('/');
+  };
+
+  goToMembership = () => {
+    this.props.history.push('/signup');
   };
 
   render() {
@@ -81,7 +111,11 @@ class Login extends Component {
                 </div>
               </div>
               <div>
-                <button className="loginBtBox" onClick={this.handleColor}>
+                <button
+                  type="submit"
+                  className={'loginBtBox ' + this.state.isBtnAble}
+                  onClick={this.handleClick}
+                >
                   <a className="loginBt" href="">
                     로그인
                   </a>
