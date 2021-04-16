@@ -59,8 +59,6 @@ export default class ProductDetail extends Component {
     });
   };
 
-  // TODO: 배열의 값이 중복이 없으면 추가하는로직인데,
-  // 뭔가 더 단축시킬 수 있는 방법은 없는지 궁금합니다!
   addSubItemList = item => {
     let { subItemAddList } = this.state;
 

@@ -1,3 +1,5 @@
+@import '../../styles/common.scss';
+
 .productDetail {
   display: flex;
   justify-content: center;
@@ -11,23 +13,25 @@
     padding-right: 60px;
 
     .productImage {
-      max-width: 580px;
-      min-width: 430px;
-      max-height: 580px;
-      min-height: 430px;
+      width: 540px;
+      height: 540px;
+      margin-left: auto;
+      border: $img-border;
     }
 
     .expandImageBox {
+      width: 540px;
       height: 39.7px;
       margin-top: 5px;
+      margin-left: auto;
       background-color: rgba(246, 246, 246, 0.712);
-      border: 1px solid rgb(209, 209, 209);
+      border: $border;
       color: #787878;
       text-align: center;
       line-height: 39.7px;
-      font-size: 12px;
-      font-family: 'Noto Sans KR';
-      font-weight: 200;
+      font-size: $fs2;
+      font-family: $NotoKR;
+      font-weight: $fw2;
       cursor: pointer;
     }
   }
@@ -36,11 +40,12 @@
     flex-basis: 50%;
 
     .guideArea {
+      width: 540px;
       padding-top: 12px;
 
-      font-family: 'Noto Sans KR';
-      font-weight: 300;
-      font-size: 12px;
+      font-family: $NotoKR;
+      font-weight: $fw3;
+      font-size: $fs2;
       color: #757575;
     }
 
@@ -48,18 +53,18 @@
       height: 17px;
       margin-top: 20px;
       color: #f76560;
-      font-size: 11px;
-      font-family: 'Noto Sans KR';
+      font-size: $fs1;
+      font-family: $NotoKR;
       line-height: 17px;
 
       .alertCountSpan {
         display: inline-block;
         width: 14px;
         height: 15px;
-        border: 1px solid rgb(221, 221, 221);
+        border: $border;
         border-radius: 2px;
         font-weight: bold;
-        font-size: 12px;
+        font-size: $fs2;
         text-align: center;
         line-height: 10px;
       }

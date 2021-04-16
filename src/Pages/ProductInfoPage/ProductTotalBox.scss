@@ -1,21 +1,23 @@
+@import '../../styles/common.scss';
+
 .productTotalBox {
-  display: flex;
+  @extend %flex-align-center;
   flex-direction: row-reverse;
+  width: 600px;
   height: 60px;
-  align-items: center;
-  font-family: 'Noto Sans KR';
+  font-family: $NotoKR;
 
   .description {
-    color: #333;
-    font-size: 14px;
+    color: $black;
+    font-size: $fs4;
   }
 
   .price {
-    font-size: 21px;
+    font-size: $fs21;
     font-weight: bold;
   }
 
   .count {
-    font-size: 14px;
+    font-size: $fs4;
   }
 }
