@@ -1,11 +1,10 @@
 .productSub {
-  width: 608px;
+  display: inline-block;
   height: 400px;
   margin-top: 20px;
   border: 1px solid rgba(233, 233, 233, 0.801);
 
   .subItemBox {
-    width: 608px;
     height: 350px;
     overflow-x: hidden;
     overflow-y: scroll;

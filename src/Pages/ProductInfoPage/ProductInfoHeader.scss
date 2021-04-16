@@ -1,12 +1,14 @@
 .productInfoHeader {
   padding: 30px 0 20px;
+  width: 1200px;
+  margin: 0 auto;
+
   & ol {
-    display: flex;
-    flex-direction: row-reverse;
+    display: inline-block;
+    margin-left: 1070px;
   }
   & ol li {
     display: inline-flex;
-
     height: 20px;
     line-height: 20px;
     text-align: center;

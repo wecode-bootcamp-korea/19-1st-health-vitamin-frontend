@@ -1,9 +1,12 @@
+// @import url('../../styles/common.scss');
+
 .productCountBox {
   display: flex;
-  align-items: center;
   height: 57px;
   margin-top: 5px;
+
   background-color: rgba(240, 240, 240, 0.322);
+  align-items: center;
 
   .name {
     flex-basis: 62%;
@@ -18,8 +21,8 @@
     flex-basis: 25%;
 
     display: flex;
-    position: relative;
     align-items: center;
+    position: relative;
 
     .input {
       width: 29px;
@@ -27,6 +30,7 @@
       outline: none;
       border: 1px solid rgb(221, 221, 221);
     }
+
     input[type='number']::-webkit-outer-spin-button,
     input[type='number']::-webkit-inner-spin-button {
       -webkit-appearance: none;
@@ -71,6 +75,7 @@
       width: 15px;
       height: 15px;
       margin-left: 15px;
+
       color: white;
       background-color: rgb(155, 155, 155);
       text-align: center;

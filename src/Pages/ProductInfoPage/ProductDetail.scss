@@ -1,3 +1,5 @@
+@import '../../styles/common.scss';
+
 .productDetail {
   display: flex;
   justify-content: center;
@@ -11,15 +13,16 @@
     padding-right: 60px;
 
     .productImage {
-      max-width: 580px;
-      min-width: 430px;
-      max-height: 580px;
-      min-height: 430px;
+      width: 540px;
+      height: 540px;
+      margin-left: auto;
     }
 
     .expandImageBox {
+      width: 540px;
       height: 39.7px;
       margin-top: 5px;
+      margin-left: auto;
       background-color: rgba(246, 246, 246, 0.712);
       border: 1px solid rgb(209, 209, 209);
       color: #787878;
@@ -36,6 +39,7 @@
     flex-basis: 50%;
 
     .guideArea {
+      width: 540px;
       padding-top: 12px;
 
       font-family: 'Noto Sans KR';
