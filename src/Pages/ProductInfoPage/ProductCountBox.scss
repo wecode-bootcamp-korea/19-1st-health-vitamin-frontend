@@ -1,27 +1,25 @@
-// @import url('../../styles/common.scss');
+@import '../../styles/common.scss';
 
 .productCountBox {
-  display: flex;
+  @extend %flex-align-center;
+
   height: 57px;
   margin-top: 5px;
 
   background-color: rgba(240, 240, 240, 0.322);
-  align-items: center;
 
   .name {
     flex-basis: 62%;
     padding-left: 25px;
 
-    font-size: 12px;
-    font-family: 'Noto Sans KR';
+    font-size: $fs2;
+    font-family: $NotoKR;
     line-height: 57px;
   }
 
   .inputBox {
     flex-basis: 25%;
-
-    display: flex;
-    align-items: center;
+    @extend %flex-align-center;
     position: relative;
 
     .input {
@@ -38,9 +36,8 @@
     }
 
     .arrowBox {
-      display: flex;
+      @extend %flex-align-center;
       flex-direction: column;
-      align-items: center;
       height: 100%;
     }
 
@@ -49,10 +46,10 @@
       width: 20px;
       height: 10px;
       padding-left: 9px;
-      color: rgb(122, 122, 122);
+      color: $gray;
       background-color: white;
-      border: 1px solid rgb(221, 221, 221);
-      font-size: 4px;
+      border: $border;
+      font-size: $fs04;
       cursor: pointer;
     }
     .fa-sort-up::before {
@@ -87,9 +84,9 @@
   .price {
     flex-basis: 10%;
 
-    color: #333;
-    font-size: 12px;
-    font-family: 'Noto Sans KR';
-    font-weight: 200;
+    color: $black;
+    font-size: $fs2;
+    font-family: $NotoKR;
+    font-weight: $fw2;
   }
 }

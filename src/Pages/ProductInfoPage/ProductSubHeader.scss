@@ -1,3 +1,5 @@
+@import '../../styles/common.scss';
+
 .productSubHeader {
   display: flex;
   align-items: center;
@@ -7,12 +9,12 @@
   font-family: 'Noto Sans KR';
 
   .title {
-    color: #757575;
-    font-size: 14px;
+    color: $gray;
+    font-size: $fs4;
   }
   .content {
     margin-left: 10px;
-    color: #757575;
-    font-size: 12px;
+    color: $gray;
+    font-size: $fs2;
   }
 }
