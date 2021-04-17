@@ -2,6 +2,38 @@ import React, { Component } from 'react';
 import '../AccountPage/SignUp.scss';
 
 class SignUp extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      inputClass: 'notValid',
+    };
+  }
+  idChange = e => {
+    const { value } = e.target;
+    if (/^[a-z0-9]{4,16}$/.test(value)) {
+      this.setState({
+        inputClass: 'valid',
+      });
+    } else {
+      this.setState({
+        inputClass: 'notValid',
+      });
+    }
+  };
+
+  pwChange = e => {
+    const { value } = e.target;
+    if (/^([a-zA-Z]|[a-z !@#$%^&*]|[A-Z !@#$%^&*]){8,16}$/.test(value)) {
+      this.setState({
+        inputClass: 'valid',
+      });
+    } else {
+      this.setState({
+        inputClass: 'notValid',
+      });
+    }
+  };
   render() {
     return (
       <div className="home">
@@ -53,7 +85,12 @@ class SignUp extends Component {
                       <div>아이디*</div>
                     </td>
                     <td className="idEnglish">
-                      <input className="id" name="information" type="text" />
+                      <input
+                        className={'id ' + this.state.inputClass}
+                        name="information"
+                        type="text"
+                        onChange={this.idChange}
+                      />
                       <div className="english">(영문소문자/숫자,4~16자)</div>
                     </td>
                   </tr>
@@ -65,7 +102,12 @@ class SignUp extends Component {
                     <div className="pwKo">비밀번호*</div>
                   </td>
                   <td className="pwBox">
-                    <input className="pw" name="information" type="password" />
+                    <input
+                      className={'pw ' + this.state.inputClass}
+                      name="information"
+                      type="text"
+                      onChange={this.pwChange}
+                    />
                     <div className="pwEnglish">
                       (영문 대소문자/숫자/특수문자 중 2가지 이상 조합,8자~16자)
                     </div>

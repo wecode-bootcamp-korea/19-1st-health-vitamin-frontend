@@ -94,6 +94,12 @@
       border-radius: 5px;
       border: 1px solid #e8e8e8;
     }
+    .notValid {
+      color: red;
+    }
+    .valid {
+      color: blue;
+    }
   }
   .english {
     font-size: 12px;
@@ -118,6 +124,12 @@
   .pw {
     border-radius: 5px;
     border: 1px solid #e8e8e8;
+  }
+  .notValid {
+    color: red;
+  }
+  .valid {
+    color: blue;
   }
   .pwEnglish {
     font-size: 12px;
