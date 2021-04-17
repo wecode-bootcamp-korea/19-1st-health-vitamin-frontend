@@ -4,16 +4,16 @@ import './ProductSubItem.scss';
 export default class ProductSubItem extends Component {
   optionSelectOnChange = e => {
     if (e.target.options.selectedIndex) {
-      this.props.addSubItemList(this.props.subItem);
+      this.props.addSubItemList(this.props.id);
     }
   };
   render() {
-    const { imageUrl, name, price } = this.props.subItem;
+    const { image_url, name, price } = this.props.subItem;
     const { optionSelectOnChange } = this;
 
     return (
       <div className="productSubItem">
-        <img className="itemImage" src={imageUrl} alt="product" />
+        <img className="itemImage" src={image_url} alt="product" />
         <div>
           <div className="information">
             <p className="informationTitle">{name}</p>

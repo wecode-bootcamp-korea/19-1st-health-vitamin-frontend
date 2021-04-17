@@ -30,9 +30,11 @@ export default class ProductDetail extends Component {
     super();
 
     this.state = {
+      id: 0,
       name: '',
       detail: '',
       price: 0,
+      count: 1,
       shipping_fee: 0,
       discount: 0,
       minimum_free: 0,
@@ -45,69 +47,87 @@ export default class ProductDetail extends Component {
   }
 
   componentDidMount() {
-    // this.fetchProductDetailItem();
-    this.fetchProductDetailItemForTest();
+    this.fetchProductDetailItem();
   }
 
   fetchProductDetailItem = () => {
-    fetch('/data/ProductInfoData/productDetail.json')
+    // fetch('/data/ProductInfoData/testDetail.json')
+    fetch('http://10.167.105.102:8000/products/detail/2')
       .then(res => res.json())
       .then(data => {
+        const {
+          id,
+          name,
+          detail,
+          price,
+          shipping_fee,
+          discount,
+          minimum_free,
+          detail_images,
+          option_items,
+        } = data.RESULT[0];
         this.setState({
-          imageList: data.imageList,
-          currentImageUrl: data.imageList[0].imageUrl,
-          subItemList: data.subItemList,
-          price: data.price,
-        });
-      });
-  };
-
-  fetchProductDetailItemForTest = () => {
-    fetch('/data/ProductInfoData/testDetail.json')
-      .then(res => res.json())
-      .then(data => {
-        this.setState({
-          imageList: data.result.detail_images,
-          currentImageUrl: data.imageList[0].imageUrl,
-          subItemList: data.subItemList,
-          price: data.price,
+          id,
+          name,
+          detail,
+          price,
+          shipping_fee,
+          discount,
+          minimum_free,
+          imageList: detail_images,
+          subItemList: option_items.filter(item => {
+            item.count = 1;
+            return item;
+          }),
+          currentImageUrl: detail_images[0].image_url,
         });
       });
   };
 
   changeCurrentImage = index => {
     this.setState({
-      currentImageUrl: this.state.imageList[index - 1].imageUrl,
+      currentImageUrl: this.state.imageList[index].image_url,
     });
   };
 
-  addSubItemList = item => {
+  addSubItemList = id => {
     let { subItemAddList } = this.state;
 
-    if (!subItemAddList.includes(item.id)) {
+    if (!subItemAddList.includes(id)) {
       this.setState({
-        subItemAddList: [...subItemAddList, item.id],
+        subItemAddList: [...subItemAddList, id],
       });
     }
   };
 
-  updateSubItemList = (count, index) => {
+  updateSubItemList = (type, value, id) => {
     let { subItemList } = this.state;
+
+    if (type === 'main') {
+      this.setState({
+        count: value,
+      });
+      return;
+    }
 
     this.setState({
       subItemList: subItemList.map(item => {
-        item.count = item.id === index ? count : item.count;
+        item.count = item.id === id ? value : item.count;
         return item;
       }),
     });
   };
 
-  deleteSubItemList = index => {
+  deleteSubItemList = (type, id) => {
+    if (type === 'main') {
+      alert('main 제품은 삭제할 수 없습니다.');
+      return;
+    }
     let { subItemList, subItemAddList } = this.state;
     this.setState({
-      subItemAddList: subItemAddList.filter(item => item !== index),
+      subItemAddList: subItemAddList.filter(item => item !== id),
       subItemList: subItemList.map(item => {
-        item.count = item.id === index ? 1 : item.count;
+        item.count = item.id === id ? 1 : item.count;
         return item;
       }),
     });
@@ -115,11 +135,16 @@ export default class ProductDetail extends Component {
 
   render() {
     const {
+      id,
       currentImageUrl,
       imageList,
       subItemList,
       subItemAddList,
+      name,
       price,
+      count,
+      discount,
+      shipping_fee,
     } = this.state;
 
     const {
@@ -132,7 +157,7 @@ export default class ProductDetail extends Component {
     return (
       <div className="productDetail">
         <div className="imageBox">
-          <img className="productImage" src={currentImageUrl} alt="main" />
+          <img className="productImage" src={currentImageUrl} alt="product" />
           <ProductImageBox
             imageList={imageList}
             changeCurrentImage={changeCurrentImage}
@@ -143,7 +168,13 @@ export default class ProductDetail extends Component {
           </div>
         </div>
         <div className="infoBox">
-          <ProductDescript />
+          <ProductDescript
+            name={name}
+            price={price}
+            count={count}
+            discount={discount}
+            shipping_fee={shipping_fee}
+          />
           <p className="guideArea">(최소주문수량 1개 이상)</p>
           <ProductSub
             subItemList={subItemList}
@@ -153,13 +184,27 @@ export default class ProductDetail extends Component {
             <span className="alertCountSpan">!</span>
             &nbsp;&nbsp;수량을 선택해주세요.
           </p>
+          <ProductCountBox
+            id={id}
+            type={'main'}
+            count={count}
+            price={price}
+            name={name}
+            discount={discount}
+            updateSubItemList={updateSubItemList}
+            deleteSubItemList={deleteSubItemList}
+          />
           {subItemList
-            .filter(el => subItemAddList.includes(el.id))
-            .map(el => {
+            .filter(product => subItemAddList.includes(product.id))
+            .map(product => {
               return (
                 <ProductCountBox
-                  key={el.id}
-                  item={el}
+                  key={product.id}
+                  id={product.id}
+                  type={'sub'}
+                  name={product.name}
+                  count={product.count}
+                  price={product.price}
                   updateSubItemList={updateSubItemList}
                   deleteSubItemList={deleteSubItemList}
                 />
@@ -167,7 +212,8 @@ export default class ProductDetail extends Component {
             })}
           <ProductTotalBox
             totalPrice={
-              price +
+              price * count -
+              price * (discount / 100) * count +
               subItemList
                 .filter(el => subItemAddList.includes(el.id))
                 .reduce((acc, cur) => {

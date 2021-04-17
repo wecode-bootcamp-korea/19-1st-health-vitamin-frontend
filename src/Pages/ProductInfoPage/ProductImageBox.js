@@ -7,11 +7,13 @@ export default class ProductImageBox extends Component {
     const { imageList, changeCurrentImage } = this.props;
     return (
       <ol className="productImageBox">
-        {imageList.map(image => {
+        {imageList.map((image, index) => {
           return (
             <ProductInfoimage
-              key={image.id}
-              imageObj={image}
+              key={image.image_id}
+              image={image.image_url}
+              id={image.image_id}
+              index={index}
               changeCurrentImage={changeCurrentImage}
             />
           );

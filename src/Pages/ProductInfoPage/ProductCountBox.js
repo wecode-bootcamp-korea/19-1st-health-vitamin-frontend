@@ -3,32 +3,33 @@ import './ProductCountBox.scss';
 
 export default class ProductCountBox extends Component {
   upClick = () => {
-    let { item, updateSubItemList } = this.props;
-    let newCout = item.count * 1 + 1;
+    let { count, updateSubItemList, id, type } = this.props;
+    let newCout = count * 1 + 1;
 
-    updateSubItemList(newCout, item.id);
+    updateSubItemList(type, newCout, id);
   };
 
   downClick = () => {
-    let { count, id } = this.props.item;
+    let { count, id, type } = this.props;
 
     count = count <= 1 ? 2 : count;
-    this.props.updateSubItemList(count * 1 - 1, id);
+    this.props.updateSubItemList(type, count * 1 - 1, id);
   };
 
   inputOnChange = e => {
     let { value } = e.target;
-    const { item, updateSubItemList } = this.props;
 
-    updateSubItemList(value, item.id);
+    const { id, updateSubItemList, type } = this.props;
+    updateSubItemList(type, value, id);
   };
 
   xBtnOnClick = () => {
-    this.props.deleteSubItemList(this.props.item.id);
+    this.props.deleteSubItemList(this.props.type, this.props.id);
   };
 
   render() {
-    const { price, count, name } = this.props.item;
+    const { price, name, count } = this.props;
+
     const { inputOnChange, upClick, downClick, xBtnOnClick } = this;
     return (
       <div className="productCountBox">
@@ -37,7 +38,7 @@ export default class ProductCountBox extends Component {
           <input
             className="input"
             type="number"
-            value={count ? count : 1}
+            value={count}
             onChange={inputOnChange}
           />
           <div className="arrowBox">
@@ -48,7 +49,13 @@ export default class ProductCountBox extends Component {
             x
           </p>
         </div>
-        <span className="price">{price * (count ? count : 1)}원</span>
+        <span className="price">
+          {this.props.discount
+            ? (price - price * (this.props.discount / 100)) *
+              (count ? count : 1)
+            : price * (count ? count : 1)}
+          원
+        </span>
       </div>
     );
   }

@@ -3,17 +3,17 @@ import './ProductInfoimage.scss';
 
 export default class ProductInfoimage extends Component {
   imageMouseOver = () => {
-    const { id } = this.props.imageObj;
-    this.props.changeCurrentImage(id);
+    const { index, changeCurrentImage } = this.props;
+    changeCurrentImage(index);
   };
 
   render() {
-    const { id, imageUrl } = this.props.imageObj;
+    const { id, image } = this.props;
     const { imageMouseOver } = this;
 
     return (
       <li key={id} onMouseOver={imageMouseOver}>
-        <img src={imageUrl} alt={id} />
+        <img src={image} alt={id} />
       </li>
     );
   }
