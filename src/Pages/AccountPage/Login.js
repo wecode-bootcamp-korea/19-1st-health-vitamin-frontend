@@ -53,6 +53,15 @@ class Login extends Component {
   };
 
   goToMain = () => {
+    fetch('', {
+      method: 'POST',
+      body: JSON.stringify({
+        name: 'iiii',
+        password: '',
+      }),
+    })
+      .then(response => response.json())
+      .then(result => console.log(' 결과: ', result));
     this.props.history.push('/');
   };
 
