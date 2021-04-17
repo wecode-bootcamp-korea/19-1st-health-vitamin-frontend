@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import ItemHide from './ItemHide';
 import './ProductsItem.scss';
 
 class ProductsItem extends Component {
+  // noDiscount = () => {};
   render() {
     const { id, image, name, price, discount } = this.props.product;
     return (
@@ -18,10 +20,16 @@ class ProductsItem extends Component {
             <i class="fas fa-search"></i>
           </div>
         </a>
-        <div className="item_price info">{price}원</div>
-        <div className="item_discount info">
-          {discount}원<span className="discount_per">{28}할인</span>
+        <div
+          // onChange={noDiscount}
+          className={
+            discount === 0 ? 'info item_price_noDiscount' : 'info item_price'
+          }
+        >
+          {price.toLocaleString('en-US')}원
         </div>
+
+        {discount !== 0 && <ItemHide price={price} discount={discount} />}
       </div>
     );
   }

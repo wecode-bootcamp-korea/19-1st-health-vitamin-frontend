@@ -19,6 +19,7 @@
 
       .info {
         margin: 12px 0px 8px 0px;
+        font-size: 18px;
       }
 
       .info_icon {
@@ -29,9 +30,24 @@
         margin: 3px 5px;
       }
 
+      .item_price {
+        text-decoration: line-through;
+      }
+      .item_price_noDiscount {
+        text-decoration: none;
+      }
+
       .item_discount {
         margin: 5px 5px 5px 10px;
         font-weight: 700;
+        font-size: 18px;
+      }
+
+      .discount_per {
+        margin-left: 3px;
+        font-size: 15px;
+        font-weight: 400;
+        color: gray;
       }
     }
   }
