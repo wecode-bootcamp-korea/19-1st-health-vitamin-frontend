@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "image": "https://i1.wp.com/bestlifeonline.com/wp-content/uploads/2019/07/what-is-quokka.jpg?resize=640%2C360&ssl=1",
+    "name": "소피소피 너리싱 핸드크림 50ml",
+    "price": "9800",
+    "discount": "7900",
+    "many": 4
+  },
+  {
+    "id": 2,
+    "image": "//duftndoft.com/web/product/medium/202102/b0f4697886cec4f952475e409aad01ec.jpg",
+    "name": "효진효진 너리싱 핸드크림 75ml",
+    "price": "90800",
+    "discount": "200",
+    "many": 1
+  },
+  {
+    "id": 3,
+    "image": "//duftndoft.com/web/product/medium/202102/b0f4697886cec4f952475e409aad01ec.jpg",
+    "name": "종호종호 헤어 앤 바디미스트 150ML",
+    "price": "190800",
+    "discount": "100",
+    "many": 2
+  }
+]

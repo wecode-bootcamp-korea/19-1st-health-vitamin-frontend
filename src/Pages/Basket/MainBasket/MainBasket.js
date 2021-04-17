@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
+import Item from './Item';
 import './MainBasket.scss';
 
 class MainBasket extends Component {
   render() {
+    const { odList } = this.props;
     return (
       <main className="main_basket">
-        <div className="first_box">
-          ✅1번 박스
-          <div className="basket_top">일반상품 (2)</div>
+        <div className="products_basket">
+          <span>✅</span>
+          <span>1번 박스</span>
+          <div className="basket_top">일반상품 ({odList.length})</div>
           <div className="check">
             <div className="check_info">
               <div className="info_list">
@@ -23,39 +26,27 @@ class MainBasket extends Component {
                 <div className="check_list">선택</div>
               </div>
               <ul className="basket_items">
-                <li className="item">
-                  <input type="checkbox" />
-                  <img
-                    src="//duftndoft.com/web/product/tiny/202012/675f6c43cad1b43736ffe0d3f4b22114.jpg"
-                    alt="히히힣"
-                  />
-                  <div>핑크브리즈 틴티드 립밤</div>
-                  <div>9800</div>
-                  <div className="item_count">
-                    <input type="text" value="1" />
-                    <div className="count_box">
-                      <i className="fas fa-sort-up"></i>
-                      <i className="fas fa-sort-down"></i>
-                    </div>
-                  </div>
-                  <div>-</div>
-                  <div>기본배송</div>
-                  <div>2,500원</div>
-                  <div>9,800원</div>
-                  <div className="celecter">
-                    <button type="submit">주문하기</button>
-                    <button type="submit">관심상품등록</button>
-                    <button type="submit">x 삭제</button>
-                  </div>
-                </li>
+                {odList.map(item => {
+                  return (
+                    <Item
+                      key={item.id}
+                      prImg={item.image}
+                      prTitle={item.name}
+                      prPrice={item.price}
+                      prDiscount={item.discount}
+                      prCount={item.many}
+                    />
+                  );
+                })}
               </ul>
+
               <div className="calculator">
                 <div className="delivery_box">
                   <div className="delivery_type">[기본배송]</div>
                   <div className="delivery_sum">
-                    상품구매금액{21900}+배송비{(2, 500)}-상품할인금액{4200}
-                    =합계:
-                    {20200}원
+                    {`상품구매금액 ${1} + 배송비 ${1} - 상품할인금액 ${1} = 합계:`}
+                    {}
+                    {1} 원
                   </div>
                 </div>
                 <div className="move_item">
@@ -74,7 +65,7 @@ class MainBasket extends Component {
           </div>
         </div>
 
-        <div className="second_box">
+        <div className="products_sum">
           ✅2번 박스
           <div className="sum_categori">
             <div>총 상품금액</div>
