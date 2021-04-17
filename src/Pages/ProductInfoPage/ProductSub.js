@@ -1,22 +1,26 @@
 import React, { Component } from 'react';
-import './ProductSub.scss';
 import ProductSubHeader from './ProductSubHeader';
 import ProductSubItem from './ProductSubItem';
+import './ProductSub.scss';
 
 export default class ProductSub extends Component {
   render() {
-    const { subItemList, addSubItemList } = this.props;
+    const { subItemList, subItemAddList, addSubItemList } = this.props;
     return (
       <div className="productSub">
         <ProductSubHeader />
         <div className="subItemBox">
-          {subItemList.map((el, index) => {
+          {subItemList.map(el => {
             return (
               <ProductSubItem
-                key={el.image_id}
+                key={el.id}
                 subItem={el}
                 id={el.id}
                 addSubItemList={addSubItemList}
+                subItemList={subItemList}
+                selectValue={
+                  subItemAddList.includes(el.id) ? 'choose' : 'default'
+                }
               />
             );
           })}

@@ -7,8 +7,10 @@ export default class ProductSubItem extends Component {
       this.props.addSubItemList(this.props.id);
     }
   };
+
   render() {
     const { image_url, name, price } = this.props.subItem;
+    const { selectValue } = this.props;
     const { optionSelectOnChange } = this;
 
     return (
@@ -25,9 +27,10 @@ export default class ProductSubItem extends Component {
               className="optionSelect"
               name="optionSelect"
               onChange={optionSelectOnChange}
+              value={selectValue}
             >
-              <option value="optionItem">- [필수] 상품 선택 -</option>
-              <option value="optionItem">{name}</option>
+              <option value="default">- [필수] 상품 선택 -</option>
+              <option value="choose">{name}</option>
             </select>
           </div>
         </div>

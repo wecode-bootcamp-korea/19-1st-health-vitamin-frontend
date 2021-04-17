@@ -2,35 +2,39 @@ import React, { Component } from 'react';
 import './ProductCountBox.scss';
 
 export default class ProductCountBox extends Component {
-  upClick = () => {
-    let { count, updateSubItemList, id, type } = this.props;
-    let newCout = count * 1 + 1;
+  inputOnChange = e => {
+    const { id, updateItem, type } = this.props;
+    let { value } = e.target;
+    updateItem(type, value, id);
+  };
 
-    updateSubItemList(type, newCout, id);
+  upClick = () => {
+    const { count, updateItem, id, type } = this.props;
+    let newCout = count * 1 + 1;
+    updateItem(type, newCout, id);
   };
 
   downClick = () => {
-    let { count, id, type } = this.props;
-
-    count = count <= 1 ? 2 : count;
-    this.props.updateSubItemList(type, count * 1 - 1, id);
-  };
-
-  inputOnChange = e => {
-    let { value } = e.target;
-
-    const { id, updateSubItemList, type } = this.props;
-    updateSubItemList(type, value, id);
+    const { count, id, type, updateItem } = this.props;
+    let newCout = count <= 1 ? 2 : count;
+    updateItem(type, newCout * 1 - 1, id);
   };
 
   xBtnOnClick = () => {
-    this.props.deleteSubItemList(this.props.type, this.props.id);
+    const { id, type, deleteItem } = this.props;
+    deleteItem(type, id);
+  };
+
+  calcPrice = () => {
+    const { price, discount, count } = this.props;
+    return discount
+      ? (price - price * (discount / 100)) * (count ? count : 1)
+      : price * (count ? count : 1);
   };
 
   render() {
-    const { price, name, count } = this.props;
-
-    const { inputOnChange, upClick, downClick, xBtnOnClick } = this;
+    const { name, count } = this.props;
+    const { inputOnChange, upClick, downClick, xBtnOnClick, calcPrice } = this;
     return (
       <div className="productCountBox">
         <span className="name">{name}</span>
@@ -49,13 +53,7 @@ export default class ProductCountBox extends Component {
             x
           </p>
         </div>
-        <span className="price">
-          {this.props.discount
-            ? (price - price * (this.props.discount / 100)) *
-              (count ? count : 1)
-            : price * (count ? count : 1)}
-          원
-        </span>
+        <span className="price">{calcPrice()}원</span>
       </div>
     );
   }
