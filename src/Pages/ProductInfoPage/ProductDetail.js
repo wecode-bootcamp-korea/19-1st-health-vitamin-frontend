@@ -30,18 +30,27 @@ export default class ProductDetail extends Component {
     super();
 
     this.state = {
-      imageList: [],
-      currentImageUrl: '',
-      subItemList: [],
-      subItemAddList: [],
+      name: '',
+      detail: '',
       price: 0,
+      shipping_fee: 0,
+      discount: 0,
+      minimum_free: 0,
+      imageList: [],
+      subItemList: [],
+
+      currentImageUrl: '',
+      subItemAddList: [],
     };
   }
 
   componentDidMount() {
-    fetch('/data/ProductInfoData/productDetail.json', {
-      method: 'GET',
-    })
+    // this.fetchProductDetailItem();
+    this.fetchProductDetailItemForTest();
+  }
+
+  fetchProductDetailItem = () => {
+    fetch('/data/ProductInfoData/productDetail.json')
       .then(res => res.json())
       .then(data => {
         this.setState({
@@ -51,11 +60,24 @@ export default class ProductDetail extends Component {
           price: data.price,
         });
       });
-  }
+  };
 
-  changeCurrentImage = id => {
+  fetchProductDetailItemForTest = () => {
+    fetch('/data/ProductInfoData/testDetail.json')
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          imageList: data.result.detail_images,
+          currentImageUrl: data.imageList[0].imageUrl,
+          subItemList: data.subItemList,
+          price: data.price,
+        });
+      });
+  };
+
+  changeCurrentImage = index => {
     this.setState({
-      currentImageUrl: this.state.imageList[id - 1].imageUrl,
+      currentImageUrl: this.state.imageList[index - 1].imageUrl,
     });
   };
 
@@ -73,9 +95,9 @@ export default class ProductDetail extends Component {
     let { subItemList } = this.state;
 
     this.setState({
-      subItemList: subItemList.map(el => {
-        el.count = el.id === index ? count : el.count;
-        return el;
+      subItemList: subItemList.map(item => {
+        item.count = item.id === index ? count : item.count;
+        return item;
       }),
     });
   };
@@ -83,26 +105,37 @@ export default class ProductDetail extends Component {
   deleteSubItemList = index => {
     let { subItemList, subItemAddList } = this.state;
     this.setState({
-      subItemAddList: subItemAddList.filter(el => el !== index),
-      subItemList: subItemList.map(el => {
-        el.count = el.id === index ? 1 : el.count;
-        return el;
+      subItemAddList: subItemAddList.filter(item => item !== index),
+      subItemList: subItemList.map(item => {
+        item.count = item.id === index ? 1 : item.count;
+        return item;
       }),
     });
   };
 
   render() {
+    const {
+      currentImageUrl,
+      imageList,
+      subItemList,
+      subItemAddList,
+      price,
+    } = this.state;
+
+    const {
+      changeCurrentImage,
+      addSubItemList,
+      updateSubItemList,
+      deleteSubItemList,
+    } = this;
+
     return (
       <div className="productDetail">
         <div className="imageBox">
-          <img
-            className="productImage"
-            src={this.state.currentImageUrl}
-            alt="main"
-          />
+          <img className="productImage" src={currentImageUrl} alt="main" />
           <ProductImageBox
-            imageList={this.state.imageList}
-            changeCurrentImage={this.changeCurrentImage}
+            imageList={imageList}
+            changeCurrentImage={changeCurrentImage}
           />
           <div className="expandImageBox">
             <i className="fas fa-search"></i>&nbsp;
@@ -113,30 +146,30 @@ export default class ProductDetail extends Component {
           <ProductDescript />
           <p className="guideArea">(최소주문수량 1개 이상)</p>
           <ProductSub
-            subItemList={this.state.subItemList}
-            addSubItemList={this.addSubItemList}
+            subItemList={subItemList}
+            addSubItemList={addSubItemList}
           />
           <p className="alertCount">
             <span className="alertCountSpan">!</span>
             &nbsp;&nbsp;수량을 선택해주세요.
           </p>
-          {this.state.subItemList
-            .filter(el => this.state.subItemAddList.includes(el.id))
+          {subItemList
+            .filter(el => subItemAddList.includes(el.id))
             .map(el => {
               return (
                 <ProductCountBox
                   key={el.id}
                   item={el}
-                  updateSubItemList={this.updateSubItemList}
-                  deleteSubItemList={this.deleteSubItemList}
+                  updateSubItemList={updateSubItemList}
+                  deleteSubItemList={deleteSubItemList}
                 />
               );
             })}
           <ProductTotalBox
             totalPrice={
-              this.state.price +
-              this.state.subItemList
-                .filter(el => this.state.subItemAddList.includes(el.id))
+              price +
+              subItemList
+                .filter(el => subItemAddList.includes(el.id))
                 .reduce((acc, cur) => {
                   if (!cur.count) cur.count = 1;
                   return acc + cur.price * cur.count;

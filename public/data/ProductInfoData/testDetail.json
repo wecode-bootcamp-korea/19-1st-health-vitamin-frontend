@@ -1,0 +1,26 @@
+{
+  "result": [
+    {
+      "name": "핸드크림",
+      "detail": "향이 좋아여~ ^_^",
+      "price": 5000,
+      "shipping_fee": 2500,
+      "discount": 10,
+      "minimum_free": 20000,
+      "main_image": "2번상품메인사진.jpg",
+      "detail_images": ["2번상품상세사진1.jpg", "2번상품상세사진2.jpg"],
+      "option_items": [
+        {
+          "image": "4번상품사진.jpg",
+          "name": "쇼핑백",
+          "price": 500
+        },
+        {
+          "image": "5번상품사진.jpg",
+          "name": "선물상자",
+          "price": 1500
+        }
+      ]
+    }
+  ]
+}

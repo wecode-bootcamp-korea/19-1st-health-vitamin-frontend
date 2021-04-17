@@ -8,29 +8,26 @@ export default class ProductSubItem extends Component {
     }
   };
   render() {
+    const { imageUrl, name, price } = this.props.subItem;
+    const { optionSelectOnChange } = this;
+
     return (
       <div className="productSubItem">
-        <img
-          className="itemImage"
-          src={this.props.subItem.imageUrl}
-          alt="product"
-        />
+        <img className="itemImage" src={imageUrl} alt="product" />
         <div>
           <div className="information">
-            <p className="informationTitle">{this.props.subItem.name}</p>
-            <p className="informationPrice">
-              {this.props.subItem.price.toLocaleString()}원
-            </p>
+            <p className="informationTitle">{name}</p>
+            <p className="informationPrice">{price.toLocaleString()}원</p>
           </div>
           <div className="option">
             <p className="optionName">상품선택</p>
             <select
               className="optionSelect"
               name="optionSelect"
-              onChange={this.optionSelectOnChange}
+              onChange={optionSelectOnChange}
             >
               <option value="optionItem">- [필수] 상품 선택 -</option>
-              <option value="optionItem">{this.props.subItem.name}</option>
+              <option value="optionItem">{name}</option>
             </select>
           </div>
         </div>

@@ -5,16 +5,18 @@ import ProductSubItem from './ProductSubItem';
 
 export default class ProductSub extends Component {
   render() {
+    const { subItemList, addSubItemList } = this.props;
+
     return (
       <div className="productSub">
         <ProductSubHeader />
         <div className="subItemBox">
-          {this.props.subItemList.map(el => {
+          {subItemList.map(el => {
             return (
               <ProductSubItem
                 key={el.name}
                 subItem={el}
-                addSubItemList={this.props.addSubItemList}
+                addSubItemList={addSubItemList}
               />
             );
           })}

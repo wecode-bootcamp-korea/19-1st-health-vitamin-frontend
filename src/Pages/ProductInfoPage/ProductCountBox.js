@@ -3,47 +3,48 @@ import './ProductCountBox.scss';
 
 export default class ProductCountBox extends Component {
   upClick = () => {
-    let newCout = this.props.item.count * 1 + 1;
-    this.props.updateSubItemList(newCout, this.props.item.id);
+    let { item, updateSubItemList } = this.props;
+    let newCout = item.count * 1 + 1;
+
+    updateSubItemList(newCout, item.id);
   };
 
   downClick = () => {
-    let { count } = this.props.item;
-    count = count <= 1 ? 2 : count;
+    let { count, id } = this.props.item;
 
-    this.props.updateSubItemList(count * 1 - 1, this.props.item.id);
+    count = count <= 1 ? 2 : count;
+    this.props.updateSubItemList(count * 1 - 1, id);
   };
 
   inputOnChange = e => {
     let { value } = e.target;
-    if (!/\d/.test(value)) {
-      value = 1;
-    }
+    const { item, updateSubItemList } = this.props;
 
-    this.props.updateSubItemList(value, this.props.item.id);
+    updateSubItemList(value, item.id);
   };
 
-  xOnClick = () => {
+  xBtnOnClick = () => {
     this.props.deleteSubItemList(this.props.item.id);
   };
 
   render() {
-    const { price, count } = this.props.item;
+    const { price, count, name } = this.props.item;
+    const { inputOnChange, upClick, downClick, xBtnOnClick } = this;
     return (
       <div className="productCountBox">
-        <span className="name">{this.props.item.name}</span>
+        <span className="name">{name}</span>
         <div className="inputBox">
           <input
             className="input"
             type="number"
             value={count ? count : 1}
-            onChange={this.inputOnChange}
+            onChange={inputOnChange}
           />
           <div className="arrowBox">
-            <i className="fas fa-sort-up" onClick={this.upClick}></i>
-            <i className="fas fa-sort-down" onClick={this.downClick}></i>
+            <i className="fas fa-sort-up" onClick={upClick}></i>
+            <i className="fas fa-sort-down" onClick={downClick}></i>
           </div>
-          <p className="x" onClick={this.xOnClick}>
+          <p className="x" onClick={xBtnOnClick}>
             x
           </p>
         </div>

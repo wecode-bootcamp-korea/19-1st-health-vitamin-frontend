@@ -4,14 +4,15 @@ import ProductInfoimage from './ProductInfoimage';
 
 export default class ProductImageBox extends Component {
   render() {
+    const { imageList, changeCurrentImage } = this.props;
     return (
       <ol className="productImageBox">
-        {this.props.imageList.map(el => {
+        {imageList.map(image => {
           return (
             <ProductInfoimage
-              key={el.id}
-              imageObj={el}
-              changeCurrentImage={this.props.changeCurrentImage}
+              key={image.id}
+              imageObj={image}
+              changeCurrentImage={changeCurrentImage}
             />
           );
         })}
