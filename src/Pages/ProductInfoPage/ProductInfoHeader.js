@@ -8,7 +8,7 @@ export default class ProductInfoHeader extends Component {
         <ol>
           <li>
             <i className="fas fa-home"></i>
-            <p> &nbsp;&gt; PRODUCT </p>
+            <span> &nbsp;&gt; PRODUCT </span>
           </li>
         </ol>
       </div>

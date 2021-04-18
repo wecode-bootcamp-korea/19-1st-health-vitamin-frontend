@@ -12,9 +12,11 @@ export default class ProductInfoimage extends Component {
     const { imageMouseOver } = this;
 
     return (
-      <li key={id} onMouseOver={imageMouseOver}>
-        <img src={image} alt={id} />
-      </li>
+      <div className="infoImage">
+        <li onMouseOver={imageMouseOver}>
+          <img src={image} alt={id} />
+        </li>
+      </div>
     );
   }
 }

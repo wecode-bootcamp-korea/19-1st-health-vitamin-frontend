@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import ProductSub from './ProductSub';
 import ProductCountBox from './ProductCountBox';
 import ProductTotalBox from './ProductTotalBox';
-import ProductInfoButtonBox from './ProductInfoButtonBox';
-import ProductImageBox from './ProductImageBox';
+import ProductInfoimage from './ProductInfoimage';
 import ProductDescript from './ProductDescript';
 import './ProductDetail.scss';
 
@@ -118,12 +117,9 @@ export default class ProductDetail extends Component {
   };
 
   updateItem = (type, count, id) => {
-    if (type === 'main') {
-      this.updateMainCount(count);
-      return;
-    }
-
-    this.updateSubCount(count, id);
+    type === 'main'
+      ? this.updateMainCount(count)
+      : this.updateSubCount(count, id);
   };
 
   deleteMainItem = () => {
@@ -143,12 +139,7 @@ export default class ProductDetail extends Component {
   };
 
   deleteItem = (type, id) => {
-    if (type === 'main') {
-      this.deleteMainItem();
-      return;
-    }
-
-    this.deleteSubItem(id);
+    type === 'main' ? this.deleteMainItem() : this.deleteSubItem(id);
   };
 
   calcTotalPrice = () => {
@@ -157,10 +148,10 @@ export default class ProductDetail extends Component {
       price * count -
       price * (discount / 100) * count +
       subItemList
-        .filter(el => subItemAddList.includes(el.id))
-        .reduce((acc, cur) => {
-          if (!cur.count) cur.count = 1;
-          return acc + cur.price * cur.count;
+        .filter(subItem => subItemAddList.includes(subItem.id))
+        .reduce((acc, subItem) => {
+          if (!subItem.count) subItem.count = 1;
+          return acc + subItem.price * subItem.count;
         }, 0)
     );
   };
@@ -189,10 +180,19 @@ export default class ProductDetail extends Component {
       <div className="productDetail">
         <div className="imageBox">
           <img className="productImage" src={currentImageUrl} alt="product" />
-          <ProductImageBox
-            imageList={imageList}
-            changeCurrentImage={changeCurrentImage}
-          />
+          <ol className="productImageBox">
+            {imageList.map((image, index) => {
+              return (
+                <ProductInfoimage
+                  key={image.image_id}
+                  image={image.image_url}
+                  id={image.image_id}
+                  index={index}
+                  changeCurrentImage={changeCurrentImage}
+                />
+              );
+            })}
+          </ol>
           <div className="expandImageBox">
             <i className="fas fa-search"></i>&nbsp;
             <span className="expandImageSpan">확대보기</span>
@@ -243,7 +243,15 @@ export default class ProductDetail extends Component {
               );
             })}
           <ProductTotalBox totalPrice={calcTotalPrice()} count={count} />
-          <ProductInfoButtonBox BUTTONS={BUTTONS} />
+          <div className="productInfoButtonBox">
+            {BUTTONS.map(el => {
+              return (
+                <button key={el.id} className={el.className}>
+                  {el.name}
+                </button>
+              );
+            })}
+          </div>
         </div>
       </div>
     );
