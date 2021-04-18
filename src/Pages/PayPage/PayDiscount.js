@@ -15,7 +15,7 @@ export default class PayDiscount extends Component {
             <button className="discountBtn">할인 내역</button>
           </div>
         </div>
-        <div className="content">
+        <div className="payDiscount">
           <div className="contentHeader">
             <span className="autoDiscount">자동 할인</span>
             <span className="option">(보유쿠폰 1개)</span>
@@ -25,7 +25,7 @@ export default class PayDiscount extends Component {
             <button className="discountBtn">할인 내역</button>
           </div>
         </div>
-        <div className="content">
+        <div className="payDiscount">
           <div className="contentHeader">
             <span className="autoDiscount">자동 할인</span>
             <span className="option">(보유쿠폰 1개)</span>
