@@ -4,20 +4,30 @@ import './ProductCountBox.scss';
 export default class ProductCountBox extends Component {
   inputOnChange = e => {
     const { id, updateItem, type } = this.props;
-    let { value } = e.target;
-    updateItem(type, value, id);
+    let newCout = this.maxValueCheck(e.target.value);
+    updateItem(type, newCout, id);
   };
 
   upClick = () => {
     const { count, updateItem, id, type } = this.props;
-    let newCout = count * 1 + 1;
+    let newCout = this.maxValueCheck(count * 1 + 1);
     updateItem(type, newCout, id);
   };
 
   downClick = () => {
     const { count, id, type, updateItem } = this.props;
-    let newCout = count <= 1 ? 2 : count;
+    let newCout = this.maxValueCheck(count <= 1 ? 2 : count);
     updateItem(type, newCout * 1 - 1, id);
+  };
+
+  maxValueCheck = count => {
+    const { stock } = this.props;
+
+    if (count > stock) {
+      count = stock;
+      alert('최대 주문 수량입니다!');
+    }
+    return count;
   };
 
   xBtnOnClick = () => {
@@ -35,6 +45,7 @@ export default class ProductCountBox extends Component {
   render() {
     const { name, count } = this.props;
     const { inputOnChange, upClick, downClick, xBtnOnClick, calcPrice } = this;
+    console.log(this.props);
     return (
       <div className="productCountBox">
         <span className="name">{name}</span>
