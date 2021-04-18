@@ -2,23 +2,21 @@ import React, { Component } from 'react';
 import './ProductInfoimage.scss';
 
 export default class ProductInfoimage extends Component {
-  imageMouseOver = e => {
-    const { id } = this.props.imageObj;
-    this.props.changeCurrentImage(id);
+  imageMouseOver = () => {
+    const { index, changeCurrentImage } = this.props;
+    changeCurrentImage(index);
   };
 
-  imageMouseOut = () => {};
   render() {
-    const { id, imageUrl } = this.props.imageObj;
+    const { id, image } = this.props;
+    const { imageMouseOver } = this;
 
     return (
-      <li
-        key={id}
-        onMouseOver={this.imageMouseOver}
-        onMouseOut={this.imageMouseOut}
-      >
-        <img src={imageUrl} alt={id} />
-      </li>
+      <div className="infoImage">
+        <li onMouseOver={imageMouseOver}>
+          <img src={image} alt={id} />
+        </li>
+      </div>
     );
   }
 }

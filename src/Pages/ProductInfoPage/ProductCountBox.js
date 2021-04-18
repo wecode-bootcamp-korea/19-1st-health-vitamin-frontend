@@ -2,52 +2,58 @@ import React, { Component } from 'react';
 import './ProductCountBox.scss';
 
 export default class ProductCountBox extends Component {
+  inputOnChange = e => {
+    const { id, updateItem, type } = this.props;
+    let { value } = e.target;
+    updateItem(type, value, id);
+  };
+
   upClick = () => {
-    let newCout = this.props.item.count * 1 + 1;
-    this.props.updateSubItemList(newCout, this.props.item.id);
+    const { count, updateItem, id, type } = this.props;
+    let newCout = count * 1 + 1;
+    updateItem(type, newCout, id);
   };
 
   downClick = () => {
-    let { count } = this.props.item;
-    count = count <= 1 ? 2 : count;
-
-    this.props.updateSubItemList(count * 1 - 1, this.props.item.id);
+    const { count, id, type, updateItem } = this.props;
+    let newCout = count <= 1 ? 2 : count;
+    updateItem(type, newCout * 1 - 1, id);
   };
 
-  inputOnChange = e => {
-    let { value } = e.target;
-    if (!/\d/.test(value)) {
-      value = 1;
-    }
-
-    this.props.updateSubItemList(value, this.props.item.id);
+  xBtnOnClick = () => {
+    const { id, type, deleteItem } = this.props;
+    deleteItem(type, id);
   };
 
-  xOnClick = () => {
-    this.props.deleteSubItemList(this.props.item.id);
+  calcPrice = () => {
+    const { price, discount, count } = this.props;
+    return discount
+      ? (price - price * (discount / 100)) * (count ? count : 1)
+      : price * (count ? count : 1);
   };
 
   render() {
-    const { price, count } = this.props.item;
+    const { name, count } = this.props;
+    const { inputOnChange, upClick, downClick, xBtnOnClick, calcPrice } = this;
     return (
       <div className="productCountBox">
-        <span className="name">{this.props.item.name}</span>
+        <span className="name">{name}</span>
         <div className="inputBox">
           <input
             className="input"
             type="number"
-            value={count ? count : 1}
-            onChange={this.inputOnChange}
+            value={count}
+            onChange={inputOnChange}
           />
           <div className="arrowBox">
-            <i className="fas fa-sort-up" onClick={this.upClick}></i>
-            <i className="fas fa-sort-down" onClick={this.downClick}></i>
+            <i className="fas fa-sort-up" onClick={upClick}></i>
+            <i className="fas fa-sort-down" onClick={downClick}></i>
           </div>
-          <p className="x" onClick={this.xOnClick}>
+          <p className="x" onClick={xBtnOnClick}>
             x
           </p>
         </div>
-        <span className="price">{price * (count ? count : 1)}원</span>
+        <span className="price">{calcPrice()}원</span>
       </div>
     );
   }

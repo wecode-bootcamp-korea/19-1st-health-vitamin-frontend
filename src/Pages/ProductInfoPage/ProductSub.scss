@@ -2,12 +2,10 @@
 
 .productSub {
   display: inline-block;
-  height: 400px;
   margin-top: 20px;
   border: $border;
 
   .subItemBox {
-    height: 350px;
     overflow-x: hidden;
     overflow-y: scroll;
 
