@@ -2,6 +2,66 @@ import React, { Component } from 'react';
 import '../AccountPage/SignUp.scss';
 
 class SignUp extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      inputClass: 'notValid',
+      color: 'white',
+      id: '',
+      pw: '',
+      phone: '',
+      email: '',
+      name: '',
+      gender: false,
+      birth: '',
+    };
+  }
+
+  signUp = (id, pw) => {
+    fetch('http://10.167.105.109:8000/users/signup', {
+      method: 'POST',
+      body: JSON.stringify({
+        division: true,
+        account: this.state.id,
+        email: this.state.email,
+        name: this.state.name,
+        password: this.state.pw,
+        phone_number: this.state.phone,
+        gender: this.state.gender,
+        date_of_birth: this.state.birth,
+      }),
+    })
+      .then(res => res.json())
+      .then(data => {});
+  };
+
+  handleColor = () => {
+    this.signUp(this.state.id, this.state.pw);
+  };
+
+  idChange = e => {
+    const { value } = e.target;
+    const idValidator = /^[a-z0-9]{4,16}$/.test(value);
+
+    this.setState({
+      inputClass: idValidator ? 'valid' : 'notValid',
+      id: value,
+    });
+  };
+
+  pwChange = e => {
+    const { value } = e.target;
+    const pwValidator = /^([a-zA-Z]|[a-z !@#$%^&*]|[A-Z !@#$%^&*]|[0-9a-z]|[0-9A-Z]|[0-9 !@#$%^&*]){8,16}$/.test(
+      value
+    );
+
+    this.setState({
+      inputClass: pwValidator ? 'valid' : 'notValid',
+      pw: value,
+    });
+  };
+
   render() {
     return (
       <div className="home">
@@ -30,11 +90,11 @@ class SignUp extends Component {
                 <td className="division">회원구분*</td>
               </div>
               <td className="memberShip">
-                <label for="ownMember">
+                <label htmlFor="ownMember">
                   <input className="own" name="button" type="radio" />
                   개인회원
                 </label>
-                <label for="companyMember">
+                <label htmlFor="companyMember">
                   <input className="company" name="button" type="radio" />
                   사업자회원
                 </label>
@@ -53,7 +113,12 @@ class SignUp extends Component {
                       <div>아이디*</div>
                     </td>
                     <td className="idEnglish">
-                      <input className="id" name="information" type="text" />
+                      <input
+                        className={'id ' + this.state.inputClass}
+                        name="information"
+                        type="text"
+                        onChange={this.idChange}
+                      />
                       <div className="english">(영문소문자/숫자,4~16자)</div>
                     </td>
                   </tr>
@@ -65,7 +130,12 @@ class SignUp extends Component {
                     <div className="pwKo">비밀번호*</div>
                   </td>
                   <td className="pwBox">
-                    <input className="pw" name="information" type="password" />
+                    <input
+                      className={'pw ' + this.state.inputClass}
+                      name="information"
+                      type="text"
+                      onChange={this.pwChange}
+                    />
                     <div className="pwEnglish">
                       (영문 대소문자/숫자/특수문자 중 2가지 이상 조합,8자~16자)
                     </div>
@@ -90,42 +160,41 @@ class SignUp extends Component {
               </div>
               <div className="phoneBox">
                 <table>
-                  <tr>
-                    <td className="writePhone">
-                      <div className="phoneKo">휴대전화*</div>
-                    </td>
-                    <div className="callingBox">
-                      <td className="calling">
-                        <div className="submit">
-                          <input
-                            className="phone"
-                            type="tel"
-                            name="phone"
-                            maxlength="13"
-                          />
-                        </div>
+                  <tbody>
+                    <tr>
+                      <td className="writePhone">
+                        <div className="phoneKo">휴대전화*</div>
                       </td>
-                    </div>
-                  </tr>
+                      <div className="callingBox">
+                        <td className="calling">
+                          <div className="submit">
+                            <input className="phone" type="tel" name="phone" />
+                          </div>
+                        </td>
+                      </div>
+                    </tr>
+                  </tbody>
                 </table>
               </div>
               <div className="emailBox">
-                <tale>
-                  <tr>
-                    <td className="writeEmail">
-                      <div className="emailKo">이메일*</div>
-                    </td>
-                    <td>
-                      <div className="writing">
-                        <input
-                          className="email"
-                          type="email"
-                          name="userEmail"
-                        />
-                      </div>
-                    </td>
-                  </tr>
-                </tale>
+                <table>
+                  <tbody>
+                    <tr>
+                      <td className="writeEmail">
+                        <div className="emailKo">이메일*</div>
+                      </td>
+                      <td>
+                        <div className="writing">
+                          <input
+                            className="email"
+                            type="email"
+                            name="userEmail"
+                          />
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
@@ -164,6 +233,11 @@ class SignUp extends Component {
                 </td>
               </tr>
             </table>
+          </div>
+          <div className="endSignup">
+            <button className="memberBt" onClick={this.handleColor}>
+              <h4 style={{ color: this.state.color }}>회원가입</h4>
+            </button>
           </div>
         </div>
       </div>

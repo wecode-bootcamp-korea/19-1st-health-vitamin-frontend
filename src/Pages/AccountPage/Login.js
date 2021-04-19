@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import '../AccountPage/Login.scss';
 
 class Login extends Component {
@@ -6,28 +7,49 @@ class Login extends Component {
     super();
     this.state = {
       color: '',
-      text: '',
-      password: '',
       userId: '',
       userPw: '',
+      isBtnAble: 'offColor',
     };
   }
 
-  handleColor = () => {
-    this.setState({
-      color: 'lightgray',
-    });
-  };
-
   handleChange = e => {
     e.preventDefault();
-    // console.log(e.target.name);
-    // console.log(e.target);
-    // console.log(e.target.className);
 
-    this.setState({
-      [e.target.name]: e.target.value,
-    });
+    this.setState(
+      {
+        [e.target.name]: e.target.value,
+      },
+      () => {
+        if (this.state.userId.includes('@') && this.state.userPw.length > 5) {
+          this.setState({
+            isBtnAble: 'onColor',
+          });
+        } else {
+          this.setState({
+            isBtnAble: 'offColor',
+          });
+        }
+      }
+    );
+  };
+
+  goToMain = () => {
+    fetch('http://10.167.105.109:8000/users/signin', {
+      method: 'POST',
+      body: JSON.stringify({
+        email: this.state.userId,
+        password: this.state.userPw,
+      }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        this.props.history.push('/');
+      });
+  };
+
+  goToMembership = () => {
+    this.props.history.push('/signup');
   };
 
   render() {
@@ -37,9 +59,9 @@ class Login extends Component {
           <header className="olLonginBox">
             <ol className="loginList">
               <li>
-                <a className="goLink" href="">
+                <Link to="url" className="goToLink">
                   <i className="fas fa-home" />
-                </a>
+                </Link>
               </li>
               <li>
                 <i className="fas fa-angle-right" />
@@ -81,11 +103,15 @@ class Login extends Component {
                 </div>
               </div>
               <div>
-                <div className="loginBtBox">
+                <button
+                  type="submit"
+                  className={'loginBtBox ' + this.state.isBtnAble}
+                  onClick={this.goToMain}
+                >
                   <a className="loginBt" href="">
                     로그인
                   </a>
-                </div>
+                </button>
               </div>
             </div>
             <div className="searchBox">
@@ -109,7 +135,7 @@ class Login extends Component {
                   회원가입하고 다양한 혜택과 서비스를 이용해보세요!
                 </span>
               </p>
-              <button className="memberBt" onClick={this.handleColor}>
+              <button className="memberBt" onClick={this.goToMembership}>
                 <h4 style={{ color: this.state.color }}>회원가입</h4>
               </button>
             </div>
