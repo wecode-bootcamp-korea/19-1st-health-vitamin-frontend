@@ -143,9 +143,9 @@ class SignUp extends Component {
               </div>
               <td className="manWoman">
                 <input className="Man" name="buttoni" type="radio" />
-                <label for="manMember">남자</label>
+                <label htmlFor="manMember">남자</label>
                 <input className="Woman" name="buttoni" type="radio" />
-                <label for="womanMember">여자</label>
+                <label htmlfor="womanMember">여자</label>
               </td>
             </tr>
           </table>
