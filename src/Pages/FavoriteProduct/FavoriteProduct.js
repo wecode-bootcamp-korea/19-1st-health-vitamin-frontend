@@ -26,26 +26,21 @@ class FavoriteProduct extends Component {
           <h2 className="nameLogin">관심상품</h2>
         </div>
         <div id="table">
-          <p class="message">관심상품이 내역이 없습니다.</p>
+          <p className="message">관심상품이 내역이 없습니다.</p>
           <div className="row">
-            <table>
-              <tr className="menuBar">
-                <div>
-                  <th scope="col">
-                    <input className="checkBox" type="checkbox" />
-                  </th>
-                  <th scope="col">이미지</th>
-                  <th scope="col">상품정보</th>
-                  <th scope="col">판매가</th>
-                  <th scope="col">적립금</th>
-                  <th scope="col">배송구분</th>
-                  <th scope="col">배송비</th>
-                  <th scope="col">합계</th>
-                  <th scope="col">선택</th>
-                </div>
-              </tr>
-              <tr></tr>
-            </table>
+            <ul className="menuBar">
+              <li>
+                <input className="checkBox" type="checkbox" />
+              </li>
+              <li>이미지</li>
+              <li>상품정보</li>
+              <li>판매가</li>
+              <li>적립금</li>
+              <li>배송구분</li>
+              <li>배송비</li>
+              <li>합계</li>
+              <li>선택</li>
+            </ul>
           </div>
         </div>
       </div>

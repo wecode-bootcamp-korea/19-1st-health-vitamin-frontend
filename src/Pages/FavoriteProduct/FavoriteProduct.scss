@@ -35,34 +35,39 @@
     height: 50px;
   }
 }
+
 #table {
   border-top: 1px solid#e8e8e8;
   border-bottom: 1px solid#e8e8e8;
 }
+
 .message {
   text-align: center;
   padding: 50px 0;
   color: #757575;
   font-weight: normal;
 }
+
 .row {
   border-bottom: 1px solid blanchedalmond;
   border-top: 1px solid blanchedalmond;
   color: #999;
   vertical-align: middle;
 }
+
 .menuBar {
+  margin-top: 5px;
   width: 980px;
   height: 48px;
+  display: flex;
+  justify-content: space-between;
 }
+
 .checkBox {
   width: 13px;
   height: 13px;
   border: 0;
 }
-th {
-  display: table-cell;
-  overflow: hidden;
-  height: auto;
-  text-align: -internal-center;
+
+li {
 }
