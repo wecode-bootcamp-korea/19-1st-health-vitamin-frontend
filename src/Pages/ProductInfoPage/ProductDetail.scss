@@ -1,7 +1,9 @@
 @import '../../styles/common.scss';
 
 .productDetail {
-  margin: 100px auto 0 auto;
+  max-width: 1400px;
+  min-width: 1220px;
+  margin: 100px auto 0;
 
   .imageBox {
     display: inline-block;

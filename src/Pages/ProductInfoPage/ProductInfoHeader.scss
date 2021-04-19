@@ -3,7 +3,9 @@
 
   ol {
     li {
-      height: 20px;
+      max-width: 1400px;
+      margin: 0 auto;
+      text-align: right;
       line-height: 20px;
     }
   }
