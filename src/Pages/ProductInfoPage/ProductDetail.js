@@ -33,6 +33,7 @@ export default class ProductDetail extends Component {
       name: '',
       detail: '',
       price: 0,
+      stock: 0,
       count: 1,
       shipping_fee: 0,
       discount: 0,
@@ -59,6 +60,7 @@ export default class ProductDetail extends Component {
           name,
           detail,
           price,
+          stock,
           shipping_fee,
           discount,
           minimum_free,
@@ -70,6 +72,7 @@ export default class ProductDetail extends Component {
           name,
           detail,
           price,
+          stock,
           shipping_fee,
           discount,
           minimum_free,
@@ -165,6 +168,7 @@ export default class ProductDetail extends Component {
       subItemAddList,
       name,
       price,
+      stock,
       count,
       discount,
       shipping_fee,
@@ -221,6 +225,7 @@ export default class ProductDetail extends Component {
             type={'main'}
             count={count}
             price={price}
+            stock={stock}
             name={name}
             discount={discount}
             updateItem={updateItem}
@@ -237,6 +242,7 @@ export default class ProductDetail extends Component {
                   name={product.name}
                   count={product.count}
                   price={product.price}
+                  stock={product.stock}
                   updateItem={updateItem}
                   deleteItem={deleteItem}
                 />
