@@ -7,22 +7,22 @@ class Title extends Component {
       <header className="title">
         <div className="category_title">PRODUCTS</div>
         <ul className="category_sub">
-          <a>
+          <a href="/">
             <li className="sub_title">
               비타민A <span>(10)</span>
             </li>
           </a>
-          <a>
+          <a href="/">
             <li className="sub_title">
               비타민C <span>(10)</span>
             </li>
           </a>
-          <a>
+          <a href="/">
             <li className="sub_title">
               비타민D <span>(10)</span>
             </li>
           </a>
-          <a>
+          <a href="/">
             <li className="sub_title">
               비타민E <span>(10)</span>
             </li>

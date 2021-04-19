@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import RadioButton from '../RadioButton';
 import Cache from './Cache';
 import './RealTimeAccount.scss';
 

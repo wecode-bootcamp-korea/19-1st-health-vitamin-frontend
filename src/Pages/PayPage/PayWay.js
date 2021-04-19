@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
 import SelectWay from './PayWay/SelectWay';
-import Card from './PayWay/Card';
-import RealTimeAccount from './PayWay/RealTimeAccount';
-import Phone from './PayWay/Phone';
-import Kakao from './PayWay/Kakao';
 import UseNext from './PayWay/UseNext';
 import './PayWay.scss';
 import PayWayContent from './PayWay/PayWayContent';
