@@ -45,7 +45,6 @@ export default class ProductCountBox extends Component {
   render() {
     const { name, count } = this.props;
     const { inputOnChange, upClick, downClick, xBtnOnClick, calcPrice } = this;
-    console.log(this.props);
     return (
       <div className="productCountBox">
         <span className="name">{name}</span>

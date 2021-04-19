@@ -49,21 +49,15 @@ export default class PayWay extends Component {
     return (
       <div className="way">
         <div className="content">
-          {/* 결제 방법 */}
-          <SelectWay
-            radioList={this.state.radioList}
-            // changeRadioChecked={this.changeRadioChecked}
-          />
+          <SelectWay radioList={this.state.radioList} />
 
           {this.state.radioList.map(radio => {
-            console.log(radio);
             if (radio.isChecked) {
               return <PayWayContent key={radio.id} id={radio.id} />;
             }
             return null;
           })}
 
-          {/* 공통 */}
           <UseNext />
         </div>
       </div>

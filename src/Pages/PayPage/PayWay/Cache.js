@@ -21,7 +21,6 @@ export default class Cache extends Component {
   };
 
   render() {
-    console.log(this.state.isReceiept);
     return (
       <>
         <p className="cache">현금영수증</p>
