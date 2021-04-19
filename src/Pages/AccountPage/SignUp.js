@@ -54,8 +54,11 @@ class SignUp extends Component {
 
   pwChange = e => {
     const { value } = e.target;
-    // if (/^([a-zA-Z]|[a-z !@#$%^&*]|[A-Z !@#$%^&*]){8,16}$/.test(value)) {
-    if (/^[a-zA-Z]{8,16}$/.test(value)) {
+    if (
+      /^([a-zA-Z]|[a-z !@#$%^&*]|[A-Z !@#$%^&*]|[0-9a-z]|[0-9A-Z]|[0-9 !@#$%^&*]){8,16}$/.test(
+        value
+      )
+    ) {
       console.log('good');
       this.setState({
         inputClass: 'valid',
@@ -95,11 +98,11 @@ class SignUp extends Component {
                 <td className="division">회원구분*</td>
               </div>
               <td className="memberShip">
-                <label for="ownMember">
+                <label htmlFor="ownMember">
                   <input className="own" name="button" type="radio" />
                   개인회원
                 </label>
-                <label for="companyMember">
+                <label htmlFor="companyMember">
                   <input className="company" name="button" type="radio" />
                   사업자회원
                 </label>
@@ -165,42 +168,41 @@ class SignUp extends Component {
               </div>
               <div className="phoneBox">
                 <table>
-                  <tr>
-                    <td className="writePhone">
-                      <div className="phoneKo">휴대전화*</div>
-                    </td>
-                    <div className="callingBox">
-                      <td className="calling">
-                        <div className="submit">
-                          <input
-                            className="phone"
-                            type="tel"
-                            name="phone"
-                            maxlength="13"
-                          />
-                        </div>
+                  <tbody>
+                    <tr>
+                      <td className="writePhone">
+                        <div className="phoneKo">휴대전화*</div>
                       </td>
-                    </div>
-                  </tr>
+                      <div className="callingBox">
+                        <td className="calling">
+                          <div className="submit">
+                            <input className="phone" type="tel" name="phone" />
+                          </div>
+                        </td>
+                      </div>
+                    </tr>
+                  </tbody>
                 </table>
               </div>
               <div className="emailBox">
-                <tale>
-                  <tr>
-                    <td className="writeEmail">
-                      <div className="emailKo">이메일*</div>
-                    </td>
-                    <td>
-                      <div className="writing">
-                        <input
-                          className="email"
-                          type="email"
-                          name="userEmail"
-                        />
-                      </div>
-                    </td>
-                  </tr>
-                </tale>
+                <table>
+                  <tbody>
+                    <tr>
+                      <td className="writeEmail">
+                        <div className="emailKo">이메일*</div>
+                      </td>
+                      <td>
+                        <div className="writing">
+                          <input
+                            className="email"
+                            type="email"
+                            name="userEmail"
+                          />
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>

@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import '../AccountPage/Login.scss';
+import { Link } from 'react-router-dom';
 
 class Login extends Component {
   constructor() {
     super();
     this.state = {
       color: '',
-      // text: '',
-      // password: '',
       userId: '',
       userPw: '',
       isBtnAble: 'offColor',
@@ -26,9 +25,6 @@ class Login extends Component {
 
   handleChange = e => {
     e.preventDefault();
-    // console.log(e.target.name);
-    // console.log(e.target);
-    // console.log(e.target.className);
 
     this.setState(
       {
@@ -74,9 +70,9 @@ class Login extends Component {
           <header className="olLonginBox">
             <ol className="loginList">
               <li>
-                <a className="goLink" href="">
+                <Link to="url" className="goToLink">
                   <i className="fas fa-home" />
-                </a>
+                </Link>
               </li>
               <li>
                 <i className="fas fa-angle-right" />
