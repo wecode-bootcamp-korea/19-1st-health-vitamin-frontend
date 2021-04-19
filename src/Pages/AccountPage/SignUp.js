@@ -10,66 +10,58 @@ class SignUp extends Component {
       color: 'white',
       id: '',
       pw: '',
+      phone: '',
+      email: '',
+      name: '',
+      gender: false,
+      birth: '',
     };
   }
 
   signUp = (id, pw) => {
-    console.log('id: ' + id);
-    console.log('pw: ' + pw);
     fetch('http://10.167.105.109:8000/users/signup', {
       method: 'POST',
       body: JSON.stringify({
         division: true,
-        account: 'test12345',
-        email: 'test5@test.test',
-        name: 'wtewtew',
-        password: '123456789',
-        phone_number: '12345278901',
-        gender: false,
-        date_of_birth: '1995-09-01',
+        account: this.state.id,
+        email: this.state.email,
+        name: this.state.name,
+        password: this.state.pw,
+        phone_number: this.state.phone,
+        gender: this.state.gender,
+        date_of_birth: this.state.birth,
       }),
     })
       .then(res => res.json())
-      .then(data => {
-        console.log(data);
-      });
+      .then(data => {});
   };
+
   handleColor = () => {
     this.signUp(this.state.id, this.state.pw);
   };
 
   idChange = e => {
     const { value } = e.target;
-    if (/^[a-z0-9]{4,16}$/.test(value)) {
-      this.setState({
-        inputClass: 'valid',
-        id: value,
-      });
-    } else {
-      this.setState({
-        inputClass: 'notValid',
-      });
-    }
+    const idValidator = /^[a-z0-9]{4,16}$/.test(value);
+
+    this.setState({
+      inputClass: idValidator ? 'valid' : 'notValid',
+      id: value,
+    });
   };
 
   pwChange = e => {
     const { value } = e.target;
-    if (
-      /^([a-zA-Z]|[a-z !@#$%^&*]|[A-Z !@#$%^&*]|[0-9a-z]|[0-9A-Z]|[0-9 !@#$%^&*]){8,16}$/.test(
-        value
-      )
-    ) {
-      console.log('good');
-      this.setState({
-        inputClass: 'valid',
-        pw: value,
-      });
-    } else {
-      this.setState({
-        inputClass: 'notValid',
-      });
-    }
+    const pwValidator = /^([a-zA-Z]|[a-z !@#$%^&*]|[A-Z !@#$%^&*]|[0-9a-z]|[0-9A-Z]|[0-9 !@#$%^&*]){8,16}$/.test(
+      value
+    );
+
+    this.setState({
+      inputClass: pwValidator ? 'valid' : 'notValid',
+      pw: value,
+    });
   };
+
   render() {
     return (
       <div className="home">

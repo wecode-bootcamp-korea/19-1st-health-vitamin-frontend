@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import '../AccountPage/Login.scss';
 import { Link } from 'react-router-dom';
+import '../AccountPage/Login.scss';
 
 class Login extends Component {
   constructor() {
@@ -12,16 +12,6 @@ class Login extends Component {
       isBtnAble: 'offColor',
     };
   }
-
-  handleColor = () => {
-    this.setState({});
-    this.goToMembership();
-  };
-
-  handleClick = e => {
-    this.setState({});
-    this.goToMain();
-  };
 
   handleChange = e => {
     e.preventDefault();
@@ -48,15 +38,14 @@ class Login extends Component {
     fetch('http://10.167.105.109:8000/users/signin', {
       method: 'POST',
       body: JSON.stringify({
-        email: 'test5@test.test',
-        password: '123456789',
+        email: this.state.userId,
+        password: this.state.userPw,
       }),
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data);
+        this.props.history.push('/');
       });
-    this.props.history.push('/');
   };
 
   goToMembership = () => {
@@ -117,7 +106,7 @@ class Login extends Component {
                 <button
                   type="submit"
                   className={'loginBtBox ' + this.state.isBtnAble}
-                  onClick={this.handleClick}
+                  onClick={this.goToMain}
                 >
                   <a className="loginBt" href="">
                     로그인
@@ -146,7 +135,7 @@ class Login extends Component {
                   회원가입하고 다양한 혜택과 서비스를 이용해보세요!
                 </span>
               </p>
-              <button className="memberBt" onClick={this.handleColor}>
+              <button className="memberBt" onClick={this.goToMembership}>
                 <h4 style={{ color: this.state.color }}>회원가입</h4>
               </button>
             </div>
