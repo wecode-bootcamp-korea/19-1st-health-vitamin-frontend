@@ -15,16 +15,12 @@ class Login extends Component {
   }
 
   handleColor = () => {
-    this.setState({
-      color: 'red',
-    });
+    this.setState({});
     this.goToMembership();
   };
 
   handleClick = e => {
-    this.setState({
-      color: 'yellow',
-    });
+    this.setState({});
     this.goToMain();
   };
 
@@ -53,15 +49,17 @@ class Login extends Component {
   };
 
   goToMain = () => {
-    fetch('', {
+    fetch('http://10.167.105.109:8000/users/signin', {
       method: 'POST',
       body: JSON.stringify({
-        name: 'iiii',
-        password: '',
+        email: 'test5@test.test',
+        password: '123456789',
       }),
     })
-      .then(response => response.json())
-      .then(result => console.log(' 결과: ', result));
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+      });
     this.props.history.push('/');
   };
 
