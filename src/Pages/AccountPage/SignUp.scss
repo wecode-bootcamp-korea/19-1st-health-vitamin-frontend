@@ -5,6 +5,7 @@
   .icon {
     width: 980px;
   }
+
   .olBox {
     padding-top: 30px;
     padding-bottom: 20px;
@@ -18,19 +19,23 @@
     display: flex;
     flex-direction: row;
   }
+
   .link {
     text-decoration: none;
     color: #aaaaaa;
   }
+
   .fa-home {
     font-size: 15px;
     margin-right: 5px;
   }
+
   .linkSignUp {
     margin-top: 3px;
     margin-left: 5px;
     font-size: 12px;
   }
+
   .signUp {
     font-size: 30px;
     padding-top: 100px;
@@ -57,13 +62,16 @@
   .division {
     color: #999;
   }
+
   .memberShip {
     padding: 18px 15px;
     width: 100%;
   }
+
   .company {
     margin-left: 10px;
   }
+
   .inform {
     border-bottom: 1px solid #e8e8e8;
   }
@@ -94,9 +102,11 @@
       border-radius: 5px;
       border: 1px solid #e8e8e8;
     }
+
     .notValid {
       color: red;
     }
+
     .valid {
       color: blue;
     }
@@ -106,12 +116,14 @@
     margin-left: 10px;
     margin-top: 4px;
   }
+
   .pwColor {
     color: #999;
     text-align: center;
     width: 200px;
     background-color: #fafafa;
   }
+
   .pwKo {
     background-color: #fafafa;
   }
@@ -125,20 +137,25 @@
     border-radius: 5px;
     border: 1px solid #e8e8e8;
   }
+
   .notValid {
     color: red;
   }
+
   .valid {
     color: blue;
   }
+
   .pwEnglish {
     font-size: 12px;
     margin-left: 10px;
     margin-top: 4px;
   }
+
   .write {
     border-top: 1px solid #e8e8e8;
   }
+
   .writeName {
     background-color: #fafafa;
   }
@@ -148,6 +165,7 @@
     text-align: center;
     width: 200px;
   }
+
   .naming {
     display: flex;
     padding: 18px 15px;
@@ -162,48 +180,60 @@
     border-top: 1px solid #e8e8e8;
     display: flex;
   }
+
   .writePhone {
     background-color: #fafafa;
   }
+
   .phoneKo {
     color: #999;
     text-align: center;
     width: 200px;
   }
+
   .callingBox {
     display: flex;
   }
+
   .calling {
     display: flex;
     padding: 18px 15px;
   }
+
   .phone {
     border-radius: 5px;
     border: 1px solid #e8e8e8;
   }
+
   .emailBox {
     border-top: 1px solid #e8e8e8;
     display: flex;
   }
+
   .writeEmail {
     background-color: #fafafa;
   }
+
   .emailKo {
     color: #999;
     text-align: center;
     width: 200px;
   }
+
   .writing {
     display: flex;
     padding: 18px 15px;
   }
+
   .email {
     border-radius: 5px;
     border: 1px solid #e8e8e8;
   }
+
   .addInform {
     padding: 50px 0px 15px;
   }
+
   .plus {
     border-top: 1px solid #e8e8e8;
     border-bottom: 1px solid #e8e8e8;
@@ -213,18 +243,22 @@
     text-align: -webkit-center;
     color: #999;
   }
+
   .other {
     padding: 18px 0px;
     width: 196px;
     background-color: #fafafa;
   }
+
   .manWoman {
     padding: 18px 15px;
     width: 100%;
   }
+
   .woman {
     margin-left: 10px;
   }
+
   .bigAdd {
     border-bottom: 1px solid #e8e8e8;
   }
@@ -241,12 +275,14 @@
     padding: 18px 15px;
     position: relative;
   }
+
   .daily {
     margin-left: 5px;
     border-radius: 5px;
     border: 1px solid #e8e8e8;
     font-size: 16px;
   }
+
   .endSignup {
     display: flex;
     justify-content: center;
@@ -255,6 +291,7 @@
     padding-left: 8px;
     padding-right: 8px;
   }
+
   .memberBt {
     margin: 12px 0px 0px;
     border: 1px solid #d1d1d1;
