@@ -4,6 +4,7 @@ import PayDelivery from './PayDelivery';
 import PayDiscount from './PayDiscount';
 import PayInfo from './PayInfo';
 import PayOrder from './PayOrder';
+import PayWay from './PayWay';
 
 export default class PayBody extends Component {
   render() {
@@ -13,6 +14,7 @@ export default class PayBody extends Component {
         {this.props.type === 'order' && <PayOrder />}
         {this.props.type === 'discount' && <PayDiscount />}
         {this.props.type === 'info' && <PayInfo />}
+        {this.props.type === 'way' && <PayWay />}
       </>
     );
   }

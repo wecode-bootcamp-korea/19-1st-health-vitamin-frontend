@@ -20,7 +20,7 @@ export default class Pay extends Component {
           <div className="order">주문/결제</div>
 
           {typeList.map(type => {
-            return <PayContainer type={type} />;
+            return <PayContainer key={type} type={type} />;
           })}
           <br />
           <br />
