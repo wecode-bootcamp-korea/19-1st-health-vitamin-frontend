@@ -13,6 +13,7 @@ class FavoriteProduct extends Component {
       addCart: [],
     };
   }
+
   componentDidMount() {
     fetch('/data/Favorite/Favorite.json')
       .then(res => res.json())
@@ -33,10 +34,15 @@ class FavoriteProduct extends Component {
 
   deleteItem = e => {
     let index = e.target.id;
-    // console.log(index);
+
+    // 1. 원본 배열 접근
+    // 2. filter 함수 사용
+    // 3. 조건을 통해 원하는 값 선택
+
     this.setState({
-      favoritList: this.state.favoritList.filter(favorit => {
-        if (favorit.id === Number(index)) {
+      favoritList: this.state.favoritList.filter(favorite => {
+        console.log(favorite.id);
+        if (favorite.id === Number(index)) {
           return false;
         } else {
           return true;
@@ -46,7 +52,7 @@ class FavoriteProduct extends Component {
   };
 
   render() {
-    console.log(this.state.favoritList);
+    console.log(LISTS);
     return (
       <div className="allFavorite">
         <div className="all">
@@ -75,7 +81,10 @@ class FavoriteProduct extends Component {
               <div className="row">
                 <ul>
                   <li className="menuBar">
-                    <span>
+                    {LISTS.map(item => {
+                      return <span>{item}</span>;
+                    })}
+                    {/* <span>
                       <input className="checkBox" type="checkbox" />
                     </span>
                     <span>이미지</span>
@@ -85,7 +94,7 @@ class FavoriteProduct extends Component {
                     <span>배송구분</span>
                     <span>배송비</span>
                     <span>합계</span>
-                    <span>선택</span>
+                    <span>선택</span> */}
                   </li>
                 </ul>
 
@@ -147,3 +156,15 @@ class FavoriteProduct extends Component {
 }
 
 export default FavoriteProduct;
+
+const LISTS = [
+  <input className="checkBox" type="checkbox" />,
+  '이미지',
+  '상품정보',
+  '판매가',
+  '적립금',
+  '배송구분',
+  '배송비',
+  '합계',
+  '선택ㅎ하하',
+];
