@@ -6,35 +6,7 @@
     width: 980px;
     padding-bottom: 50px;
     padding: 0 100px;
-  }
-
-  .olLonginBox {
-    padding-top: 30px;
-    padding-bottom: 20px;
-    display: flex;
-    flex-direction: row-reverse;
-  }
-
-  .loginList {
-    list-style: none;
-    color: lightgray;
-    display: flex;
-  }
-
-  .goLink {
-    text-decoration: none;
-    color: #aaaaaa;
-  }
-
-  .fa-home {
-    font-size: 15px;
-    margin-right: 4px;
-  }
-
-  .goSignUp {
-    font-size: 13px;
-    margin-left: 7px;
-    margin-top: 3px;
+    margin-right: 200px;
   }
 
   .loginKo {
@@ -45,10 +17,12 @@
     font-weight: 300;
     line-height: 42px;
     height: 50px;
+    margin-bottom: 30px;
   }
 
   .idPw {
     padding: 35px 0px;
+    width: 680px;
     margin: 0px 150px;
     border-top: 1px solid #aaa;
     display: flex;
@@ -156,6 +130,7 @@
     text-align: center;
     border-bottom: 1px solid #e8e8e8;
     margin: 0px 150px;
+    width: 680px;
     .general {
       font-size: 15px;
       line-height: 23px;
