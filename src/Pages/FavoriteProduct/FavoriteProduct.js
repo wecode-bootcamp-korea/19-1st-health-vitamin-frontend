@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import '../FavoriteProduct/FavoriteProduct.scss';
 
 class FavoriteProduct extends Component {
@@ -9,6 +10,7 @@ class FavoriteProduct extends Component {
       favoritList: [],
       orderItem: [],
       deleteItem: [],
+      addCart: [],
     };
   }
   componentDidMount() {
@@ -21,7 +23,27 @@ class FavoriteProduct extends Component {
       });
   }
 
-  orderItem = () => {};
+  addCart = () => {
+    this.props.history.push('/basket');
+  };
+
+  deleteCart = () => {
+    this.props.deleteBasketItem(this.props.id);
+  };
+
+  deleteItem = e => {
+    let index = e.target.id;
+    // console.log(index);
+    this.setState({
+      favoritList: this.state.favoritList.filter(favorit => {
+        if (favorit.id === Number(index)) {
+          return false;
+        } else {
+          return true;
+        }
+      }),
+    });
+  };
 
   render() {
     console.log(this.state.favoritList);
@@ -31,9 +53,9 @@ class FavoriteProduct extends Component {
           <header className="olFavoriteBox">
             <ol className="favoriteList">
               <li>
-                <a className="goLink" href="">
+                <Link to="main" className="goToLink">
                   <i className="fas fa-home" />
-                </a>
+                </Link>
               </li>
               <li>
                 <i className="fas fa-angle-right" />
@@ -75,22 +97,38 @@ class FavoriteProduct extends Component {
                         <span>
                           <input className="checkBox" type="checkbox" />
                         </span>
-                        {/* <img src={"//duftndoft.com/web/product/medium/202104/fe4f11b5d7b4c8bb2c34d4c6ee717d45.jpg"} /> */}
                         <img src={favorite.imageUrl} />
 
                         <span>{favorite.name}</span>
                         <span>{favorite.price}</span>
-                        <span>적립금</span>
+                        <span>&nbsp;&nbsp;&nbsp;</span>
                         <span>{favorite.delivery}</span>
                         <span>배송비</span>
                         <span>합계</span>
                         <span>
                           <div className="select">
-                            <button onClick={this.orderItem} type="submit">
+                            <button
+                              onClick={this.orderItem}
+                              type="submit"
+                              className="orderItem"
+                            >
                               주문하기
                             </button>
-                            <button>장바구니담기</button>
-                            <button onClick={this.deleteItem}>x 삭제</button>
+                            <button
+                              onClick={this.addCart}
+                              type="submit"
+                              className="addCart"
+                            >
+                              장바구니담기
+                            </button>
+                            <button
+                              id={favorite.id}
+                              onClick={this.deleteItem}
+                              type="submit"
+                              className="deleteCart"
+                            >
+                              x 삭제
+                            </button>
                           </div>
                         </span>
                       </li>

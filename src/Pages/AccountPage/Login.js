@@ -59,7 +59,7 @@ class Login extends Component {
           <header className="olLonginBox">
             <ol className="loginList">
               <li>
-                <Link to="url" className="goToLink">
+                <Link to="main" className="goToLink">
                   <i className="fas fa-home" />
                 </Link>
               </li>
