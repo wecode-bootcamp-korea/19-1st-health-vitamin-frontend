@@ -1,9 +1,11 @@
+@import '../../../styles/common.scss';
+
 .best {
   margin-bottom: 100px;
   .header {
     margin: 90px 10px 40px;
-    text-align: center;
     color: #333;
+    text-align: center;
     font-size: 34px;
     font-weight: 300;
     h1 {
@@ -11,39 +13,38 @@
     }
     p {
       color: #888;
-      font-size: 17px;
+      font-size: $fs7;
     }
   }
 
   .productList {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-
     max-width: 1340px;
     margin: 0 auto;
-  }
-  .product > * {
-    text-align: center;
-    margin-bottom: 10px;
-    color: #333;
-  }
-  .productImage {
-    width: 314px;
-    height: 314px;
-  }
-  .name {
-    font-size: 12px;
-  }
 
-  .price,
-  .result {
-    font-size: 15px;
-  }
-  .applyPrice {
-    font-weight: bold;
-  }
-  .discount {
-    font-size: 12px;
+    .product {
+      display: inline-block;
+      & > * {
+        text-align: center;
+        margin-bottom: 10px;
+        color: $black;
+        font-size: $fs2;
+      }
+
+      .productImage {
+        width: 314px;
+        height: 314px;
+      }
+
+      .price,
+      .result {
+        font-size: $fs5;
+      }
+      .price {
+        text-decoration: line-through;
+      }
+      .applyPrice {
+        font-weight: bold;
+      }
+    }
   }
 }

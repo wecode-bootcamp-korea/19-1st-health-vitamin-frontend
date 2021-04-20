@@ -1,83 +1,76 @@
+@import '../../../styles/common.scss';
 .hotKeyword {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
   background-color: #f7f7f7;
-  margin: 30px auto;
   padding: 110px 70px 70px;
+  .content {
+    max-width: 1400px;
+    margin: 0 auto;
+    .header {
+      display: inline-block;
+      .title {
+        height: 54px;
+        color: $black;
+        font-size: 34px;
+        line-height: 54px;
+      }
+      .desc {
+        margin-top: 5px;
+        color: #888;
+        font-size: $fs7;
+      }
+      .categoryList {
+        position: relative;
+        top: 20px;
+        left: -20px;
+        .liContent {
+          display: inline-block;
+          max-width: 300px;
+          margin: 10px;
+          padding: 15px 15px 15px 15px;
+          background-color: #e0e0e04f;
+          color: rgb(182, 182, 182);
+          border-radius: 25px;
+          font-size: $fs7;
+        }
+      }
+    }
 
-  .title {
-    font-size: 34px;
-    color: #333;
-    height: 54px;
-    line-height: 54px;
-  }
-
-  .desc {
-    color: #888;
-    font-size: 17px;
-    margin-top: 5px;
-  }
-  .categoryList {
-    position: relative;
-    top: 20px;
-    left: -20px;
-  }
-
-  .category {
-  }
-  .liContent {
-    display: inline-block;
-    max-width: 300px;
-    color: rgb(182, 182, 182);
-    background-color: #e0e0e04f;
-    border-radius: 25px;
-    font-size: 17px;
-    padding: 15px 15px 15px 15px;
-    margin: 10px;
-  }
-
-  .productList {
-    display: flex;
-  }
-
-  .product {
-    margin-right: 50px;
-    text-align: center;
-  }
-
-  .product > * {
-    margin-bottom: 15px;
-  }
-
-  .productImage {
-    width: 300px;
-    height: 300px;
-    border-radius: 48%;
-  }
-
-  .name {
-    font-size: 18px;
-    color: #555;
-  }
-  .fa-search {
-    width: 18px;
-    height: 18px;
-  }
-
-  .price {
-    font-size: 12px;
-  }
-
-  .applyPrice {
-    color: #ef7964;
-    font-size: 17px;
-    font-weight: bold;
-    margin-right: 5px;
-  }
-
-  .discount {
-    color: #555;
-    font-size: 12px;
+    .productList {
+      display: inline-block;
+      .product {
+        display: inline-block;
+        margin-right: 50px;
+        text-align: center;
+        & > * {
+          margin-bottom: 15px;
+        }
+        .productImage {
+          width: 300px;
+          height: 300px;
+          border-radius: 48%;
+        }
+        .name {
+          font-size: 18px;
+          color: #555;
+        }
+        .fa-search {
+          width: 18px;
+          height: 18px;
+        }
+        .price {
+          font-size: $fs2;
+        }
+        .applyPrice {
+          margin-right: 5px;
+          color: #ef7964;
+          font-size: $fs7;
+          font-weight: bold;
+        }
+        .discount {
+          color: #555;
+          font-size: $fs2;
+        }
+      }
+    }
   }
 }
