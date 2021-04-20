@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import PayBenefit from './PayBody/PayBenefit';
-import './PayBody.scss';
 import PayDelivery from './PayBody/PayDelivery';
+import PayOrder from './PayBody/PayOrder';
 import PayDiscount from './PayBody/PayDiscount';
 import PayInfo from './PayBody/PayInfo';
-import PayOrder from './PayBody/PayOrder';
 import PayWay from './PayBody/PayWay';
+import PayBenefit from './PayBody/PayBenefit';
+import './PayBody.scss';
 
 export default class PayBody extends Component {
   render() {
