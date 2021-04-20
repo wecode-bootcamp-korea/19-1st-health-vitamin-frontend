@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PayBody from './PayBody';
-import './PayContainer.scss';
 import PayHeader from './PayHeader';
+import './PayContainer.scss';
 
 export default class PayContainer extends Component {
   constructor() {

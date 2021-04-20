@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Cache.scss';
+import SignReceipt from './SignReceipt';
 
 export default class Cache extends Component {
   constructor() {
@@ -22,7 +23,7 @@ export default class Cache extends Component {
 
   render() {
     return (
-      <>
+      <div className="cacheBox">
         <p className="cache">현금영수증</p>
         <input
           type="radio"
@@ -43,13 +44,8 @@ export default class Cache extends Component {
         />
         <label htmlFor="cacheReceiptNot">신청안함</label>
 
-        <ul className="phoneDesc">
-          <li className="desc">
-            - 소액 결제의 경우 PG사 정책에 따라 결제 금액 제한이 있을 수
-            있습니다.
-          </li>
-        </ul>
-      </>
+        {this.state.isReceiept && <SignReceipt />}
+      </div>
     );
   }
 }

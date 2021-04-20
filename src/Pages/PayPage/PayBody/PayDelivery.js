@@ -4,7 +4,7 @@ import './PayDelivery.scss';
 export default class PayDelivery extends Component {
   render() {
     return (
-      <>
+      <div className="payDelivery">
         <form action="">
           <span>
             <input
@@ -198,7 +198,7 @@ export default class PayDelivery extends Component {
             <label for="safeService">기본 배송지로 저장</label>
           </div>
         </div>
-      </>
+      </div>
     );
   }
 }

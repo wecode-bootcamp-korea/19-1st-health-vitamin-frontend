@@ -4,7 +4,7 @@ import './PayOrder.scss';
 export default class PayOrder extends Component {
   render() {
     return (
-      <>
+      <div className="payOrder">
         <div className="productList">
           <img
             className="productImage"
@@ -66,7 +66,7 @@ export default class PayOrder extends Component {
           <span>배송비</span>
           <span>+0 (무료)원</span>
         </div>
-      </>
+      </div>
     );
   }
 }
