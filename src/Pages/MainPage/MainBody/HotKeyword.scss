@@ -1,0 +1,83 @@
+.hotKeyword {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #f7f7f7;
+  margin: 30px auto;
+  padding: 110px 70px 70px;
+
+  .title {
+    font-size: 34px;
+    color: #333;
+    height: 54px;
+    line-height: 54px;
+  }
+
+  .desc {
+    color: #888;
+    font-size: 17px;
+    margin-top: 5px;
+  }
+  .categoryList {
+    position: relative;
+    top: 20px;
+    left: -20px;
+  }
+
+  .category {
+  }
+  .liContent {
+    display: inline-block;
+    max-width: 300px;
+    color: rgb(182, 182, 182);
+    background-color: #e0e0e04f;
+    border-radius: 25px;
+    font-size: 17px;
+    padding: 15px 15px 15px 15px;
+    margin: 10px;
+  }
+
+  .productList {
+    display: flex;
+  }
+
+  .product {
+    margin-right: 50px;
+    text-align: center;
+  }
+
+  .product > * {
+    margin-bottom: 15px;
+  }
+
+  .productImage {
+    width: 300px;
+    height: 300px;
+    border-radius: 48%;
+  }
+
+  .name {
+    font-size: 18px;
+    color: #555;
+  }
+  .fa-search {
+    width: 18px;
+    height: 18px;
+  }
+
+  .price {
+    font-size: 12px;
+  }
+
+  .applyPrice {
+    color: #ef7964;
+    font-size: 17px;
+    font-weight: bold;
+    margin-right: 5px;
+  }
+
+  .discount {
+    color: #555;
+    font-size: 12px;
+  }
+}

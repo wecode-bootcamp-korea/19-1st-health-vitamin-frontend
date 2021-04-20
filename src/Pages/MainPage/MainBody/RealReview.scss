@@ -1,0 +1,96 @@
+.realReview {
+  color: #333;
+
+  .header {
+    font-size: 34px;
+    text-align: center;
+    margin: 30px 0;
+  }
+  .reviewList {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .review {
+      border: 1px solid rgb(226, 226, 226);
+      display: inline-flex;
+
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .reviewImage {
+      width: 215px;
+      height: 237px;
+    }
+
+    .content {
+      width: 191px;
+      height: 23px;
+      line-height: 23px;
+      margin-bottom: 5px;
+      overflow: hidden;
+      font-size: 12px;
+      color: #000;
+    }
+    .userInfo {
+      display: flex;
+      justify-content: space-between;
+      width: 200px;
+      color: #c4c4c4;
+      font-size: 11px;
+      padding-bottom: 10px;
+    }
+    .createdAt {
+      color: #ccc;
+    }
+    .forWidLine {
+      width: 200px;
+      height: 1px;
+      border-bottom: 1px solid rgb(224, 224, 224);
+      text-align: center;
+    }
+    .product {
+      width: 200px;
+      padding-top: 10px;
+    }
+
+    .productImage {
+      width: 33px;
+      height: 33px;
+    }
+    .productInfo {
+      display: inline-flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      top: -20px;
+    }
+    .name {
+      width: 140px;
+      height: 20px;
+      line-height: 20px;
+      font-size: 11px;
+
+      color: #000;
+      overflow: hidden;
+      margin-bottom: 5px;
+    }
+    .reviewInfo {
+      width: 140px;
+      font-size: 11px;
+      color: #c3b799;
+      display: flex;
+      justify-content: start;
+    }
+    .reviewCount {
+      margin-right: 20px;
+    }
+    .reviewValue,
+    .gradeValue {
+      color: #333;
+      font-weight: bold;
+    }
+  }
+}

@@ -7,7 +7,7 @@ export default class PayHeader extends Component {
   };
   render() {
     return (
-      <div className="header" onClick={this.changeIsDiplay}>
+      <div className="payHeader" onClick={this.changeIsDiplay}>
         {this.props.type === 'delivery' && <span>배송지</span>}
         {this.props.type === 'order' && <span>주문상품</span>}
         {this.props.type === 'discount' && <span>할인/부가결제</span>}

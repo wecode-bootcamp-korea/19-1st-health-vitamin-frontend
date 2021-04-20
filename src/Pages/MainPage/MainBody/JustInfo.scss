@@ -1,0 +1,44 @@
+.justInfo {
+  color: #333;
+  text-align: center;
+
+  .heightLine {
+    width: 1px;
+    height: 80px;
+
+    border-left: 1px solid gray;
+    margin: 25px auto;
+  }
+
+  .desc {
+    font-size: 20px;
+  }
+
+  .brand {
+    font-size: 25px;
+    font-weight: bold;
+  }
+
+  .subDesc {
+    color: #888;
+    font-size: 18px;
+    margin: 28px;
+    line-height: 30px;
+  }
+
+  .viewMore {
+    margin-top: 34px;
+    max-width: 80px;
+    padding-bottom: 10px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    color: #666;
+    font-size: 12px;
+    border-bottom: 1px solid gray;
+  }
+
+  .productImage {
+    width: 600px;
+    height: 550px;
+  }
+}

@@ -1,0 +1,49 @@
+.best {
+  margin-bottom: 100px;
+  .header {
+    margin: 90px 10px 40px;
+    text-align: center;
+    color: #333;
+    font-size: 34px;
+    font-weight: 300;
+    h1 {
+      margin-bottom: 25px;
+    }
+    p {
+      color: #888;
+      font-size: 17px;
+    }
+  }
+
+  .productList {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    max-width: 1340px;
+    margin: 0 auto;
+  }
+  .product > * {
+    text-align: center;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  .productImage {
+    width: 314px;
+    height: 314px;
+  }
+  .name {
+    font-size: 12px;
+  }
+
+  .price,
+  .result {
+    font-size: 15px;
+  }
+  .applyPrice {
+    font-weight: bold;
+  }
+  .discount {
+    font-size: 12px;
+  }
+}
