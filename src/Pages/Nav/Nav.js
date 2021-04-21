@@ -58,6 +58,7 @@ class Nav extends Component {
                 <ul>
                   <li className="goToSomething">
                     <Link to="http://localhost:3000">Main</Link>
+
                     <Link to="http://localhost:3000/product-list">
                       ProductList
                     </Link>
