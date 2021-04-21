@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import SignUp from './Pages/AccountPage/SignUp';
 import Login from './Pages/AccountPage/Login';
 import ProductDetail from './Pages/ProductInfoPage/ProductDetail';
-
+import Pay from './Pages/PayPage/Pay';
 import ProductInfoHeader from './Pages/ProductInfoPage/ProductInfoHeader';
 import ProductList from './Pages/ProductListPage/ProductList';
 // import RecommendList from './Pages/ProductListPage/Recommend/Recommend';
@@ -18,6 +18,7 @@ export default class Routes extends Component {
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/product-list" component={ProductList} />
+          <Route exact path="/pay" component={Pay} />
           <Route exact path="/productInfo" component={ProductDetail} />
 
           {/* <Route exact path="/product/list/recommend" component={RecommendList} />
