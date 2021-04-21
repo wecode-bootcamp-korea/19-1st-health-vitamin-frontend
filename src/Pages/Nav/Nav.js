@@ -33,7 +33,7 @@ class Nav extends Component {
           </div>
           <div className="right">
             <div className="rightBox">
-              <div id="menu">
+              <div className="menu">
                 <ul>
                   <li>
                     <Link to="">Main</Link>
