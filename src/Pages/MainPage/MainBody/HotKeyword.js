@@ -5,11 +5,9 @@ export default class HotKeyword extends Component {
   constructor() {
     super();
     this.state = {
-      // eyeProduct: [],
-      // focusOnProduct: [],
-      // growthProduct: [],
-      // skinProduct: [],
       tagCategoryList: {},
+      curruntCategory: '',
+      i: 0,
     };
   }
   componentDidMount() {
@@ -17,18 +15,42 @@ export default class HotKeyword extends Component {
     fetch('/data/MainData/Hashtag.json')
       .then(res => res.json())
       .then(data => {
+        console.log(data);
         this.setState({
-          // eyeProduct: data.HASH_TAG_EYE_PRODUCT,
-          // focusOnProduct: data.HASH_TAG_FOCUS_ON_PRODUCT,
-          // growthProduct: data.HASH_TAG_GROWTH_PRODUCT,
-          // skinProduct: data.HASH_TAG_SKIN_PRODUCT,
           tagCategoryList: data,
+          curruntCategory: Object.keys(data)[0],
         });
       });
   }
+  categoryClickHandler = category => {
+    this.setState({
+      curruntCategory: category,
+    });
+  };
+  rotate = () => {
+    const { tagCategoryList, i, curruntCategory } = this.state;
+    const list = Object.keys(tagCategoryList);
+    if (list.length === 0) return;
+    const tick = setTimeout(() => {
+      this.setState({
+        curruntCategory: list[i + 1],
+        i: list.length - 1 < i ? i + 1 : 0,
+      });
+    }, 1000);
+    return () => clearTimeout(tick);
+  };
+  componentWillUnmount() {}
+  // changeOneSecond = (list, i) => {
+  //   if (i >= list.length) i = 0;
+  //   // this.setState({
+  //   //   curruntCategory: list[i],
+  //   // });
+  //   console.log(i);
+  //   i++;
+  // };
   render() {
-    const { tagCategoryList } = this.state;
-    console.log(tagCategoryList);
+    // this.rotate();
+    const { tagCategoryList, curruntCategory } = this.state;
     return (
       <div className="hotKeyword">
         <div className="content">
@@ -36,74 +58,47 @@ export default class HotKeyword extends Component {
             <h2 className="title">라인별 HOT 키워드</h2>
             <p className="desc">향기 맛집 더프트앤도프트.</p>
             <ul className="categoryList">
-              {tagCategoryList.map(category => {
+              {Object.keys(tagCategoryList).map(category => {
                 return (
-                  <li className="category">
-                    <span className="liContent">{category}</span>
+                  <li
+                    key={category}
+                    className="category"
+                    onClick={() => this.categoryClickHandler(category)}
+                  >
+                    <span
+                      className={
+                        'liContent ' +
+                        (category === curruntCategory && ' select')
+                      }
+                    >
+                      {category}
+                    </span>
                   </li>
                 );
               })}
-
-              <li className="category">
-                <span className="liContent"># 온몸을 감싸는 다양한 향기</span>
-              </li>
-              <li className="category">
-                <span className="liContent"># 순하고 향기로운</span>
-              </li>
-              <li className="category">
-                <span className="liContent"># 향기 스타일링</span>{' '}
-              </li>
-              <li className="category">
-                <span className="liContent"># 선물세트</span>{' '}
-              </li>
             </ul>
           </div>
           <div className="productList">
-            <div className="product">
-              <img
-                className="productImage"
-                src="//duftndoft.com/web/product/medium/202104/22ba66e491e3b7d17887529aa11a4e49.jpg"
-                alt="product"
-              />
-              <p className="name">
-                포밍 핸드워시+리필2개(선택) <i className="fas fa-search"></i>
-              </p>
-              <p className="price">10,900원</p>
-              <p className="result">
-                <span className="applyPrice">7,900원</span>
-                <span className="discount">(28%)할인</span>
-              </p>
-            </div>
-            <div className="product">
-              <img
-                className="productImage"
-                src="//duftndoft.com/web/product/medium/202104/22ba66e491e3b7d17887529aa11a4e49.jpg"
-                alt="product"
-              />
-              <p className="name">
-                포밍 핸드워시+리필2개(선택) <i className="fas fa-search"></i>
-              </p>
-              <p className="price">10,900원</p>
-              <p className="result">
-                <span className="applyPrice">7,900원</span>
-                <span className="discount">(28%)할인</span>
-              </p>
-            </div>
-            <div className="product">
-              <img
-                className="productImage"
-                src="//duftndoft.com/web/product/medium/202104/22ba66e491e3b7d17887529aa11a4e49.jpg"
-                alt="product"
-              />
-              <p className="name">
-                포밍 핸드워시+리필2개(선택) <i className="fas fa-search"></i>
-              </p>
-              <p className="price">10,900원</p>
-              <p className="result">
-                <span className="applyPrice">7,900원</span>
-                <span className="discount">(28%)할인</span>
-              </p>
-            </div>
+            {tagCategoryList[curruntCategory] &&
+              tagCategoryList[curruntCategory].map(product => {
+                const { image, name, price, product_id, discount } = product;
+                return (
+                  <div key={product_id} className="product">
+                    <img className="productImage" src={image} alt="product" />
+                    <p className="name">
+                      {name}
+                      <i className="fas fa-search" />
+                    </p>
+                    <p className="price">{price.toLocaleString()}원</p>
+                    <p className="result">
+                      <span className="applyPrice">
+                        {(price - (price * discount) / 100).toLocaleString()}원
+                      </span>
+                      <span className="discount">({discount}%)할인</span>
+                    </p>
+                  </div>
+                );
+              })}
           </div>
         </div>
       </div>

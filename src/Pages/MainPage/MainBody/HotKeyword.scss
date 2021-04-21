@@ -4,10 +4,13 @@
   background-color: #f7f7f7;
   padding: 110px 70px 70px;
   .content {
-    max-width: 1400px;
+    max-width: 1600px;
     margin: 0 auto;
     .header {
       display: inline-block;
+      position: relative;
+      top: -50px;
+      margin-right: 150px;
       .title {
         height: 54px;
         color: $black;
@@ -23,6 +26,7 @@
         position: relative;
         top: 20px;
         left: -20px;
+
         .liContent {
           display: inline-block;
           max-width: 300px;
@@ -32,6 +36,11 @@
           color: rgb(182, 182, 182);
           border-radius: 25px;
           font-size: $fs7;
+        }
+
+        .select {
+          color: $black;
+          background-color: #e0e0e0bb;
         }
       }
     }
