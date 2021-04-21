@@ -3,8 +3,10 @@
 .payDelivery {
   padding: 15px;
   border-bottom: $border;
+
   .delieveryForm {
     margin: 0 14px;
+
     input,
     select,
     button {
@@ -15,12 +17,15 @@
       font-size: $fs6;
       border: $border;
     }
+
     input {
       color: $black;
     }
+
     select {
       width: 245px;
     }
+
     button {
       background: #f0f0f0;
       cursor: pointer;
@@ -31,8 +36,10 @@
       width: 100px;
       height: 40px;
     }
+
     .receiverBox {
       margin-top: 20px;
+
       .receiver {
         width: 88%;
         height: 40px;
@@ -46,16 +53,19 @@
 
     .box {
       margin-bottom: 15px;
+
       .addressNumber {
         width: 130px;
         text-align: center;
         margin-right: 10px;
       }
+
       .addressBtn {
         position: relative;
         width: 110px;
         top: 1px;
       }
+
       .addressInput {
         display: block;
         width: 88%;
@@ -69,6 +79,7 @@
       input {
         width: 343px;
       }
+
       .emailSub {
         margin-left: 105px;
         margin-top: 0px;

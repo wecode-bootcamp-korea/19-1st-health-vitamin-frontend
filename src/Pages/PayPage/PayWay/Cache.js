@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import './Cache.scss';
 import SignReceipt from './SignReceipt';
+import './Cache.scss';
 
 export default class Cache extends Component {
   constructor() {
@@ -9,16 +9,11 @@ export default class Cache extends Component {
       isReceiept: false,
     };
   }
+
   onClick = e => {
-    if (e.target.id === 'cacheReceipt') {
-      this.setState({
-        isReceiept: true,
-      });
-    } else {
-      this.setState({
-        isReceiept: false,
-      });
-    }
+    this.setState({
+      isReceiept: e.target.id === 'cacheReceipt',
+    });
   };
 
   render() {
@@ -34,7 +29,6 @@ export default class Cache extends Component {
         <label htmlFor="cacheReceipt" className="cacheReceiptLabel">
           현금영수증 신청
         </label>
-
         <input
           type="radio"
           id="cacheReceiptNot"
@@ -43,7 +37,6 @@ export default class Cache extends Component {
           defaultChecked
         />
         <label htmlFor="cacheReceiptNot">신청안함</label>
-
         {this.state.isReceiept && <SignReceipt />}
       </div>
     );

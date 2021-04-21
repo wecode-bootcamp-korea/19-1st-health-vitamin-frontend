@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import './Pay.scss';
 import PayContainer from './PayContainer';
+import './Pay.scss';
 
 const typeList = ['delivery', 'order'];
 
@@ -9,19 +9,17 @@ export default class Pay extends Component {
     return (
       <div className="pay">
         <div className="header">
-          <i className="fas fa-chevron-left"></i>
+          <i className="fas fa-chevron-left" />
           <a href="/">제너럴브랜즈</a>
           <span>
-            <i className="fas fa-shopping-bag"></i>
-            <i className="fas fa-user"></i>
+            <i className="fas fa-shopping-bag" />
+            <i className="fas fa-user" />
           </span>
         </div>
         <div className="order">주문/결제</div>
-
         {typeList.map(type => {
           return <PayContainer key={type} type={type} />;
         })}
-
         <div className="payBox">
           <button className="payBtn">57,000원 결제하기</button>
           <p className="desc">

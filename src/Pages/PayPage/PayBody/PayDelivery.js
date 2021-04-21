@@ -9,11 +9,13 @@ export default class PayDelivery extends Component {
       currentId: 'sameDelivery',
     };
   }
+
   changeCurrentDisplay = id => {
     this.setState({
       currentId: id,
     });
   };
+
   render() {
     return (
       <div className="payDelivery">
@@ -32,7 +34,6 @@ export default class PayDelivery extends Component {
             defaultId="sameDelivery"
             changeCurrentDisplay={this.changeCurrentDisplay}
           />
-
           <div className="receiverBox">
             <label htmlFor="receiver" className="lb">
               받는 사람 *
@@ -44,7 +45,6 @@ export default class PayDelivery extends Component {
               defaultValue="이종호"
             />
           </div>
-
           <div className="box">
             <label htmlFor="address" className="lb">
               주소 *
@@ -62,7 +62,6 @@ export default class PayDelivery extends Component {
             />
             <input type="input" className="addressInput" defaultValue="301호" />
           </div>
-
           <div className="box">
             <label htmlFor="home" className="lb">
               일반 전화
@@ -89,7 +88,6 @@ export default class PayDelivery extends Component {
             -
             <input type="input" name="homeNumThr" />
           </div>
-
           <div className="box">
             <label htmlFor="phone" className="lb">
               휴대 전화 *
@@ -107,7 +105,6 @@ export default class PayDelivery extends Component {
             -
             <input type="input" name="phoneNumThr" defaultValue="3347" />
           </div>
-
           <div className="box emailBox">
             <label htmlFor="email" className="lb">
               이메일 *
@@ -132,7 +129,7 @@ export default class PayDelivery extends Component {
             </p>
           </div>
         </div>
-        {/* <div className="safeNumberServiceBox">
+        <div className="safeNumberServiceBox">
           <div className="SafeNumberService">
             <div>
               <input
@@ -162,7 +159,7 @@ export default class PayDelivery extends Component {
             <input type="checkbox" className="saveBasis" name="saveBasis" />
             <label htmlFor="safeService">기본 배송지로 저장</label>
           </div>
-        </div> */}
+        </div>
       </div>
     );
   }

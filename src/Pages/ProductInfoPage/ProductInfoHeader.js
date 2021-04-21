@@ -7,7 +7,7 @@ export default class ProductInfoHeader extends Component {
       <div className="productInfoHeader">
         <ol>
           <li>
-            <i className="fas fa-home"></i>
+            <i className="fas fa-home" />
             <span> &nbsp;&gt; PRODUCT </span>
           </li>
         </ol>

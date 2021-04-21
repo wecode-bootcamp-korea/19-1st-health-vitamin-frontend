@@ -5,13 +5,16 @@
   margin: 0 auto;
   border: $border;
   color: $black;
+
   .header {
     @extend %flex-align-center;
     justify-content: space-between;
     height: 58px;
+
     .fa-chevron-left {
       margin-left: 15px;
     }
+
     a {
       display: inline-block;
       color: $black;
@@ -19,11 +22,13 @@
       font-weight: bold;
       text-decoration: none;
     }
+
     span > i {
       height: 15px;
       margin-right: 10px;
     }
   }
+
   .order {
     height: 56px;
     margin: auto 0;
@@ -33,8 +38,10 @@
     font-size: $fs20;
     line-height: 56px;
   }
+
   .payBox {
     margin-top: 20px;
+
     .payBtn {
       width: 98%;
       height: 48px;
@@ -46,6 +53,7 @@
       font-size: $fs8;
       cursor: pointer;
     }
+
     .desc {
       margin: 15px;
       color: #999;

@@ -14,8 +14,7 @@ export default class PayHeader extends Component {
         {this.props.type === 'info' && <span>결제정보</span>}
         {this.props.type === 'way' && <span>결제수단</span>}
         {this.props.type === 'benefit' && <span>적립 혜택</span>}
-
-        <i className="fas fa-chevron-up"></i>
+        <i className="fas fa-chevron-up" />
       </div>
     );
   }
