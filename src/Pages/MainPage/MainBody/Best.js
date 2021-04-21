@@ -9,7 +9,7 @@ class Best extends Component {
   }
   componentDidMount() {
     // fetch('http://localhost:8000/products/main-best')
-    fetch('/data/MainData/Main.json')
+    fetch('/data/MainData/Best.json')
       .then(res => res.json())
       .then(data => {
         this.setState({
@@ -36,6 +36,7 @@ class Best extends Component {
             const { product_id, image, name, price, discount } = product;
             return (
               <div
+                key={product_id}
                 className="product"
                 onClick={() => this.goDetailPage(product_id)}
               >
