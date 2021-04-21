@@ -14,7 +14,7 @@ export default class Routes extends Component {
   render() {
     return (
       <Router>
-        {window.location.pathname !== '/' && <ProductInfoHeader />}
+        {/* {window.location.pathname !== '/' && <ProductInfoHeader />} */}
         <Switch>
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={SignUp} />

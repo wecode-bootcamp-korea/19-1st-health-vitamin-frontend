@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import '../AccountPage/Login.scss';
 
 class Login extends Component {
@@ -44,6 +44,7 @@ class Login extends Component {
     })
       .then(res => res.json())
       .then(data => {
+        localStorage.setItem('token', JSON.stringify(data['token']));
         this.props.history.push('/');
       });
   };
@@ -56,19 +57,6 @@ class Login extends Component {
     return (
       <div className="loginHome">
         <div className="loginIcon">
-          <header className="olLonginBox">
-            <ol className="loginList">
-              <li>
-                <Link to="url" className="goToLink">
-                  <i className="fas fa-home" />
-                </Link>
-              </li>
-              <li>
-                <i className="fas fa-angle-right" />
-              </li>
-              <li className="goSignUp">로그인</li>
-            </ol>
-          </header>
           <div className="loginKo">
             <h2 className="nameLogin">로그인</h2>
           </div>
