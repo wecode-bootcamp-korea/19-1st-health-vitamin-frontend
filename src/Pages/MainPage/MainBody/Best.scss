@@ -17,10 +17,12 @@
     }
   }
   .productList {
-    max-width: 1340px;
+    max-width: 1440px;
     margin: 0 auto;
+    text-align: center;
     .product {
       display: inline-block;
+      margin-right: 20px;
       & > * {
         text-align: center;
         margin-bottom: 10px;

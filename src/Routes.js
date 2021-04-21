@@ -22,6 +22,7 @@ export default class Routes extends Component {
           <Route exact path="/product-list" component={ProductList} />
           <Route exact path="/pay" component={Pay} />
           <Route exact path="/productInfo" component={ProductDetail} />
+          <Route exact path="/productInfo/:id" component={ProductDetail} />
 
           {/* <Route exact path="/product/list/recommend" component={RecommendList} />
           <Route exact path="/product/list/vitamin" component={VitaminList} /> */}
