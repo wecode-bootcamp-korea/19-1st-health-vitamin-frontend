@@ -29,21 +29,17 @@
         overflow: hidden;
       }
       .userInfo {
-        display: flex;
-        justify-content: space-between;
-        width: 200px;
+        max-width: 200px;
+        margin-bottom: 10px;
         color: #c4c4c4;
         font-size: $fs1;
-        padding-bottom: 10px;
         .userId {
-          position: relative;
-          left: 10px;
+          margin-right: 10px;
         }
         .createdAt {
-          color: #ccc;
+          margin-left: 30px;
         }
       }
-
       .forWidLine {
         width: 200px;
         height: 1px;
@@ -73,11 +69,10 @@
             display: flex;
             justify-content: start;
             width: 140px;
-            font-size: $fs1;
             color: #c3b799;
+            font-size: $fs1;
             .reviewCount {
-              margin-left: 5px;
-              margin-right: 20px;
+              margin: 0 20px 0 5px;
             }
             .reviewValue,
             .gradeValue {
