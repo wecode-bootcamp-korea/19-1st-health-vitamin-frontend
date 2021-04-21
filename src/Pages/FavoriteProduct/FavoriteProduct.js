@@ -52,7 +52,6 @@ class FavoriteProduct extends Component {
   };
 
   render() {
-    console.log(LISTS);
     return (
       <div className="allFavorite">
         <div className="all">
@@ -82,19 +81,8 @@ class FavoriteProduct extends Component {
                 <ul>
                   <li className="menuBar">
                     {LISTS.map(item => {
-                      return <span>{item}</span>;
+                      return <span key={item}>{item}</span>;
                     })}
-                    {/* <span>
-                      <input className="checkBox" type="checkbox" />
-                    </span>
-                    <span>이미지</span>
-                    <span>상품정보</span>
-                    <span>판매가</span>
-                    <span>적립금</span>
-                    <span>배송구분</span>
-                    <span>배송비</span>
-                    <span>합계</span>
-                    <span>선택</span> */}
                   </li>
                 </ul>
 
