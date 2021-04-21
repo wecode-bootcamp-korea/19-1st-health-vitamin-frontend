@@ -7,9 +7,9 @@ export default class HotKeyword extends Component {
     this.state = {
       tagCategoryList: {},
       curruntCategory: '',
-      i: 0,
     };
   }
+
   componentDidMount() {
     // fetch('localhost:8000/products/main-hashtag')
     fetch('/data/MainData/Hashtag.json')
@@ -22,6 +22,7 @@ export default class HotKeyword extends Component {
         });
       });
   }
+
   categoryClickHandler = category => {
     this.setState({
       curruntCategory: category,

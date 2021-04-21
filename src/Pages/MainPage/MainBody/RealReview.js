@@ -9,6 +9,7 @@ export default class RealReview extends Component {
       reviewList: [],
     };
   }
+
   componentDidMount() {
     fetch('/data/MainData/Review.json')
       .then(res => res.json())
@@ -18,15 +19,19 @@ export default class RealReview extends Component {
         });
       });
   }
+
   makeAnonymousAccount = user_account => {
     return '****' + user_account.slice(4, user_account.length);
   };
+
   getReviewValue = () => {
     return Math.round(Math.random() * 50 + 150);
   };
+
   getGradeValue = () => {
     return Math.round(Math.random() * 10 + 40) / 10;
   };
+
   render() {
     const { reviewList } = this.state;
     return (
