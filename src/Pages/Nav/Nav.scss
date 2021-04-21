@@ -57,18 +57,26 @@ li {
 }
 .right {
   margin-left: 100px;
-  background-color: lightgray;
+
   height: 100vh;
 }
 .rightBox {
+  background-color: lightgray;
+  opacity: 1;
   padding: 30px 40px;
   height: 100%;
-  margin-left: 100px;
 }
 .menu {
+  margin-top: 40px;
   height: 100%;
+  width: 100px;
+  // background-color: white;
 }
 .goToSomething {
   display: flex;
   flex-direction: column;
+}
+.goLink {
+  color: black;
+  text-decoration: none;
 }

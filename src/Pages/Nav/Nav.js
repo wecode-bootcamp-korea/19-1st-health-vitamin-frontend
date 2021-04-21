@@ -8,6 +8,7 @@ class Nav extends Component {
 
     this.state = {
       navHidden: false,
+      downClick: false,
     };
   }
 
@@ -19,6 +20,13 @@ class Nav extends Component {
 
   goMain = () => {
     this.props.history.push('/');
+  };
+
+  isDownClick = () => {
+    // console.log(isDownClick);
+    this.setState({
+      downClick: !this.state.downClick,
+    });
   };
 
   render() {
@@ -57,13 +65,33 @@ class Nav extends Component {
               <div className="menu">
                 <ul>
                   <li className="goToSomething">
-                    <Link to="http://localhost:3000">Main</Link>
-
-                    <Link to="http://localhost:3000/product-list">
-                      ProductList
+                    <Link to="http://localhost:3000" className="goLink">
+                      Main
                     </Link>
-                    <Link to="http://localhost:3000/basket/">Cart</Link>
-                    <Link to="http://localhost:3000/favoriteproduct">
+
+                    <Link
+                      // to="http://localhost:3000/product-list"
+                      className="goLink"
+                      onClick={this.isDownClick}
+                    >
+                      ProductList
+                      {this.state.downClick && (
+                        <div>
+                          {}
+                          {}
+                          <span>Best Product</span>
+                          <span>Sale Product</span>
+                        </div>
+                      )}
+                    </Link>
+
+                    <Link to="http://localhost:3000/basket/" className="goLink">
+                      Cart
+                    </Link>
+                    <Link
+                      to="http://localhost:3000/favoriteproduct"
+                      className="goLink"
+                    >
                       My_List
                     </Link>
                   </li>
@@ -78,8 +106,3 @@ class Nav extends Component {
 }
 
 export default Nav;
-
-//비타민별제품
-//연령별제품
-//BestProduct
-//SaleProduct
