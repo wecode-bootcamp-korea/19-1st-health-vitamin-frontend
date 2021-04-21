@@ -1,80 +1,72 @@
 import React, { Component } from 'react';
+import RadioButton from '../RadioButton';
 import './PayDelivery.scss';
 
 export default class PayDelivery extends Component {
+  constructor() {
+    super();
+    this.state = {
+      currentId: 'sameDelivery',
+    };
+  }
+
+  changeCurrentDisplay = id => {
+    this.setState({
+      currentId: id,
+    });
+  };
+
   render() {
     return (
       <div className="payDelivery">
-        <form action="">
-          <span>
-            <input
-              class="radio"
-              type="radio"
-              id="sameDelivery"
-              name="sameDelivery"
-              value="sameDelivery"
-              checked
-            />
-            <label class="radioLabel" for="sameDelivery">
-              회원 정보와 동일
-            </label>
-          </span>
-
-          <span>
-            <input
-              class="radio"
-              type="radio"
-              id="newDelivery"
-              name="sameDelivery"
-              value="newDelivery"
-            />
-            <label class="radioLabel" for="newDelivery">
-              새로운 배송지
-            </label>
-          </span>
-
-          <div>
-            <label for="receiver" class="lb">
-              받는 사람 *{' '}
+        <div className="delieveryForm">
+          <RadioButton
+            id="sameDelivery"
+            desc="회원 정보와 동일"
+            name="delivery"
+            defaultId="sameDelivery"
+            changeCurrentDisplay={this.changeCurrentDisplay}
+          />
+          <RadioButton
+            id="newDelivery"
+            desc="새로운 배송지"
+            name="delivery"
+            defaultId="sameDelivery"
+            changeCurrentDisplay={this.changeCurrentDisplay}
+          />
+          <div className="receiverBox">
+            <label htmlFor="receiver" className="lb">
+              받는 사람 *
             </label>
             <input
               type="input"
-              class="receiver"
+              className="receiver"
               name="receiver"
-              value="이종호"
+              defaultValue="이종호"
             />
           </div>
-
-          <div>
-            <label for="address" class="lb">
-              주소 *{' '}
+          <div className="box">
+            <label htmlFor="address" className="lb">
+              주소 *
             </label>
             <input
               type="input"
-              class="addressNumber"
-              name="addressNumber"
-              value="11808"
+              className="addressNumber"
+              defaultValue="11808"
             />
-            <button class="addBtn">주소검색</button>
+            <button className="addressBtn">주소검색</button>
             <input
               type="input"
-              class="addressMain"
-              name="addressMain"
-              value="경기도 의정부시 민락동 710-3"
+              className="addressInput"
+              defaultValue="경기도 의정부시 민락동 710-3"
             />
-            <input
-              type="input"
-              class="addressSub"
-              name="addressSub"
-              value="301호"
-            />
+            <input type="input" className="addressInput" defaultValue="301호" />
           </div>
-
-          <div>
-            <label for="home" class="lb">
+          <div className="box">
+            <label htmlFor="home" className="lb">
               일반 전화
             </label>
-            <select name="home" class="homeSelectFirst">
+            <select name="home">
               <option value="02">02</option>
               <option value="031">031</option>
               <option value="032">032</option>
@@ -92,26 +84,15 @@ export default class PayDelivery extends Component {
               <option value="062">062</option>
             </select>
             -
-            <input
-              type="input"
-              class="homeSelectSec"
-              name="homeSelectSec"
-              value=""
-            />
+            <input type="input" name="homeNumSec" />
             -
-            <input
-              type="input"
-              class="homeSelectThr"
-              name="homeSelectThr"
-              value=""
-            />
+            <input type="input" name="homeNumThr" />
           </div>
-
-          <div>
-            <label for="phone" class="lb">
-              휴대 전화 *{' '}
+          <div className="box">
+            <label htmlFor="phone" className="lb">
+              휴대 전화 *
             </label>
-            <select name="phone" class="phoneSelectFirst">
+            <select name="phone">
               <option value="010">010</option>
               <option value="011">011</option>
               <option value="016">016</option>
@@ -120,37 +101,18 @@ export default class PayDelivery extends Component {
               <option value="019">019</option>
             </select>
             -
-            <input
-              type="input"
-              class="phoneSelectSec"
-              name="phoneSelectSec"
-              value="3309"
-            />
+            <input type="input" name="phoneNumSec" defaultValue="3309" />
             -
-            <input
-              type="input"
-              class="phoneSelectThr"
-              name="phoneSelectThr"
-              value="3347"
-            />
+            <input type="input" name="phoneNumThr" defaultValue="3347" />
           </div>
-
-          <div>
-            <label for="email" class="lb">
-              이메일 *{' '}
+          <div className="box emailBox">
+            <label htmlFor="email" className="lb">
+              이메일 *
             </label>
-            <input
-              type="input"
-              class="emailFirst"
-              name="newUserData"
-              value="16616516"
-            />
-            @
-            <select name="email" class="emailSelect">
-              <option value="">-이메일 선택-</option>
-              <option value="naver" selected>
-                naver.com
-              </option>
+            <input type="input" name="newUserData" defaultValue="16616516" />@
+            <select name="email">
+              <option value="">- 이메일 선택 -</option>
+              <option value="naver">naver.com</option>
               <option value="daum">daum.net</option>
               <option value="nate">nate.com</option>
               <option value="hotmail">hotmail.com</option>
@@ -161,12 +123,12 @@ export default class PayDelivery extends Component {
               <option value="gmail">gmail.com</option>
               <option value="direct">직접입력</option>
             </select>
-            <p class="emailSub">
+            <p className="emailSub">
               이메일로 주문 처리 과정을 보내드립니다.
               <br /> 수신 가능한 이메일 주소를 입력해 주세요.
             </p>
           </div>
-        </form>
+        </div>
         <div className="safeNumberServiceBox">
           <div className="SafeNumberService">
             <div>
@@ -175,7 +137,7 @@ export default class PayDelivery extends Component {
                 className="safeService"
                 name="safeService"
               />
-              <label for="safeService">안심번호 서비스 사용 (무료)</label>
+              <label htmlFor="safeService">안심번호 서비스 사용 (무료)</label>
             </div>
 
             <span>안내 &gt;</span>
@@ -195,7 +157,7 @@ export default class PayDelivery extends Component {
 
           <div className="SaveDeliveryBasis">
             <input type="checkbox" className="saveBasis" name="saveBasis" />
-            <label for="safeService">기본 배송지로 저장</label>
+            <label htmlFor="safeService">기본 배송지로 저장</label>
           </div>
         </div>
       </div>

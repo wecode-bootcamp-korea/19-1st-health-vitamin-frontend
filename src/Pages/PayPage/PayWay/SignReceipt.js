@@ -11,11 +11,13 @@ export default class SignReceipt extends Component {
       currentId: 'individual',
     };
   }
+
   changeCurrentDisplay = id => {
     this.setState({
       currentId: id,
     });
   };
+
   render() {
     return (
       <div className="signReceipt">

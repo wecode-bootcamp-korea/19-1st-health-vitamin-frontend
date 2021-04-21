@@ -5,6 +5,7 @@ export default class RadioButton extends Component {
   click = () => {
     this.props.changeCurrentDisplay(this.props.id);
   };
+
   render() {
     const { id, desc, name, defaultId } = this.props;
     return (
