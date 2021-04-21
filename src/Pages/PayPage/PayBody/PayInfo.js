@@ -16,7 +16,6 @@ export default class PayInfo extends Component {
             <span>배송비</span> <span>+0원</span>
           </p>
         </div>
-
         <p className="result">
           <span className="resultTitle">결제금액</span>{' '}
           <span className="resultValue">51,700원</span>

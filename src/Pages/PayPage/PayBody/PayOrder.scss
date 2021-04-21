@@ -1,34 +1,49 @@
+@import '../../../styles/common.scss';
+
 .payOrder {
+  border-bottom: $border;
+
   .productList {
-    display: flex;
-    margin: 15px;
-    .productImage {
-      width: 90px;
-      height: 90px;
-      margin-right: 20px;
-      border: 1px solid rgb(231, 231, 231);
-    }
+    margin: 25px;
 
-    .name {
-      font-weight: 500;
-    }
+    .product {
+      display: flex;
 
-    .option,
-    .count,
-    .price,
-    .discount,
-    .delivery {
-      color: #666;
-      font-size: 14px;
-      margin-bottom: 5px;
-    }
+      .productImage {
+        width: 90px;
+        height: 90px;
+        margin-right: 20px;
+        border: $border;
+      }
 
-    .discountValue {
-      color: #db4e42;
-    }
+      .productDescription {
+        p {
+          line-height: 21px;
+          color: $gray;
+          font-size: $fs4;
+          margin-bottom: 5px;
+        }
 
-    .delivery {
-      margin-bottom: 25px;
+        .name {
+          font-weight: 500;
+          margin-bottom: 5px;
+        }
+
+        .discountValue {
+          color: $discountRed;
+        }
+      }
+
+      .productDelBtn {
+        width: 24px;
+        height: 24px;
+        margin-left: auto;
+        border: $border;
+        outline: none;
+        background-color: white;
+        color: #b5b5b5;
+        cursor: pointer;
+      }
     }
   }
 }
