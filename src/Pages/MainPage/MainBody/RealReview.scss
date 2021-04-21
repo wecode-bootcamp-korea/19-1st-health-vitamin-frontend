@@ -15,9 +15,13 @@
       margin: 0 10px 50px 10px;
       border: $border;
       text-align: center;
-      .reviewImage {
+      .reviewImage,
+      .fa-exclamation-circle {
         width: 215px;
         height: 237px;
+      }
+      .fa-exclamation-circle {
+        padding-top: 100px;
       }
       .content {
         width: 191px;

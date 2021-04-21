@@ -27,29 +27,8 @@ export default class HotKeyword extends Component {
       curruntCategory: category,
     });
   };
-  rotate = () => {
-    const { tagCategoryList, i, curruntCategory } = this.state;
-    const list = Object.keys(tagCategoryList);
-    if (list.length === 0) return;
-    const tick = setTimeout(() => {
-      this.setState({
-        curruntCategory: list[i + 1],
-        i: list.length - 1 < i ? i + 1 : 0,
-      });
-    }, 1000);
-    return () => clearTimeout(tick);
-  };
-  componentWillUnmount() {}
-  // changeOneSecond = (list, i) => {
-  //   if (i >= list.length) i = 0;
-  //   // this.setState({
-  //   //   curruntCategory: list[i],
-  //   // });
-  //   console.log(i);
-  //   i++;
-  // };
+
   render() {
-    // this.rotate();
     const { tagCategoryList, curruntCategory } = this.state;
     return (
       <div className="hotKeyword">
