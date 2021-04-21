@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import SignUp from './Pages/AccountPage/SignUp';
 import Login from './Pages/AccountPage/Login';
+import Nav from './Pages/Nav/Nav';
 import ProductDetail from './Pages/ProductInfoPage/ProductDetail';
 
 import ProductInfoHeader from './Pages/ProductInfoPage/ProductInfoHeader';
@@ -19,6 +20,7 @@ export default class Routes extends Component {
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/product-list" component={ProductList} />
           <Route exact path="/productInfo" component={ProductDetail} />
+          <Route exact path="/nav" component={Nav} />
 
           {/* <Route exact path="/product/list/recommend" component={RecommendList} />
           <Route exact path="/product/list/vitamin" component={VitaminList} /> */}
