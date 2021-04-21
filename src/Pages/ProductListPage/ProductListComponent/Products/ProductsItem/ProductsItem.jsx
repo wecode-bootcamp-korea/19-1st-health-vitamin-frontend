@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import ItemHide from './ItemHide';
+import SalePrice from '../../../../../Components/SalePrice/SalePrice';
+import ItemHide from '../../../../../Components/SalePrice/SalePrice';
 import './ProductsItem.scss';
 
 class ProductsItem extends Component {
@@ -29,7 +30,7 @@ class ProductsItem extends Component {
           {price.toLocaleString('en-US')}원
         </div>
 
-        {discount !== 0 && <ItemHide price={price} discount={discount} />}
+        {discount !== 0 && <SalePrice price={price} discount={discount} />}
       </div>
     );
   }

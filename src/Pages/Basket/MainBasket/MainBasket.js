@@ -7,7 +7,6 @@ class MainBasket extends Component {
     super();
     this.state = {
       allCheck: false,
-      x,
     };
   }
 
@@ -70,7 +69,7 @@ class MainBasket extends Component {
                 <div className="delivery_box">
                   <div className="delivery_type">[기본배송]</div>
                   <div className="delivery_sum">
-                    {`상품구매금액 ${1} + 배송비 ${1} - 상품할인금액 ${1} = 합계:`}
+                    {`상품구매금액 ${1} + 배송비 {if ()} - 상품할인금액 ${1} = 합계:`}
                     {}
                     {1} 원
                   </div>
@@ -80,7 +79,7 @@ class MainBasket extends Component {
                   <div className="move">
                     선택상품을{'  '}
                     <button>
-                      <i class="fas fa-times"></i> 삭제하기
+                      <i className="fas fa-times"></i> 삭제하기
                     </button>
                     <button>해외배송상품 장바구니로 이동</button>
                   </div>

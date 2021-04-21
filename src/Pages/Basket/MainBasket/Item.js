@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-
+import SalePrice from '../../../Components/SalePrice/SalePrice';
+import ItemHide from '../../../Components/SalePrice/SalePrice';
 class Item extends Component {
   upClick = () => {
     this.props.changeCount(this.props.id, this.props.prCount + 1);
@@ -15,8 +16,15 @@ class Item extends Component {
     this.props.deleteBasketItem(this.props.id);
   };
 
-  allChecked = id => {
-    this.props.switchCheckBtn(id);
+  // 계산식
+  calculate = (prDiscount, prPrice, prCount) => {
+    if (prDiscount !== 0) {
+      const sales = (prPrice - prPrice * 0.01 * prDiscount) * prCount;
+      return sales;
+    } else {
+      const noSales = prPrice * prCount;
+      return noSales;
+    }
   };
 
   render() {
@@ -32,7 +40,23 @@ class Item extends Component {
         />
         <img className="bk_img item_img" src={prImg} alt="히히힣" />
         <div className="bk_pdInfo">{prTitle}</div>
-        <div className="bk_price">{prPrice}</div>
+        <div>
+          <div
+            className={
+              prDiscount === 0
+                ? 'info item_price_noDiscount bk_price'
+                : 'info item_price bk_price'
+            }
+          >
+            {prPrice.toLocaleString('en-US')}원
+          </div>
+          <div>
+            {prDiscount !== 0 && (
+              <SalePrice price={prPrice} discount={prDiscount} />
+            )}
+          </div>
+        </div>
+
         <div className="bk_count item_count">
           <input type="number" value={prCount} onChange={this.countOnChange} />
           <div className="count_box">
@@ -43,7 +67,13 @@ class Item extends Component {
         <div className="bk_plus">-</div>
         <div className="bk_dilivery_type">기본배송</div>
         <div className="bk_dilivery">2,500원</div>
-        <div className="bk_sum">{Number(prPrice) * Number(prCount)}원</div>
+        <div className="bk_sum">
+          {(prDiscount !== 0
+            ? (prPrice - prPrice * 0.01 * prDiscount) * prCount
+            : prPrice * prCount
+          ).toLocaleString('en-US')}
+          원
+        </div>
         <div className="bk_choose">
           <button type="submit">주문하기</button>
           <button type="submit">관심상품등록</button>

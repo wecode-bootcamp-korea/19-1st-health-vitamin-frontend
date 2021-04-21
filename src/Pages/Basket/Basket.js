@@ -10,26 +10,29 @@ class Basket extends Component {
       orderList: [],
     };
   }
-  // [ProductList] map하기
+
+  //[장바구니] (서버 -> 장바구니) Item 가져오기
   componentDidMount() {
+    // fetch('http://localhost:8000/carts')
     fetch('/Basket/basket.json')
       .then(res => res.json())
       .then(data => {
         this.setState({ orderList: data });
       });
   }
-  //[장바구니] (서버 -> 장바구니) Item 가져오기
+
   // [장바구니](장바구니 -> 서버) 장바구니 담은 상품 전달하기
   giveItemList = () => {
     // console.log('click');
+    this.props.history.push('/');
     let newOrderList = this.state.orderList.map(order => {
       return {
-        id: order.id,
+        product_id: order.id,
         count: order.count,
       };
     });
-    console.log(newOrderList);
-    // fetch('http://localhost:8000/carts'), {
+    // console.log(newOrderList);
+    // fetch('http://localhost:8000/carts), {
     fetch('http://10.5.30.109:8000/products/basket', {
       method: 'POST',
       body: {
@@ -76,6 +79,10 @@ class Basket extends Component {
     });
   };
 
+  goToMain = () => {
+    this.props.history.push('/product-list');
+  };
+
   render() {
     const { orderList } = this.state;
     return (
@@ -101,7 +108,9 @@ class Basket extends Component {
                 </button>
                 <button className="order_select_btn">선택상품주문</button>
               </div>
-              <button className="keep_shopping">쇼핑계속하기</button>
+              <button onClick={this.goToMain} className="keep_shopping">
+                쇼핑계속하기
+              </button>
             </div>
           </div>
           <div className="announce" onClick={this.testClick}>

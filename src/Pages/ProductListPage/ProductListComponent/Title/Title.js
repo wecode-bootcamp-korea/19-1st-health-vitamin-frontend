@@ -1,32 +1,53 @@
 import React, { Component } from 'react';
+import SubTitle from './SubTitle';
 import './Title.scss';
 
 class Title extends Component {
+  // constructor() {
+  //   super();
+  //   this.state = {
+  //     subCategory: [],
+  //   };
+  // }
+
+  // componentDidMount() {
+  //   fetch('/data/Category/category.json')
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       this.setState({ subCategory: data });
+  //     });
+  // }
   render() {
+    console.log(this.props.categoryList);
+    const { categoryList } = this.props;
     return (
       <header className="title">
-        <div className="category_title">PRODUCTS</div>
+        <div className="category_title">{categoryList.main_category_name}</div>
         <ul className="category_sub">
-          <a>
-            <li className="sub_title">
-              비타민A <span>(10)</span>
-            </li>
-          </a>
-          <a>
-            <li className="sub_title">
-              비타민C <span>(10)</span>
-            </li>
-          </a>
-          <a>
-            <li className="sub_title">
-              비타민D <span>(10)</span>
-            </li>
-          </a>
-          <a>
-            <li className="sub_title">
-              비타민E <span>(10)</span>
-            </li>
-          </a>
+          {categoryList.main_category_list.map(cate => {
+            return (
+              <SubTitle
+                key={cate.category_id}
+                categoryName={cate.category_name}
+              />
+            );
+          })}
+
+          {/* <li className="sub_title">
+            비타민A <span>(10)</span>
+          </li>
+
+          <li className="sub_title">
+            비타민C <span>(10)</span>
+          </li>
+
+          <li className="sub_title">
+            비타민D <span>(10)</span>
+          </li>
+
+          <li className="sub_title">
+            비타민E <span>(10)</span>
+          </li> */}
         </ul>
       </header>
     );
