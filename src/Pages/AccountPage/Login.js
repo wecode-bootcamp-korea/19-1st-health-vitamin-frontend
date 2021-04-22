@@ -57,6 +57,19 @@ class Login extends Component {
     return (
       <div className="loginHome">
         <div className="loginIcon">
+          <header className="olLonginBox">
+            <ol className="loginList">
+              <li>
+                <Link to="main" className="goToLink">
+                  <i className="fas fa-home" />
+                </Link>
+              </li>
+              <li>
+                <i className="fas fa-angle-right" />
+              </li>
+              <li className="goSignUp">로그인</li>
+            </ol>
+          </header>
           <div className="loginKo">
             <h2 className="nameLogin">로그인</h2>
           </div>
@@ -96,7 +109,7 @@ class Login extends Component {
                   className={'loginBtBox ' + this.state.isBtnAble}
                   onClick={this.goToMain}
                 >
-                  <a className="loginBt" href="">
+                  <a className="loginBt" href="/">
                     로그인
                   </a>
                 </button>
@@ -104,13 +117,13 @@ class Login extends Component {
             </div>
             <div className="searchBox">
               <div className="searchId">
-                <a href="" className="searchIdBox">
+                <a href="/" className="searchIdBox">
                   아이디 찾기
                 </a>
               </div>
               <div>|</div>
               <div className="searchPw">
-                <a href="" className="searchPwBox">
+                <a href="/" className="searchPwBox">
                   비밀번호 찾기
                 </a>
               </div>

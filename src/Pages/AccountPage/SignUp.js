@@ -18,7 +18,7 @@ class SignUp extends Component {
     };
   }
 
-  signUp = (id, pw) => {
+  signUp = () => {
     fetch('http://10.167.105.109:8000/users/signup', {
       method: 'POST',
       body: JSON.stringify({
@@ -69,7 +69,7 @@ class SignUp extends Component {
           <header className="olBox">
             <ol className="list">
               <li>
-                <a className="link" href="">
+                <a className="link" href="/">
                   <i className="fas fa-home" />
                 </a>
               </li>
@@ -212,9 +212,9 @@ class SignUp extends Component {
               </div>
               <td className="manWoman">
                 <input className="Man" name="buttoni" type="radio" />
-                <label for="manMember">남자</label>
+                <label htmlFor="manMember">남자</label>
                 <input className="Woman" name="buttoni" type="radio" />
-                <label for="womanMember">여자</label>
+                <label htmlfor="womanMember">여자</label>
               </td>
             </tr>
           </table>
