@@ -29,6 +29,16 @@ class Nav extends Component {
     });
   };
 
+  componentDidMount() {
+    fetch('/data/Favorite/Favorite.json')
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          downClick: data,
+        });
+      });
+  }
+
   render() {
     console.log(this.state.navHidden);
     return (
@@ -45,13 +55,10 @@ class Nav extends Component {
                 <div className="menuLine"></div>
               </button>
               <div className="listMenu">
-                <Link to="http://localhost:3000/basket/" className="goToBasket">
+                <Link to="/basket" className="goToBasket">
                   <i class="fas fa-shopping-bag"></i>
                 </Link>
-                <Link
-                  to="http://localhost:3000/favoriteproduct/"
-                  className="goToFavortie"
-                >
+                <Link to="/favoriteproduct" className="goToFavortie">
                   <i class="fas fa-heart"></i>
                 </Link>
                 <i class="fas fa-search"></i>
@@ -75,7 +82,7 @@ class Nav extends Component {
                       onClick={this.isDownClick}
                     >
                       ProductList
-                      {this.state.downClick && (
+                      {!this.state.downClick && (
                         <div className="aboutList">
                           <div className="smallList">{}</div>
                           <div className="smallList">{}</div>
