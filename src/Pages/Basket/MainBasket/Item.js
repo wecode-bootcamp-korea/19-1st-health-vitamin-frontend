@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import SalePrice from '../../../Components/SalePrice/SalePrice';
-import ItemHide from '../../../Components/SalePrice/SalePrice';
+
 class Item extends Component {
   upClick = () => {
     this.props.changeCount(this.props.id, this.props.prCount + 1);
@@ -16,16 +16,15 @@ class Item extends Component {
     this.props.deleteBasketItem(this.props.id);
   };
 
-  // 계산식
-  calculate = (prDiscount, prPrice, prCount) => {
-    if (prDiscount !== 0) {
-      const sales = (prPrice - prPrice * 0.01 * prDiscount) * prCount;
-      return sales;
-    } else {
-      const noSales = prPrice * prCount;
-      return noSales;
-    }
-  };
+  // calculate = (prDiscount, prPrice, prCount) => {
+  //   if (prDiscount !== 0) {
+  //     const sales = (prPrice - prPrice * 0.01 * prDiscount) * prCount;
+  //     return sales;
+  //   } else {
+  //     const noSales = prPrice * prCount;
+  //     return noSales;
+  //   }
+  // };
 
   render() {
     const { prImg, prTitle, prPrice, prDiscount, prCount } = this.props;

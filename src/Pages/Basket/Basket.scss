@@ -31,7 +31,11 @@
           margin-bottom: 50px;
           .basket_top {
             background-color: #dbd9d9;
-            height: 40px;
+            height: 50px;
+
+            padding-top: 17px;
+            padding-left: 8px;
+            font-size: 20px;
           }
           .check {
             .check_info {
@@ -179,6 +183,7 @@
                 .move_item {
                   display: flex;
                   justify-content: space-between;
+                  margin-top: 20px;
                   .move {
                     button {
                       margin: 2px;

@@ -3,20 +3,6 @@ import SubTitle from './SubTitle';
 import './Title.scss';
 
 class Title extends Component {
-  // constructor() {
-  //   super();
-  //   this.state = {
-  //     subCategory: [],
-  //   };
-  // }
-
-  // componentDidMount() {
-  //   fetch('/data/Category/category.json')
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       this.setState({ subCategory: data });
-  //     });
-  // }
   render() {
     console.log(this.props.categoryList);
     const { categoryList } = this.props;
