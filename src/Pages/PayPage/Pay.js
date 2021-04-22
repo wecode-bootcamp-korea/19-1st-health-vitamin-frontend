@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import PayContainer from './PayContainer';
 import { totalPrice, calcPrice } from '../../Functions/funcs';
 import './Pay.scss';
 
 const typeList = ['delivery', 'order'];
 
-export default class Pay extends Component {
+class Pay extends Component {
   constructor() {
     super();
 
@@ -78,6 +79,7 @@ export default class Pay extends Component {
     // })
     //   .then(res => res.json())
     //   .then(data => console.log(data));
+    // this.props.history.push('/');
   };
 
   render() {
@@ -135,3 +137,5 @@ export default class Pay extends Component {
     );
   }
 }
+
+export default withRouter(Pay);

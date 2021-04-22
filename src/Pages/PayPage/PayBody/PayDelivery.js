@@ -23,9 +23,50 @@ export default class PayDelivery extends Component {
     });
   };
 
-  onChangeHandler = e => {
+  onChangeHandler = async e => {
     const { id, value } = e.target;
-    this.props.changeValue(id, value);
+    if (id === 'name') {
+      this.props.changeValue(id, value);
+      return;
+    }
+
+    await this.setState({
+      [id]: value,
+    });
+
+    const {
+      address,
+      subAddress,
+      firstNum,
+      secondNum,
+      thirdNum,
+      emailFirst,
+      emailSec,
+    } = this.state;
+
+    switch (id) {
+      case 'address':
+      case 'subAddress':
+        this.props.changeValue('address', [address, subAddress].join(','));
+        break;
+
+      case 'firstNum':
+      case 'secondNum':
+      case 'thirdNum':
+        this.props.changeValue(
+          'phone_number',
+          [firstNum, secondNum, thirdNum].join('-')
+        );
+        break;
+
+      case 'emailFirst':
+      case 'emailSec':
+        this.props.changeValue('email', [emailFirst, emailSec].join('@'));
+        break;
+
+      default:
+        break;
+    }
   };
 
   addressF = e => {
@@ -112,21 +153,21 @@ export default class PayDelivery extends Component {
               className="addressInput"
               value={address}
               id="address"
-              onChange={this.addressF}
+              onChange={this.onChangeHandler}
             />
             <input
               type="input"
               className="addressInput"
               value={subAddress}
               id="subAddress"
-              onChange={this.addressF}
+              onChange={this.onChangeHandler}
             />
           </div>
           <div className="box">
             <label htmlFor="phone" className="lb">
               휴대 전화 *
             </label>
-            <select name="phone" id="firstNum" onChange={this.phoneF}>
+            <select name="phone" id="firstNum" onChange={this.onChangeHandler}>
               <option value="">-- 번호 --</option>
               <option value="010">010</option>
               <option value="011">011</option>
@@ -140,14 +181,14 @@ export default class PayDelivery extends Component {
               type="input"
               name="phoneNumSec"
               id="secondNum"
-              onChange={this.phoneF}
+              onChange={this.onChangeHandler}
             />
             -
             <input
               type="input"
               name="phoneNumThr"
               id="thirdNum"
-              onChange={this.phoneF}
+              onChange={this.onChangeHandler}
             />
           </div>
           <div className="box emailBox">
@@ -158,10 +199,10 @@ export default class PayDelivery extends Component {
               type="input"
               name="newUserData"
               id="emailFirst"
-              onChange={this.emailF}
+              onChange={this.onChangeHandler}
             />
             @
-            <select name="email" id="emailSec" onChange={this.emailF}>
+            <select name="email" id="emailSec" onChange={this.onChangeHandler}>
               <option value="">- 이메일 선택 -</option>
               <option value="naver.com">naver.com</option>
               <option value="daum.net">daum.net</option>
