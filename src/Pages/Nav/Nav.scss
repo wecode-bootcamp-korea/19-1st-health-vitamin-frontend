@@ -14,11 +14,7 @@ li {
   position: absolute;
   width: 80px;
   top: 80px;
-  margin-top: 150px;
-  -moz-transform: rotate(90deg);
-  -webkit-transform: rotate(90deg);
-  -o-transform: rotate(90deg);
-  -ms-transform: rotate(90deg);
+  margin-top: 240px;
   transform: rotate(90deg);
 }
 .menuBox {
@@ -46,7 +42,7 @@ li {
   display: flex;
   flex-direction: column;
   width: 32px;
-  margin-top: 500px;
+  margin-top: 700px;
   font-size: 25px;
 }
 
@@ -70,7 +66,6 @@ li {
   margin-top: 40px;
   height: 100%;
   width: 100px;
-  // background-color: white;
 }
 .goToSomething {
   display: flex;
@@ -79,4 +74,14 @@ li {
 .goLink {
   color: black;
   text-decoration: none;
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+.aboutList {
+  margin-left: 20px;
+}
+.smallList {
+  color: white;
+  font-size: 15px;
+  margin-top: 10px;
 }

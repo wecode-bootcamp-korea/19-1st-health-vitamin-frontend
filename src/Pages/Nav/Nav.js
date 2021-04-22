@@ -76,11 +76,11 @@ class Nav extends Component {
                     >
                       ProductList
                       {this.state.downClick && (
-                        <div>
-                          {}
-                          {}
-                          <span>Best Product</span>
-                          <span>Sale Product</span>
+                        <div className="aboutList">
+                          <div className="smallList">{}</div>
+                          <div className="smallList">{}</div>
+                          <div className="smallList">Best_Product</div>
+                          <div className="smallList">Sale_Product</div>
                         </div>
                       )}
                     </Link>
