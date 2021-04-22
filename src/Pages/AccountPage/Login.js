@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import '../AccountPage/Login.scss';
 
 class Login extends Component {
@@ -60,7 +60,7 @@ class Login extends Component {
           <header className="olLonginBox">
             <ol className="loginList">
               <li>
-                <Link to="http://localhost:3000/" className="goToLink">
+                <Link to="/" className="goToLink">
                   <i className="fas fa-home" />
                 </Link>
               </li>
