@@ -44,6 +44,7 @@ class Login extends Component {
     })
       .then(res => res.json())
       .then(data => {
+        localStorage.setItem('token', JSON.stringify(data['token']));
         this.props.history.push('/');
       });
   };
@@ -59,7 +60,7 @@ class Login extends Component {
           <header className="olLonginBox">
             <ol className="loginList">
               <li>
-                <Link to="url" className="goToLink">
+                <Link to="/" className="goToLink">
                   <i className="fas fa-home" />
                 </Link>
               </li>
@@ -108,7 +109,7 @@ class Login extends Component {
                   className={'loginBtBox ' + this.state.isBtnAble}
                   onClick={this.goToMain}
                 >
-                  <a className="loginBt" href="">
+                  <a className="loginBt" href="/">
                     로그인
                   </a>
                 </button>
@@ -116,13 +117,13 @@ class Login extends Component {
             </div>
             <div className="searchBox">
               <div className="searchId">
-                <a href="" className="searchIdBox">
+                <a href="/" className="searchIdBox">
                   아이디 찾기
                 </a>
               </div>
               <div>|</div>
               <div className="searchPw">
-                <a href="" className="searchPwBox">
+                <a href="/" className="searchPwBox">
                   비밀번호 찾기
                 </a>
               </div>

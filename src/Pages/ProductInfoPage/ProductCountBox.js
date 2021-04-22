@@ -45,7 +45,6 @@ export default class ProductCountBox extends Component {
   render() {
     const { name, count } = this.props;
     const { inputOnChange, upClick, downClick, xBtnOnClick, calcPrice } = this;
-    console.log(this.props);
     return (
       <div className="productCountBox">
         <span className="name">{name}</span>
@@ -57,8 +56,8 @@ export default class ProductCountBox extends Component {
             onChange={inputOnChange}
           />
           <div className="arrowBox">
-            <i className="fas fa-sort-up" onClick={upClick}></i>
-            <i className="fas fa-sort-down" onClick={downClick}></i>
+            <i className="fas fa-sort-up" onClick={upClick} />
+            <i className="fas fa-sort-down" onClick={downClick} />
           </div>
           <p className="x" onClick={xBtnOnClick}>
             x
