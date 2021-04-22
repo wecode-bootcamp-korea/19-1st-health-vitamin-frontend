@@ -42,10 +42,9 @@ export default class Pay extends Component {
   }
   makeTotal = () => {
     const { productList, shippingFee } = this.state;
-    return (calcPrice(totalPrice(productList), shippingFee.shipping_fee)
+    return calcPrice(totalPrice(productList), shippingFee.shipping_fee)
       ? totalPrice(productList)
-      : totalPrice(productList) + shippingFee.shipping_fee
-    ).toLocaleString();
+      : totalPrice(productList) + shippingFee.shipping_fee;
   };
 
   payBtnClick = () => {

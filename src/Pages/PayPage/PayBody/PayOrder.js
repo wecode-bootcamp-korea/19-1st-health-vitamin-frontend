@@ -3,14 +3,6 @@ import { totalPrice } from '../../../Functions/funcs';
 import './PayOrder.scss';
 
 export default class PayOrder extends Component {
-  makeTotalPrice = () => {
-    const { productList } = this.props;
-    return productList.reduce(
-      (acc, cur) => acc + (cur.price - (cur.price * cur.discount) / 100),
-      0
-    );
-  };
-
   render() {
     const { productList, shippingFee } = this.props;
     return (
