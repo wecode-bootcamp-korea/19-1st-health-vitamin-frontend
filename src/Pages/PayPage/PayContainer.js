@@ -6,15 +6,18 @@ import './PayContainer.scss';
 export default class PayContainer extends Component {
   constructor() {
     super();
+
     this.state = {
       isDiplay: false,
     };
   }
+
   changeIsDiplay = () => {
     this.setState({
       isDiplay: !this.state.isDiplay,
     });
   };
+
   render() {
     return (
       <div>
@@ -23,7 +26,7 @@ export default class PayContainer extends Component {
           type={this.props.type}
           changeIsDiplay={this.changeIsDiplay}
         />
-        {this.state.isDiplay && <PayBody type={this.props.type} />}
+        {this.state.isDiplay && <PayBody {...this.props} />}
       </div>
     );
   }

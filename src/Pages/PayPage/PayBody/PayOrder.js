@@ -1,37 +1,53 @@
 import React, { Component } from 'react';
+import { totalPrice } from '../../../Functions/funcs';
 import './PayOrder.scss';
 
 export default class PayOrder extends Component {
   render() {
+    const { productList, shippingFee } = this.props;
     return (
       <div className="payOrder">
         <div className="productList">
-          <div className="product">
-            <img
-              className="productImage"
-              src="//duftndoft.com/web/product/tiny/202102/992825dbf75af2316128ff7286218a05.jpg"
-              alt="productImage"
-            />
-            <div className="productDescription">
-              <p className="name">너리싱 핸드크림 50ml(8종 택1)</p>
-              <p className="option">
-                [옵션: <span className="optionValue">베이비소피</span>]
-              </p>
-              <p className="count">
-                수량: <span className="countValue">1개</span>
-              </p>
-              <p className="price">
-                상품구매금액: <span className="priceValue">9,800</span>원
-              </p>
-              <p className="discount">
-                할인금액: <span className="discountValue">-1,900원</span>{' '}
-              </p>
-              <p className="delivery">
-                [무료] / <span className="deliveryValue">기본배송</span>
-              </p>
-            </div>
-            <button className="productDelBtn">X</button>
-          </div>
+          {productList.map(product => {
+            const { id, count, name, price, discount, image } = product;
+            return (
+              <div key={id} className="product">
+                <img className="productImage" src={image} alt="productImage" />
+                <div className="productDescription">
+                  <p className="name">{name}</p>
+                  <p className="count">
+                    수량: <span className="countValue">{count}개</span>
+                  </p>
+                  <p className="price">
+                    상품구매금액:
+                    <span className="priceValue">{price.toLocaleString()}</span>
+                    원
+                  </p>
+                  <p className="discount">
+                    할인금액:
+                    <span className="discountValue">
+                      -{((price * discount) / 100).toLocaleString()}원
+                    </span>
+                  </p>
+                  {totalPrice(productList) > shippingFee.minimum_free ? (
+                    <p className="delivery">
+                      [무료] / <span className="deliveryValue">기본배송</span>
+                    </p>
+                  ) : (
+                    <p className="delivery">
+                      <span className="deliveryValue">
+                        [유료] /
+                        <span className="deliveryValue">
+                          {shippingFee.shipping_fee}원
+                        </span>
+                      </span>
+                    </p>
+                  )}
+                </div>
+                <button className="productDelBtn">X</button>
+              </div>
+            );
+          })}
         </div>
       </div>
     );

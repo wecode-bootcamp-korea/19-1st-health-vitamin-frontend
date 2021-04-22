@@ -93,8 +93,7 @@ class FavoriteProduct extends Component {
                         <span>
                           <input className="checkBox" type="checkbox" />
                         </span>
-                        <img src={favorite.imageUrl} />
-
+                        <img src={favorite.imageUrl} alt="favorite" />
                         <span>{favorite.name}</span>
                         <span>{favorite.price}</span>
                         <span>&nbsp;&nbsp;&nbsp;</span>
