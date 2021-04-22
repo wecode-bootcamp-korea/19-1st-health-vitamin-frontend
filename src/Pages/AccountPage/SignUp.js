@@ -66,19 +66,6 @@ class SignUp extends Component {
     return (
       <div className="home">
         <div className="icon">
-          <header className="olBox">
-            <ol className="list">
-              <li>
-                <a className="link" href="/">
-                  <i className="fas fa-home" />
-                </a>
-              </li>
-              <li>
-                <i className="fas fa-angle-right" />
-              </li>
-              <li className="linkSignUp">회원 가입</li>
-            </ol>
-          </header>
           <div className="signUp">
             <h2>
               <strong>회원 가입</strong>
