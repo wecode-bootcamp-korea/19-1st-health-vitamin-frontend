@@ -10,8 +10,8 @@ class Products extends Component {
       <main className="Products">
         <ProductsInfo prList={this.props.prList} />
         <div className="product_items">
-          {this.props.prList.map(el => {
-            return <ProductsItem product={el} />;
+          {this.props.prList.map((el, i) => {
+            return <ProductsItem key={i} product={el} />;
           })}
         </div>
         <MovePage />
