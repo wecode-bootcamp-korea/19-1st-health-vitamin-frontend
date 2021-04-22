@@ -69,48 +69,6 @@ export default class PayDelivery extends Component {
     }
   };
 
-  addressF = e => {
-    const { id, value } = e.target;
-    this.setState(
-      {
-        [id]: value,
-      },
-      () => {
-        const { address, subAddress } = this.state;
-        this.props.changeValue('address', address + ', ' + subAddress);
-      }
-    );
-  };
-
-  phoneF = e => {
-    const { id, value } = e.target;
-    this.setState(
-      {
-        [id]: value,
-      },
-      () => {
-        const { firstNum, secondNum, thirdNum } = this.state;
-        this.props.changeValue(
-          'phone_number',
-          firstNum + '-' + secondNum + '-' + thirdNum
-        );
-      }
-    );
-  };
-
-  emailF = e => {
-    const { id, value } = e.target;
-    this.setState(
-      {
-        [id]: value,
-      },
-      () => {
-        const { emailFirst, emailSec } = this.state;
-        this.props.changeValue('email', emailFirst + '@' + emailSec);
-      }
-    );
-  };
-
   render() {
     const { name } = this.props;
     const { address, subAddress } = this.state;
