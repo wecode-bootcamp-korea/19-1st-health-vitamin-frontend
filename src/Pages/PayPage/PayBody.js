@@ -8,17 +8,32 @@ import PayBenefit from './PayBody/PayBenefit';
 import './PayBody.scss';
 
 export default class PayBody extends Component {
-  componentDidMount() {
-    // fetch('http://localhost:8000/orders')
-    fetch('/data/Pay/PayData.json')
-      .then(res => res.json())
-      .then(data => {});
-  }
   render() {
+    const {
+      productList,
+      shippingFee,
+      name,
+      address,
+      subAddress,
+      phone_number,
+      email,
+      changeValue,
+    } = this.props;
     return (
       <>
-        {this.props.type === 'delivery' && <PayDelivery />}
-        {this.props.type === 'order' && <PayOrder />}
+        {this.props.type === 'delivery' && (
+          <PayDelivery
+            name={name}
+            address={address}
+            subAddress={subAddress}
+            phone_number={phone_number}
+            email={email}
+            changeValue={changeValue}
+          />
+        )}
+        {this.props.type === 'order' && (
+          <PayOrder productList={productList} shippingFee={shippingFee} />
+        )}
         {this.props.type === 'discount' && <PayDiscount />}
         {this.props.type === 'info' && <PayInfo />}
         {this.props.type === 'way' && <PayWay />}

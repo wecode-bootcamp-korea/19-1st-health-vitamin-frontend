@@ -7,13 +7,14 @@ export default class PayDelivery extends Component {
     super();
     this.state = {
       currentId: 'sameDelivery',
+      firstNum: '',
+      secondNum: '',
+      thirdNum: '',
+      emailFirst: '',
+      emailSec: '',
+      address: '',
+      subAddress: '',
     };
-  }
-
-  componentDidMount() {
-    fetch('http://localhost:8000/orders')
-      .then(res => res.json())
-      .then(data => {});
   }
 
   changeCurrentDisplay = id => {
@@ -22,7 +23,56 @@ export default class PayDelivery extends Component {
     });
   };
 
+  onChangeHandler = e => {
+    const { id, value } = e.target;
+    this.props.changeValue(id, value);
+  };
+
+  addressF = e => {
+    const { id, value } = e.target;
+    this.setState(
+      {
+        [id]: value,
+      },
+      () => {
+        const { address, subAddress } = this.state;
+        this.props.changeValue('address', address + ', ' + subAddress);
+      }
+    );
+  };
+
+  phoneF = e => {
+    const { id, value } = e.target;
+    this.setState(
+      {
+        [id]: value,
+      },
+      () => {
+        const { firstNum, secondNum, thirdNum } = this.state;
+        this.props.changeValue(
+          'phone_number',
+          firstNum + '-' + secondNum + '-' + thirdNum
+        );
+      }
+    );
+  };
+
+  emailF = e => {
+    const { id, value } = e.target;
+    this.setState(
+      {
+        [id]: value,
+      },
+      () => {
+        const { emailFirst, emailSec } = this.state;
+        this.props.changeValue('email', emailFirst + '@' + emailSec);
+      }
+    );
+  };
+
   render() {
+    const { name } = this.props;
+    const { address, subAddress } = this.state;
     return (
       <div className="payDelivery">
         <div className="delieveryForm">
@@ -48,7 +98,9 @@ export default class PayDelivery extends Component {
               type="input"
               className="receiver"
               name="receiver"
-              defaultValue="이종호"
+              value={name}
+              id="name"
+              onChange={this.onChangeHandler}
             />
           </div>
           <div className="box">
@@ -57,48 +109,25 @@ export default class PayDelivery extends Component {
             </label>
             <input
               type="input"
-              className="addressNumber"
-              defaultValue="11808"
+              className="addressInput"
+              value={address}
+              id="address"
+              onChange={this.addressF}
             />
-            <button className="addressBtn">주소검색</button>
             <input
               type="input"
               className="addressInput"
-              defaultValue="경기도 의정부시 민락동 710-3"
+              value={subAddress}
+              id="subAddress"
+              onChange={this.addressF}
             />
-            <input type="input" className="addressInput" defaultValue="301호" />
-          </div>
-          <div className="box">
-            <label htmlFor="home" className="lb">
-              일반 전화
-            </label>
-            <select name="home">
-              <option value="02">02</option>
-              <option value="031">031</option>
-              <option value="032">032</option>
-              <option value="033">033</option>
-              <option value="041">041</option>
-              <option value="042">042</option>
-              <option value="043">043</option>
-              <option value="044">044</option>
-              <option value="051">051</option>
-              <option value="052">052</option>
-              <option value="053">053</option>
-              <option value="054">054</option>
-              <option value="055">055</option>
-              <option value="061">061</option>
-              <option value="062">062</option>
-            </select>
-            -
-            <input type="input" name="homeNumSec" />
-            -
-            <input type="input" name="homeNumThr" />
           </div>
           <div className="box">
             <label htmlFor="phone" className="lb">
               휴대 전화 *
             </label>
-            <select name="phone">
+            <select name="phone" id="firstNum" onChange={this.phoneF}>
+              <option value="">-- 번호 --</option>
               <option value="010">010</option>
               <option value="011">011</option>
               <option value="016">016</option>
@@ -107,27 +136,42 @@ export default class PayDelivery extends Component {
               <option value="019">019</option>
             </select>
             -
-            <input type="input" name="phoneNumSec" defaultValue="3309" />
+            <input
+              type="input"
+              name="phoneNumSec"
+              id="secondNum"
+              onChange={this.phoneF}
+            />
             -
-            <input type="input" name="phoneNumThr" defaultValue="3347" />
+            <input
+              type="input"
+              name="phoneNumThr"
+              id="thirdNum"
+              onChange={this.phoneF}
+            />
           </div>
           <div className="box emailBox">
             <label htmlFor="email" className="lb">
               이메일 *
             </label>
-            <input type="input" name="newUserData" defaultValue="16616516" />@
-            <select name="email">
+            <input
+              type="input"
+              name="newUserData"
+              id="emailFirst"
+              onChange={this.emailF}
+            />
+            @
+            <select name="email" id="emailSec" onChange={this.emailF}>
               <option value="">- 이메일 선택 -</option>
-              <option value="naver">naver.com</option>
-              <option value="daum">daum.net</option>
-              <option value="nate">nate.com</option>
-              <option value="hotmail">hotmail.com</option>
-              <option value="yahoo">yahoo.com</option>
-              <option value="empas">empas.com</option>
-              <option value="korea">korea.com</option>
-              <option value="dreamwiz">dreamwiz.com</option>
-              <option value="gmail">gmail.com</option>
-              <option value="direct">직접입력</option>
+              <option value="naver.com">naver.com</option>
+              <option value="daum.net">daum.net</option>
+              <option value="nate.com">nate.com</option>
+              <option value="hotmail.com">hotmail.com</option>
+              <option value="yahoo.com">yahoo.com</option>
+              <option value="empas.com">empas.com</option>
+              <option value="korea.com">korea.com</option>
+              <option value="dreamwiz.com">dreamwiz.com</option>
+              <option value="gmail.com">gmail.com</option>
             </select>
             <p className="emailSub">
               이메일로 주문 처리 과정을 보내드립니다.

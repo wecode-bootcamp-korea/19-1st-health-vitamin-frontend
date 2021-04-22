@@ -15,7 +15,7 @@
       "name": "샴푸",
       "price": 15000,
       "discount": 10,
-      "image": "3번상품메인사진.jpg"
+      "image": "//duftndoft.com/web/product/medium/202103/9655f27038725ecf16a260a7965532d4.jpg"
     },
     {
       "id": 4,
@@ -29,7 +29,7 @@
   "SHIPPING_FEE": [
     {
       "shipping_fee": 2500,
-      "minimum_free": 20000
+      "minimum_free": 25000
     }
   ]
 }
