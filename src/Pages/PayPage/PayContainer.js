@@ -6,27 +6,19 @@ import './PayContainer.scss';
 export default class PayContainer extends Component {
   constructor() {
     super();
+
     this.state = {
       isDiplay: false,
     };
   }
+
   changeIsDiplay = () => {
     this.setState({
       isDiplay: !this.state.isDiplay,
     });
   };
+
   render() {
-    const {
-      productList,
-      shippingFee,
-      name,
-      address,
-      subAddress,
-      phone_number,
-      email,
-      message,
-      changeValue,
-    } = this.props;
     return (
       <div>
         <PayHeader
@@ -34,20 +26,7 @@ export default class PayContainer extends Component {
           type={this.props.type}
           changeIsDiplay={this.changeIsDiplay}
         />
-        {this.state.isDiplay && (
-          <PayBody
-            type={this.props.type}
-            productList={productList}
-            shippingFee={shippingFee}
-            name={name}
-            address={address}
-            subAddress={subAddress}
-            phone_number={phone_number}
-            email={email}
-            message={message}
-            changeValue={changeValue}
-          />
-        )}
+        {this.state.isDiplay && <PayBody {...this.props} />}
       </div>
     );
   }

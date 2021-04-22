@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import PayContainer from './PayContainer';
-import { totalPrice, calcPrice } from '../../Functions/funcs';
+import { totalPrice } from '../../Functions/funcs';
 import './Pay.scss';
 
-const typeList = ['delivery', 'order'];
+const typeList = ['delivery', 'order', 'discount', 'way', 'benefit'];
 
 class Pay extends Component {
   constructor() {
@@ -21,17 +21,19 @@ class Pay extends Component {
       message: '',
     };
   }
+
   changeValue = (key, value) => {
     this.setState({
       [key]: value,
     });
   };
+
   componentDidMount() {
     // fetch('http://localhost:8000/orders')
     fetch('/data/Pay/PayData.json', {
-      // headers: {
-      //   Authorization: localStorage.getItem('token'),
-      // },
+      headers: {
+        Authorization: localStorage.getItem('token'),
+      },
     })
       .then(res => res.json())
       .then(data => {
@@ -41,58 +43,42 @@ class Pay extends Component {
         });
       });
   }
+
   makeTotal = () => {
     const { productList, shippingFee } = this.state;
-    return calcPrice(totalPrice(productList), shippingFee.shipping_fee)
-      ? totalPrice(productList)
-      : totalPrice(productList) + shippingFee.shipping_fee;
+    const isFeeCharged = totalPrice(productList) > shippingFee.shipping_fee;
+
+    return totalPrice(productList) + isFeeCharged
+      ? shippingFee.shipping_fee
+      : 0;
   };
 
   payBtnClick = () => {
     const { name, address, phone_number, email, message } = this.state;
 
-    console.log({
-      shipping_information: {
-        name,
-        address,
-        phone_number,
-        email,
-        message,
+    fetch('http://localhost:8000/orders', {
+      method: 'post',
+      headers: {
+        Authorization: localStorage.getItem('token'),
       },
-      total: this.makeTotal(),
-    });
-    // fetch('http://localhost:8000/orders', {
-    //   method: 'post',
-    //   headers: {
-    //     Authorization: localStorage.getItem('token'),
-    //   },
-    //   body: JSON.stringify({
-    //     shipping_information: {
-    //       name,
-    //       address,
-    //       phone_number,
-    //       email,
-    //       message,
-    //     },
-    //     total: this.makeTotal(),
-    //   }),
-    // })
-    //   .then(res => res.json())
-    //   .then(data => console.log(data));
-    // this.props.history.push('/');
+      body: JSON.stringify({
+        shipping_information: {
+          name,
+          address,
+          phone_number,
+          email,
+          message,
+        },
+        total: this.makeTotal(),
+      }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        this.props.history.push('/');
+      });
   };
 
   render() {
-    const {
-      productList,
-      shippingFee,
-      name,
-      address,
-      subAddress,
-      phone_number,
-      email,
-      message,
-    } = this.state;
     return (
       <div className="pay">
         <div className="header">
@@ -109,14 +95,7 @@ class Pay extends Component {
             <PayContainer
               key={type}
               type={type}
-              productList={productList}
-              shippingFee={shippingFee}
-              name={name}
-              address={address}
-              subAddress={subAddress}
-              phone_number={phone_number}
-              email={email}
-              message={message}
+              {...this.state}
               changeValue={this.changeValue}
             />
           );

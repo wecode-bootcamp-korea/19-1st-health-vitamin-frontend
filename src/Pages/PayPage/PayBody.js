@@ -10,6 +10,7 @@ import './PayBody.scss';
 export default class PayBody extends Component {
   render() {
     const {
+      type,
       productList,
       shippingFee,
       name,
@@ -20,27 +21,26 @@ export default class PayBody extends Component {
       message,
       changeValue,
     } = this.props;
-    return (
-      <>
-        {this.props.type === 'delivery' && (
-          <PayDelivery
-            name={name}
-            address={address}
-            subAddress={subAddress}
-            phone_number={phone_number}
-            email={email}
-            message={message}
-            changeValue={changeValue}
-          />
-        )}
-        {this.props.type === 'order' && (
-          <PayOrder productList={productList} shippingFee={shippingFee} />
-        )}
-        {this.props.type === 'discount' && <PayDiscount />}
-        {this.props.type === 'info' && <PayInfo />}
-        {this.props.type === 'way' && <PayWay />}
-        {this.props.type === 'benefit' && <PayBenefit />}
-      </>
-    );
+
+    const payTypeTable = {
+      delivery: (
+        <PayDelivery
+          name={name}
+          address={address}
+          subAddress={subAddress}
+          phone_number={phone_number}
+          email={email}
+          message={message}
+          changeValue={changeValue}
+        />
+      ),
+      order: <PayOrder productList={productList} shippingFee={shippingFee} />,
+      discount: <PayDiscount />,
+      info: <PayInfo />,
+      way: <PayWay />,
+      benefit: <PayBenefit />,
+    };
+
+    return <>{payTypeTable[type]}</>;
   }
 }
