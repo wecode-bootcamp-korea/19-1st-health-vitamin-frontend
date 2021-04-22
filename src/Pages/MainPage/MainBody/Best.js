@@ -7,6 +7,7 @@ class Best extends Component {
     super();
     this.state = { bestList: [] };
   }
+
   componentDidMount() {
     // fetch('http://localhost:8000/products/main-best')
     fetch('/data/MainData/Best.json')

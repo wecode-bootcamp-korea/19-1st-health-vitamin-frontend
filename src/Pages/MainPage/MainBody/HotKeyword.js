@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './HotKeyword.scss';
 
-const nameList = [
+const NAME_LIST = [
   '# 우리 아이 성장에 쑥쑥! 도움이 되는!',
   '# 수험생인 우리 아이, 집중력을 높이고 싶을 땐?',
   '# 탄력 있는 피부를 원해요! (비타민 a)',
@@ -13,7 +13,7 @@ export default class HotKeyword extends Component {
     super();
     this.state = {
       tagCategoryList: {},
-      curruntCategory: '',
+      currentCategory: '',
     };
   }
 
@@ -24,19 +24,19 @@ export default class HotKeyword extends Component {
       .then(data => {
         this.setState({
           tagCategoryList: data,
-          curruntCategory: Object.keys(data)[0],
+          currentCategory: Object.keys(data)[0],
         });
       });
   }
 
   categoryClickHandler = category => {
     this.setState({
-      curruntCategory: category,
+      currentCategory: category,
     });
   };
 
   render() {
-    const { tagCategoryList, curruntCategory } = this.state;
+    const { tagCategoryList, currentCategory } = this.state;
 
     return (
       <div className="hotKeyword">
@@ -52,10 +52,10 @@ export default class HotKeyword extends Component {
                     className="category"
                     onClick={() => this.categoryClickHandler(category)}
                   >
-                    {category === curruntCategory ? (
-                      <span className="liContent">{nameList[i]}</span>
+                    {category === currentCategory ? (
+                      <span className="liContent">{NAME_LIST[i]}</span>
                     ) : (
-                      <span className="liContent select">{nameList[i]}</span>
+                      <span className="liContent select">{NAME_LIST[i]}</span>
                     )}
                   </li>
                 );
@@ -63,8 +63,8 @@ export default class HotKeyword extends Component {
             </ul>
           </div>
           <div className="productList">
-            {tagCategoryList[curruntCategory] &&
-              tagCategoryList[curruntCategory].map(product => {
+            {tagCategoryList[currentCategory] &&
+              tagCategoryList[currentCategory].map(product => {
                 const { image, name, price, product_id, discount } = product;
                 return (
                   <div key={product_id} className="product">

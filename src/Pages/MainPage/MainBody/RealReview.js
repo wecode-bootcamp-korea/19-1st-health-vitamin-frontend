@@ -48,6 +48,7 @@ export default class RealReview extends Component {
               user_review,
               user_review_image,
             } = review;
+
             return (
               <div key={review_id} className="review">
                 {user_review_image ? (
