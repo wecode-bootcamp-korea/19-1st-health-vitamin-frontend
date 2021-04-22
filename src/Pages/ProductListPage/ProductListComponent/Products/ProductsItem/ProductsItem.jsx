@@ -5,16 +5,16 @@ import './ProductsItem.scss';
 class ProductsItem extends Component {
   // noDiscount = () => {};
   render() {
-    const { id, image, name, price, discount } = this.props.product;
+    const { image, name, price, discount } = this.props.product;
     return (
       <div className="product_item">
-        <a href="#">
+        <a href="/">
           <img className="item_img" src={image} alt="vitamin" />
         </a>
-        <a href="#">
+        <a href="/">
           <div className="item_title info">{name}</div>
         </a>
-        <a href="#">
+        <a href="/">
           <div className="info_icon">
             <i class="fab fa-elementor"></i>
             <i class="fas fa-search"></i>

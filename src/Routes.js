@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import SignUp from './Pages/AccountPage/SignUp';
 import Login from './Pages/AccountPage/Login';
+import FavoriteProduct from './Pages/FavoriteProduct/FavoriteProduct';
 import ProductDetail from './Pages/ProductInfoPage/ProductDetail';
-
+import Pay from './Pages/PayPage/Pay';
 import ProductInfoHeader from './Pages/ProductInfoPage/ProductInfoHeader';
 import ProductList from './Pages/ProductListPage/ProductList';
+import Main from './Pages/MainPage/Main';
 // import RecommendList from './Pages/ProductListPage/Recommend/Recommend';
 // import VitaminList from './Pages/ProductListPage/Vitamin/Vitamin';
 
@@ -15,9 +17,12 @@ export default class Routes extends Component {
       <Router>
         {window.location.pathname !== '/' && <ProductInfoHeader />}
         <Switch>
+          <Route exact path="/" component={Main} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={SignUp} />
+          <Route exact path="/favoriteproduct" component={FavoriteProduct} />
           <Route exact path="/product-list" component={ProductList} />
+          <Route exact path="/pay" component={Pay} />
           <Route exact path="/productInfo" component={ProductDetail} />
 
           {/* <Route exact path="/product/list/recommend" component={RecommendList} />

@@ -198,7 +198,8 @@ export default class ProductDetail extends Component {
             })}
           </ol>
           <div className="expandImageBox">
-            <i className="fas fa-search"></i>&nbsp;
+            <i className="fas fa-search" />
+            &nbsp;
             <span className="expandImageSpan">확대보기</span>
           </div>
         </div>
