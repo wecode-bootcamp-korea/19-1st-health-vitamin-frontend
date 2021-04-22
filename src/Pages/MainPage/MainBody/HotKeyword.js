@@ -22,7 +22,6 @@ export default class HotKeyword extends Component {
     fetch('/data/MainData/Hashtag.json')
       .then(res => res.json())
       .then(data => {
-        console.log(data);
         this.setState({
           tagCategoryList: data,
           curruntCategory: Object.keys(data)[0],
@@ -38,7 +37,7 @@ export default class HotKeyword extends Component {
 
   render() {
     const { tagCategoryList, curruntCategory } = this.state;
-    console.log(tagCategoryList);
+
     return (
       <div className="hotKeyword">
         <div className="content">
@@ -53,14 +52,11 @@ export default class HotKeyword extends Component {
                     className="category"
                     onClick={() => this.categoryClickHandler(category)}
                   >
-                    <span
-                      className={
-                        'liContent ' +
-                        (category === curruntCategory && ' select')
-                      }
-                    >
-                      {nameList[i]}
-                    </span>
+                    {category === curruntCategory ? (
+                      <span className="liContent">{nameList[i]}</span>
+                    ) : (
+                      <span className="liContent select">{nameList[i]}</span>
+                    )}
                   </li>
                 );
               })}

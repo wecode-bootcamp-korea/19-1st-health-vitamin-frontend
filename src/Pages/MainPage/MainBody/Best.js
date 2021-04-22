@@ -17,14 +17,18 @@ class Best extends Component {
         });
       });
   }
+
   makeTotalPrice = (price, discount) => {
     return (price - (price * discount) / 100).toLocaleString();
   };
+
   goDetailPage = id => {
     this.props.history.push(`/productInfo/${id}`);
   };
+
   render() {
     const { bestList } = this.state;
+
     return (
       <div className="best">
         <div className="header">
