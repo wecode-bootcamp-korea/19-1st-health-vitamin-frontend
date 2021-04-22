@@ -1,8 +1,43 @@
 import React, { Component } from 'react';
 import './HotKeyword.scss';
 
+const NAME_LIST = [
+  '# 우리 아이 성장에 쑥쑥! 도움이 되는!',
+  '# 수험생인 우리 아이, 집중력을 높이고 싶을 땐?',
+  '# 탄력 있는 피부를 원해요! (비타민 a)',
+  '# 눈이 침침해졌다고 느낄 땐?(비타민 c)',
+];
+
 export default class HotKeyword extends Component {
+  constructor() {
+    super();
+    this.state = {
+      tagCategoryList: {},
+      currentCategory: '',
+    };
+  }
+
+  componentDidMount() {
+    // fetch('localhost:8000/products/main-hashtag')
+    fetch('/data/MainData/Hashtag.json')
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          tagCategoryList: data,
+          currentCategory: Object.keys(data)[0],
+        });
+      });
+  }
+
+  categoryClickHandler = category => {
+    this.setState({
+      currentCategory: category,
+    });
+  };
+
   render() {
+    const { tagCategoryList, currentCategory } = this.state;
+
     return (
       <div className="hotKeyword">
         <div className="content">
@@ -10,69 +45,44 @@ export default class HotKeyword extends Component {
             <h2 className="title">라인별 HOT 키워드</h2>
             <p className="desc">향기 맛집 더프트앤도프트.</p>
             <ul className="categoryList">
-              <li className="category">
-                <span className="liContent"># 꿈꿔왔던 향기 보습</span>
-              </li>
-              <li className="category">
-                <span className="liContent"># 온몸을 감싸는 다양한 향기</span>
-              </li>
-              <li className="category">
-                <span className="liContent"># 순하고 향기로운</span>
-              </li>
-              <li className="category">
-                <span className="liContent"># 향기 스타일링</span>{' '}
-              </li>
-              <li className="category">
-                <span className="liContent"># 선물세트</span>{' '}
-              </li>
+              {Object.keys(tagCategoryList).map((category, i) => {
+                return (
+                  <li
+                    key={category}
+                    className="category"
+                    onClick={() => this.categoryClickHandler(category)}
+                  >
+                    {category === currentCategory ? (
+                      <span className="liContent">{NAME_LIST[i]}</span>
+                    ) : (
+                      <span className="liContent select">{NAME_LIST[i]}</span>
+                    )}
+                  </li>
+                );
+              })}
             </ul>
           </div>
           <div className="productList">
-            <div className="product">
-              <img
-                className="productImage"
-                src="//duftndoft.com/web/product/medium/202104/22ba66e491e3b7d17887529aa11a4e49.jpg"
-                alt="product"
-              />
-              <p className="name">
-                포밍 핸드워시+리필2개(선택) <i className="fas fa-search"></i>
-              </p>
-              <p className="price">10,900원</p>
-              <p className="result">
-                <span className="applyPrice">7,900원</span>
-                <span className="discount">(28%)할인</span>
-              </p>
-            </div>
-            <div className="product">
-              <img
-                className="productImage"
-                src="//duftndoft.com/web/product/medium/202104/22ba66e491e3b7d17887529aa11a4e49.jpg"
-                alt="product"
-              />
-              <p className="name">
-                포밍 핸드워시+리필2개(선택) <i className="fas fa-search"></i>
-              </p>
-              <p className="price">10,900원</p>
-              <p className="result">
-                <span className="applyPrice">7,900원</span>
-                <span className="discount">(28%)할인</span>
-              </p>
-            </div>
-            <div className="product">
-              <img
-                className="productImage"
-                src="//duftndoft.com/web/product/medium/202104/22ba66e491e3b7d17887529aa11a4e49.jpg"
-                alt="product"
-              />
-              <p className="name">
-                포밍 핸드워시+리필2개(선택) <i className="fas fa-search"></i>
-              </p>
-              <p className="price">10,900원</p>
-              <p className="result">
-                <span className="applyPrice">7,900원</span>
-                <span className="discount">(28%)할인</span>
-              </p>
-            </div>
+            {tagCategoryList[currentCategory] &&
+              tagCategoryList[currentCategory].map(product => {
+                const { image, name, price, product_id, discount } = product;
+                return (
+                  <div key={product_id} className="product">
+                    <img className="productImage" src={image} alt="product" />
+                    <p className="name">
+                      {name}
+                      <i className="fas fa-search" />
+                    </p>
+                    <p className="price">{price.toLocaleString()}원</p>
+                    <p className="result">
+                      <span className="applyPrice">
+                        {(price - (price * discount) / 100).toLocaleString()}원
+                      </span>
+                      <span className="discount">({discount}%)할인</span>
+                    </p>
+                  </div>
+                );
+              })}
           </div>
         </div>
       </div>
