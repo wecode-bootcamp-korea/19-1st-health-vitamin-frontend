@@ -49,7 +49,7 @@ class Pay extends Component {
   };
 
   payBtnClick = () => {
-    const { name, address, phone_number, email } = this.state;
+    const { name, address, phone_number, email, message } = this.state;
 
     console.log({
       shipping_information: {
@@ -57,7 +57,7 @@ class Pay extends Component {
         address,
         phone_number,
         email,
-        message: '배송 전 미리 연락 바랍니다.',
+        message,
       },
       total: this.makeTotal(),
     });
@@ -72,7 +72,7 @@ class Pay extends Component {
     //       address,
     //       phone_number,
     //       email,
-    //       message: '배송 전 미리 연락 바랍니다.',
+    //       message,
     //     },
     //     total: this.makeTotal(),
     //   }),
@@ -91,6 +91,7 @@ class Pay extends Component {
       subAddress,
       phone_number,
       email,
+      message,
     } = this.state;
     return (
       <div className="pay">
@@ -115,6 +116,7 @@ class Pay extends Component {
               subAddress={subAddress}
               phone_number={phone_number}
               email={email}
+              message={message}
               changeValue={this.changeValue}
             />
           );

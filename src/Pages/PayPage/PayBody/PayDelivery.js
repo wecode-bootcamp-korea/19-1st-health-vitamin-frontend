@@ -25,7 +25,7 @@ export default class PayDelivery extends Component {
 
   onChangeHandler = async e => {
     const { id, value } = e.target;
-    if (id === 'name') {
+    if (id === 'name' || id === 'message') {
       this.props.changeValue(id, value);
       return;
     }
@@ -235,14 +235,28 @@ export default class PayDelivery extends Component {
           </div>
 
           <div className="SelectMessage">
-            <select name="message" className="message">
-              <option value="0">-- 메시지 선택 (선택사항) --</option>
-              <option value="1">배송 전에 미리 연락바랍니다.</option>
-              <option value="2">부재 시 경비실에 맡겨주세요.</option>
-              <option value="3">부재 시 문 앞에 놓아주세요.</option>
-              <option value="4">빠른 배송 부탁드립니다.</option>
-              <option value="5">택배함에 보관해 주세요.</option>
-              <option value="self">직접 입력</option>
+            <select
+              name="message"
+              id="message"
+              className="message"
+              onChange={this.onChangeHandler}
+            >
+              <option value="선택 안함">-- 메시지 선택 (선택사항) --</option>
+              <option value="배송 전에 미리 연락바랍니다.">
+                배송 전에 미리 연락바랍니다.
+              </option>
+              <option value="부재 시 경비실에 맡겨주세요.">
+                부재 시 경비실에 맡겨주세요.
+              </option>
+              <option value="부재 시 문 앞에 놓아주세요.">
+                부재 시 문 앞에 놓아주세요.
+              </option>
+              <option value="빠른 배송 부탁드립니다.">
+                빠른 배송 부탁드립니다.
+              </option>
+              <option value="택배함에 보관해 주세요.">
+                택배함에 보관해 주세요.
+              </option>
             </select>
           </div>
 

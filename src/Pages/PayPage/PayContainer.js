@@ -24,6 +24,7 @@ export default class PayContainer extends Component {
       subAddress,
       phone_number,
       email,
+      message,
       changeValue,
     } = this.props;
     return (
@@ -43,6 +44,7 @@ export default class PayContainer extends Component {
             subAddress={subAddress}
             phone_number={phone_number}
             email={email}
+            message={message}
             changeValue={changeValue}
           />
         )}
