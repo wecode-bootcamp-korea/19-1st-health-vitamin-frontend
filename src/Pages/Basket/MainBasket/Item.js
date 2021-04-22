@@ -16,16 +16,6 @@ class Item extends Component {
     this.props.deleteBasketItem(this.props.id);
   };
 
-  // calculate = (prDiscount, prPrice, prCount) => {
-  //   if (prDiscount !== 0) {
-  //     const sales = (prPrice - prPrice * 0.01 * prDiscount) * prCount;
-  //     return sales;
-  //   } else {
-  //     const noSales = prPrice * prCount;
-  //     return noSales;
-  //   }
-  // };
-
   render() {
     const { prImg, prTitle, prPrice, prDiscount, prCount } = this.props;
 

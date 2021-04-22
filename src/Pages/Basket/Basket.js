@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import MainBasket from './MainBasket/MainBasket';
 import './Basket.scss';
 
@@ -30,7 +31,6 @@ class Basket extends Component {
         count: order.count,
       };
     });
-    console.log(products);
 
     fetch('http://10.5.30.109:8000/products/basket', {
       method: 'POST',
@@ -41,7 +41,6 @@ class Basket extends Component {
       .then(res => res.json())
       .then(data => {
         // { MESSAGE: SUCCESS }
-        console.log(data);
       });
     this.props.history.push('/');
   };
@@ -51,7 +50,6 @@ class Basket extends Component {
     let { orderList } = this.state;
     this.setState({
       orderList: orderList.filter(order => {
-        console.log('order');
         if (order.id === cool) {
           return;
         }
@@ -108,8 +106,6 @@ class Basket extends Component {
     }
   }
 
-  //⭐️  map, reduce, filter 샌드위치 햄버거
-
   render() {
     const { orderList } = this.state;
     return (
@@ -117,12 +113,6 @@ class Basket extends Component {
         <div className="basket_page">
           <div className="title">장바구니</div>
           <div className="basket">
-            {/* <div className="area">
-              <div className="where domastic">
-                국내배송상품 ({orderList.length})
-              </div>
-              <div className="where abroad">해외배송상품 (0)</div>
-            </div> */}
             <MainBasket
               total={this.state.total}
               discount={this.state.discount}
@@ -150,4 +140,4 @@ class Basket extends Component {
   }
 }
 
-export default Basket;
+export default withRouter(Basket);

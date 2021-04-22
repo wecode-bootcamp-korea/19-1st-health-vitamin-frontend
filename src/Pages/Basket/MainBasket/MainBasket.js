@@ -3,63 +3,17 @@ import Item from './Item';
 import './MainBasket.scss';
 
 class MainBasket extends Component {
-  // constructor() {
-  //   super();
-  //   this.state = {
-  //     allCheck: false,
-  //   };
-  // }
-
-  // switchCheckBtn = () => {
-  //   let { allCheck } = this.state;
-  //   this.setState({
-  //     // itemCheck: allCheck ? false : true,
-  //     itemCheck: !allCheck,
-  //   });
-  // };
-
-  // prPrice={item.price}
-  // prDiscount={item.discount}
-  // prCount={item.count}
-
-  //여기다 계산할거다.
-
-  // 1. 상품 구매 금액
-  Purchase = orderList => {
-    const result = orderList.price * orderList.count;
-    return result;
-  };
-
-  // 2. 상품 할인 금액
-  Discount = (prPrice, prCount, prDiscount) => {};
-
-  // 3. 배송비
-  Delivery = (prPrice, prCount, prDiscount) => {};
-
-  // 4. 합계
-  PurchaseResult = () => {};
-
   render() {
     const { orderList, total, discount, delivery } = this.props;
-    console.log('orderList');
-    console.log(orderList);
-    console.log(orderList.prCount);
 
     return (
       <main className="main_basket">
         <div className="products_basket">
-          {/* 표 시작 */}
           <div className="basket_top">일반상품 ({orderList.length})</div>
           <div className="check">
             <div className="check_info">
-              {/* Info 카테고리  */}
               <div className="info_list">
-                <input
-                  // onClick={this.}
-                  // checked={this.}
-                  className="bk_check check_list"
-                  type="checkbox"
-                />
+                <input className="bk_check check_list" type="checkbox" />
                 <div className="bk_img check_list">이미지</div>
                 <div className="bk_pdInfo check_list">상품정보</div>
                 <div className="bk_price check_list">판매가</div>
@@ -70,7 +24,7 @@ class MainBasket extends Component {
                 <div className="bk_sum check_list">합계</div>
                 <div className="bk_choose check_list">선택</div>
               </div>
-              {/* 여러 개의 물건들 */}
+
               <ul className="basket_items">
                 {orderList.map(item => {
                   return (
@@ -100,7 +54,7 @@ class MainBasket extends Component {
                     {(total + delivery - discount).toLocaleString('en-US')} 원
                   </div>
                 </div>
-                {/* 선택 상품을 btns */}
+
                 <div className="move_item">
                   <div className="move">
                     선택상품을{'  '}

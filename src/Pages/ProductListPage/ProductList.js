@@ -13,16 +13,9 @@ class ProductList extends Component {
     };
   }
   componentDidMount() {
-    // ⭐️ Back 통신 (삭제 X)
-    // fetch('http://10.167.105.46:8000/products/9')
-    // fetch('/data/ProductList/productList.json')
     fetch('/data/Category/category.json')
       .then(res => res.json())
       .then(data => {
-        // ⭐️ Back 통신 (삭제 X)
-        // console.log(data);
-        // this.setState({ ProductList: data.product });
-        // this.setState({ ProductList: data });
         this.setState({
           categoryList: data,
         });
@@ -30,9 +23,6 @@ class ProductList extends Component {
     fetch('/data/ProductList/productList.json')
       .then(res => res.json())
       .then(data => {
-        // ⭐️ Back 통신 (삭제 X)
-        // console.log(data);
-        // this.setState({ ProductList: data.product });
         this.setState({ ProductList: data });
         // this.setState({
         //   categoryList: data,
