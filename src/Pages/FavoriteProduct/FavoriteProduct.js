@@ -87,7 +87,6 @@ class FavoriteProduct extends Component {
                 </ul>
 
                 {this.state.favoritList.map(favorite => {
-                  console.log(favorite);
                   return (
                     <ul>
                       <li className="menuItem">
