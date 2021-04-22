@@ -10,6 +10,12 @@ export default class PayDelivery extends Component {
     };
   }
 
+  componentDidMount() {
+    fetch('http://localhost:8000/orders')
+      .then(res => res.json())
+      .then(data => {});
+  }
+
   changeCurrentDisplay = id => {
     this.setState({
       currentId: id,

@@ -8,6 +8,12 @@ import PayBenefit from './PayBody/PayBenefit';
 import './PayBody.scss';
 
 export default class PayBody extends Component {
+  componentDidMount() {
+    // fetch('http://localhost:8000/orders')
+    fetch('/data/Pay/PayData.json')
+      .then(res => res.json())
+      .then(data => {});
+  }
   render() {
     return (
       <>
