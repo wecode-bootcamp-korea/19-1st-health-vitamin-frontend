@@ -63,7 +63,7 @@ class MainBasket extends Component {
                     </button>
                     <button>해외배송상품 장바구니로 이동</button>
                   </div>
-                  <div className="empty">
+                  <div>
                     <button onClick={this.props.deleteAllOrder}>
                       장바구니비우기
                     </button>

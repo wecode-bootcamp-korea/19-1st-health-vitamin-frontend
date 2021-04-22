@@ -2,39 +2,38 @@ import React, { Component } from 'react';
 import Title from './ProductListComponent/Title/Title';
 import Products from './ProductListComponent/Products/Products';
 import './ProductList.scss';
-import { clearConfigCache } from 'prettier';
+import { isTruthyObj } from '../../utils/function';
 
 class ProductList extends Component {
   constructor() {
     super();
     this.state = {
       ProductList: [],
-      categoryList: [],
+      categoryData: {},
     };
   }
+
   componentDidMount() {
     fetch('/data/Category/category.json')
       .then(res => res.json())
       .then(data => {
         this.setState({
-          categoryList: data,
+          categoryData: data[0],
         });
       });
     fetch('/data/ProductList/productList.json')
       .then(res => res.json())
       .then(data => {
         this.setState({ ProductList: data });
-        // this.setState({
-        //   categoryList: data,
-        // });
       });
   }
+
   render() {
-    const { ProductList, categoryList } = this.state;
-    console.log(categoryList);
+    const { ProductList, categoryData } = this.state;
+
     return (
       <div className="productList">
-        {categoryList[0] && <Title categoryList={categoryList[0]} />}
+        {isTruthyObj(categoryData) && <Title categoryData={categoryData} />}
         <Products prList={ProductList} />
         <footer></footer>
       </div>

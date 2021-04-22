@@ -4,13 +4,13 @@ import './Title.scss';
 
 class Title extends Component {
   render() {
-    console.log(this.props.categoryList);
-    const { categoryList } = this.props;
+    const { categoryData } = this.props;
+
     return (
       <header className="title">
-        <div className="category_title">{categoryList.main_category_name}</div>
+        <div className="category_title">{categoryData.main_category_name}</div>
         <ul className="category_sub">
-          {categoryList.main_category_list.map(cate => {
+          {categoryData.main_category_list.map(cate => {
             return (
               <SubTitle
                 key={cate.category_id}
@@ -18,22 +18,6 @@ class Title extends Component {
               />
             );
           })}
-
-          {/* <li className="sub_title">
-            비타민A <span>(10)</span>
-          </li>
-
-          <li className="sub_title">
-            비타민C <span>(10)</span>
-          </li>
-
-          <li className="sub_title">
-            비타민D <span>(10)</span>
-          </li>
-
-          <li className="sub_title">
-            비타민E <span>(10)</span>
-          </li> */}
         </ul>
       </header>
     );

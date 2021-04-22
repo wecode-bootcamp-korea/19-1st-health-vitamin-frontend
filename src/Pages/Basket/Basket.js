@@ -3,6 +3,8 @@ import { withRouter } from 'react-router-dom';
 import MainBasket from './MainBasket/MainBasket';
 import './Basket.scss';
 
+const delivery = 2500;
+
 class Basket extends Component {
   constructor() {
     super();
@@ -35,7 +37,7 @@ class Basket extends Component {
     fetch('http://10.5.30.109:8000/products/basket', {
       method: 'POST',
       body: {
-        products: products,
+        products,
       },
     })
       .then(res => res.json())
@@ -49,37 +51,30 @@ class Basket extends Component {
     // cool 이란 어떤 객체인지 구분해 주는 특정 데이터이다. ex) id
     let { orderList } = this.state;
     this.setState({
-      orderList: orderList.filter(order => {
-        if (order.id === cool) {
-          return;
-        }
-        return order;
+      orderList: orderList.filter(({ id }) => {
+        return id !== cool;
       }),
     });
   };
 
   deleteAllOrder = e => {
-    e.preventDefault();
     const { orderList } = this.state;
     this.setState({
-      orderList: orderList.filter(item => {}),
+      orderList: [],
     });
   };
 
-  changeCount = (id, count) => {
+  changeCount = (itemId, count) => {
     if (!count) return;
 
     const { orderList } = this.state;
 
-    const newOrderList = orderList.filter(order => {
-      if (order.id === id) {
-        order.count = count;
-      }
-      return order;
-    });
-
     this.setState({
-      orderList: newOrderList,
+      orderList: orderList.map(order => {
+        if (order.id !== itemId) return order;
+        return { ...order, count };
+        // return { ...order, count : count };
+      }),
     });
   };
 

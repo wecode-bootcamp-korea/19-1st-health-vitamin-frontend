@@ -10,8 +10,6 @@ class Item extends Component {
     this.props.changeCount(this.props.id, this.props.prCount - 1);
   };
 
-  countOnChange = () => {};
-
   deleteItem = () => {
     this.props.deleteBasketItem(this.props.id);
   };
@@ -30,14 +28,8 @@ class Item extends Component {
         <img className="bk_img item_img" src={prImg} alt="히히힣" />
         <div className="bk_pdInfo">{prTitle}</div>
         <div>
-          <div
-            className={
-              prDiscount === 0
-                ? 'info item_price_noDiscount bk_price'
-                : 'info item_price bk_price'
-            }
-          >
-            {prPrice.toLocaleString('en-US')}원
+          <div className={`info bk_price ${prDiscount ? 'item_price' : ''}`}>
+            {prPrice.toLocaleString()}원
           </div>
           <div>
             {prDiscount !== 0 && (
@@ -47,7 +39,7 @@ class Item extends Component {
         </div>
 
         <div className="bk_count item_count">
-          <input type="number" value={prCount} onChange={this.countOnChange} />
+          <input type="number" value={prCount} />
           <div className="count_box">
             <i onClick={this.upClick} className="fas fa-sort-up"></i>
             <i onClick={this.downClick} className="fas fa-sort-down"></i>
@@ -60,7 +52,7 @@ class Item extends Component {
           {(prDiscount !== 0
             ? (prPrice - prPrice * 0.01 * prDiscount) * prCount
             : prPrice * prCount
-          ).toLocaleString('en-US')}
+          ).toLocaleString()}
           원
         </div>
         <div className="bk_choose">

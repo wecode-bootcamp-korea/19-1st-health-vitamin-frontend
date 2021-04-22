@@ -2,20 +2,19 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
   .basket_page {
     display: flex;
     flex-direction: column;
     align-items: center;
-    // width: 800px;
-
     margin: 200px 0;
+
     .title {
       font-size: 38px;
     }
 
     .basket {
-      margin: 100px; // 👈
-      // background-color: rgba(146, 240, 240, 0.345);
+      margin: 100px;
 
       .area {
         display: flex;
@@ -23,24 +22,24 @@
         width: auto;
         margin-bottom: 50px;
         background-color: #dbd9d9;
-        .where {
-        }
       }
       .main_basket {
         .products_basket {
           margin-bottom: 50px;
+
           .basket_top {
             background-color: #dbd9d9;
             height: 50px;
-
             padding-top: 17px;
             padding-left: 8px;
             font-size: 20px;
           }
+
           .check {
             .check_info {
               text-align: center;
               align-items: center;
+
               .info_list {
                 display: flex;
                 height: 40px;
@@ -48,7 +47,6 @@
                 .check_list {
                   text-align: center;
                   padding-top: 12px;
-                  // border: 1px solid rgb(25, 155, 51);
                 }
                 .bk_check {
                   width: 30px;
@@ -65,7 +63,6 @@
                 .bk_count {
                   width: 80px;
                 }
-
                 .bk_plus {
                   width: 100px;
                 }
@@ -84,13 +81,12 @@
               }
 
               .basket_items {
-                // Item components
                 .item {
                   display: flex;
-                  height: 130px;
                   align-items: center;
-
+                  height: 130px;
                   border-bottom: 1px solid rgb(226, 224, 224);
+
                   .item_img {
                     width: 70px;
                     height: 70px;
@@ -111,9 +107,7 @@
                   .item_price {
                     text-decoration: line-through;
                   }
-                  .item_price_noDiscount {
-                    text-decoration: none;
-                  }
+
                   .bk_count {
                     display: flex;
                     width: 80px;
@@ -125,7 +119,6 @@
                     .count_box {
                       display: flex;
                       flex-direction: column;
-
                       .fa-sort-up,
                       .fa-sort-down {
                         background-color: white;
@@ -138,6 +131,7 @@
                       }
                     }
                   }
+
                   .bk_plus {
                     width: 100px;
                   }
@@ -155,6 +149,7 @@
                     flex-direction: column;
                     align-items: center;
                     width: 100px;
+
                     button {
                       width: 85px;
                       height: 30px;
@@ -171,52 +166,45 @@
                   }
                 }
               }
+
               .calculator {
                 .delivery_box {
                   display: flex;
                   justify-content: space-between;
-
                   padding: 20px 10px;
                   border-bottom: 1px solid rgb(226, 224, 224);
                   background-color: rgb(223, 223, 223);
                 }
+
                 .move_item {
                   display: flex;
                   justify-content: space-between;
                   margin-top: 20px;
-                  .move {
-                    button {
-                      margin: 2px;
-                      height: 30px;
-                      background: none;
-                      border: 1px solid gray;
-                      border-radius: 3px;
-                      &:first-child {
-                        width: 80px;
-                        background-color: #777777;
-                        color: white;
-                      }
-                    }
+
+                  button {
+                    margin: 2px;
+                    height: 30px;
+                    background: none;
+                    border: 1px solid gray;
+                    border-radius: 3px;
                   }
-                  .empty {
-                    button {
-                      margin: 2px;
-                      height: 30px;
-                      background: none;
-                      border: 1px solid gray;
-                      border-radius: 3px;
-                    }
+
+                  .move button:first-child {
+                    width: 80px;
+                    background-color: #777777;
+                    color: white;
                   }
                 }
               }
             }
           }
         }
-        // 2번째 박스
+
         .products_sum {
           margin-bottom: 20px;
           border-top: 1px solid black;
           border-bottom: 1px solid black;
+
           .sum_categori {
             display: flex;
             height: 60px;
@@ -227,6 +215,7 @@
             font-size: 15px;
             font-weight: 400;
             color: rgb(179, 174, 174);
+
             .sum_all {
               width: 210px;
             }
@@ -240,6 +229,7 @@
               width: 580px;
             }
           }
+
           .result {
             display: flex;
             height: 70px;
@@ -262,6 +252,7 @@
           }
         }
       }
+
       .btns {
         display: flex;
         justify-content: space-between;
@@ -276,15 +267,18 @@
 
         .order_btns {
           margin: auto;
+
           .order_all_btn {
             background-color: black;
             color: white;
           }
+
           .order_select_btn {
             background-color: gray;
             color: white;
           }
         }
+
         .keep_shopping {
           border: 1px solid rgb(216, 213, 213);
         }
