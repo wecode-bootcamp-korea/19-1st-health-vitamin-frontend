@@ -1,17 +1,17 @@
 @import '../../styles/common.scss';
 
 .productDetail {
-  max-width: 1400px;
-  min-width: 1220px;
-  margin: 100px auto 0;
+  display: flex;
+  justify-content: center;
 
   .imageBox {
     display: inline-block;
     padding-right: 60px;
 
     .productImage {
-      width: 540px;
-      height: 540px;
+      display: inline-block;
+      width: 534px;
+      margin-bottom: 20px;
       margin-left: auto;
       border: $imgBorder;
     }
@@ -20,6 +20,7 @@
       width: 540px;
       height: 77px;
       margin: 4px 0 0 auto;
+      margin-bottom: 20px;
     }
 
     .expandImageBox {

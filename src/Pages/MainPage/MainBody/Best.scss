@@ -24,10 +24,22 @@
     max-width: 1440px;
     margin: 0 auto;
     text-align: center;
-
     .product {
       display: inline-block;
-      margin-right: 20px;
+      margin-right: 50px;
+      margin-bottom: 40px;
+      padding: 10px;
+      box-shadow: $box-shadow;
+      cursor: pointer;
+      -webkit-transform: scale(1);
+      transform: scale(1);
+      -webkit-transition: 0.2s ease-in-out;
+      transition: 0.2s ease-in-out;
+
+      &:hover {
+        -webkit-transform: scale(1.02);
+        transform: scale(1.02);
+      }
 
       & > * {
         text-align: center;
@@ -37,8 +49,7 @@
       }
 
       .productImage {
-        width: 314px;
-        height: 314px;
+        width: 267px;
       }
 
       .price,

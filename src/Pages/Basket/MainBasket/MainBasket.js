@@ -5,7 +5,6 @@ import './MainBasket.scss';
 class MainBasket extends Component {
   render() {
     const { orderList, total, discount, delivery } = this.props;
-
     return (
       <main className="main_basket">
         <div className="products_basket">
@@ -26,22 +25,23 @@ class MainBasket extends Component {
               </div>
 
               <ul className="basket_items">
-                {orderList.map(item => {
-                  return (
-                    <Item
-                      switchCheckBtn={this.switchCheckBtn}
-                      deleteBasketItem={this.props.deleteBasketItem}
-                      changeCount={this.props.changeCount}
-                      key={item.id}
-                      id={item.id}
-                      prImg={item.image}
-                      prTitle={item.name}
-                      prPrice={item.price}
-                      prDiscount={item.discount}
-                      prCount={item.count}
-                    />
-                  );
-                })}
+                {orderList.length > 0 &&
+                  orderList.map(item => {
+                    return (
+                      <Item
+                        switchCheckBtn={this.switchCheckBtn}
+                        deleteBasketItem={this.props.deleteBasketItem}
+                        changeCount={this.props.changeCount}
+                        key={item.id}
+                        id={item.id}
+                        prImg={item.image}
+                        prTitle={item.name}
+                        prPrice={item.price}
+                        prDiscount={item.discount}
+                        prCount={item.count}
+                      />
+                    );
+                  })}
               </ul>
               {/* [기본배송] 합계 */}
               <div className="calculator">

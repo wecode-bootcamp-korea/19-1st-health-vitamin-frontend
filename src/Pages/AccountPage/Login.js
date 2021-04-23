@@ -35,7 +35,7 @@ class Login extends Component {
   };
 
   goToMain = () => {
-    fetch('http://10.167.105.109:8000/users/signin', {
+    fetch('http://18.116.64.187:8000/users/signin', {
       method: 'POST',
       body: JSON.stringify({
         email: this.state.userId,
@@ -44,7 +44,8 @@ class Login extends Component {
     })
       .then(res => res.json())
       .then(data => {
-        localStorage.setItem('token', JSON.stringify(data['token']));
+        console.log(data);
+        localStorage.setItem('token', JSON.stringify(data['ACCESS_TOKEN']));
         this.props.history.push('/');
       });
   };

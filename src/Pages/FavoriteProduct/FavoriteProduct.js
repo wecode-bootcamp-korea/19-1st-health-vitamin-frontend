@@ -15,7 +15,13 @@ class FavoriteProduct extends Component {
   }
 
   componentDidMount() {
-    fetch('/data/Favorite/Favorite.json')
+    fetch('/data/Favorite/Favorite.json', {
+      headers: {
+        Authorization: localStorage
+          .getItem('token')
+          .slice(1, localStorage.getItem('token').length - 1),
+      },
+    })
       .then(res => res.json())
       .then(data => {
         this.setState({

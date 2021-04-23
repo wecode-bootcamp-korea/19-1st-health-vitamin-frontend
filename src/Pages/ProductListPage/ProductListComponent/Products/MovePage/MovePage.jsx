@@ -18,7 +18,7 @@ class MovePage extends Component {
           </div>
         </div>
         <div className="page">1</div>
-        <div className="change right">
+        <div className="change pr-right">
           <div className="change-btn">
             <button>
               <i class="change-icon fas fa-angle-right"></i>

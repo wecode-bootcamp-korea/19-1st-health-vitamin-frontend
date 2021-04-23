@@ -9,7 +9,7 @@ class ProductsInfo extends Component {
           <span className="num">{this.props.prList.length}</span> ITEMS
         </div>
         <div className="product_filters">
-          <button>신상품</button>
+          <button>신상품</button>
           <button>상품명</button>
           <button>낮은 가격</button>
           <button>높은 가격</button>
