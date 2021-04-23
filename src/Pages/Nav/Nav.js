@@ -40,19 +40,16 @@ class Nav extends Component {
   }
 
   render() {
-    console.log(this.state.navHidden);
     return (
-      <div>
-        <div className="nav">
+      <div className="Navigation">
+        <div className={this.state.navHidden ? 'nav_hover' : 'nav'}>
           <div className="left">
             <div className="logo" onClick={this.goMain}>
               <img src="http://duftndoft.com/_images/ft_logo.png"></img>
             </div>
             <div className="menuBox">
               <button className="menuBtn" onClick={this.isNavHidden}>
-                <div className="menuLine"></div>
-                <div className="menuLine"></div>
-                <div className="menuLine"></div>
+                <i className="menuHamber fas fa-bars fa-3x"></i>
               </button>
               <div className="listMenu">
                 <Link to="/basket" className="goToBasket">
@@ -72,12 +69,11 @@ class Nav extends Component {
               <div className="menu">
                 <ul>
                   <li className="goToSomething">
-                    <Link to="http://localhost:3000" className="goLink">
+                    <Link to="/" className="goLink">
                       Main
                     </Link>
-
                     <Link
-                      // to="http://localhost:3000/product-list"
+                      to="/product-list"
                       className="goLink"
                       onClick={this.isDownClick}
                     >
@@ -91,14 +87,10 @@ class Nav extends Component {
                         </div>
                       )}
                     </Link>
-
-                    <Link to="http://localhost:3000/basket/" className="goLink">
+                    <Link to="/" className="goLink">
                       Cart
                     </Link>
-                    <Link
-                      to="http://localhost:3000/favoriteproduct"
-                      className="goLink"
-                    >
+                    <Link to="/favoriteproduct" className="goLink">
                       My_List
                     </Link>
                   </li>
