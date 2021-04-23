@@ -95,7 +95,6 @@ class Basket extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.orderList !== this.state.orderList) {
-      //계산
       let totalAmount = 0;
       let totalDiscount = 0;
       this.state.orderList.forEach(order => {

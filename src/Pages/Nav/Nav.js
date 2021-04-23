@@ -47,19 +47,16 @@ class Nav extends Component {
   };
 
   render() {
-    console.log(this.state.navHidden);
     return (
-      <div>
-        <div className="nav">
+      <div className="Navigation">
+        <div className={this.state.navHidden ? 'nav_hover' : 'nav'}>
           <div className="left">
             <div className="logo" onClick={this.goMain}>
               <img src="http://duftndoft.com/_images/ft_logo.png" alt="tet" />
             </div>
             <div className="menuBox">
               <button className="menuBtn" onClick={this.isNavHidden}>
-                <div className="menuLine"></div>
-                <div className="menuLine"></div>
-                <div className="menuLine"></div>
+                <i className="menuHamber fas fa-bars fa-3x"></i>
               </button>
               <div className="listMenu">
                 <Link to="/basket" className="goToBasket">
@@ -82,8 +79,11 @@ class Nav extends Component {
                     <Link to="/" className="goLink">
                       Main
                     </Link>
-
-                    <div className="goLink" onClick={this.isDownClick}>
+                    <Link
+                      to="/product-list"
+                      className="goLink"
+                      onClick={this.isDownClick}
+                    >
                       ProductList
                       {!this.state.downClick && (
                         <div className="aboutList">
@@ -103,9 +103,8 @@ class Nav extends Component {
                           <div className="smallList">Sale_Product</div>
                         </div>
                       )}
-                    </div>
-
-                    <Link to="/basket" className="goLink">
+                    </Link>
+                    <Link to="/" className="goLink">
                       Cart
                     </Link>
                     <Link to="/favoriteproduct" className="goLink">
