@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import ProductSub from './ProductSub';
 import ProductCountBox from './ProductCountBox';
 import ProductTotalBox from './ProductTotalBox';
@@ -24,7 +25,7 @@ const BUTTONS = [
   },
 ];
 
-export default class ProductDetail extends Component {
+class ProductDetail extends Component {
   constructor() {
     super();
 
@@ -50,9 +51,23 @@ export default class ProductDetail extends Component {
     this.fetchProductDetailItem();
   }
 
+  goToOtherPage = id => {
+    console.log(id);
+    if (id === 1) {
+      this.props.history.push('/pay');
+    }
+    if (id === 2) {
+      this.props.history.push('/basket');
+    }
+    if (id === 3) {
+      this.props.history.push('/favoriteproduct');
+    }
+  };
+
   fetchProductDetailItem = () => {
-    // fetch('http://10.167.105.102:8000/products/detail/2')
-    fetch('/data/ProductInfoData/testDetail.json')
+    fetch(
+      `http://18.116.64.187:8000/products/detail/${this.props.match.params.id}`
+    )
       .then(res => res.json())
       .then(data => {
         const {
@@ -253,7 +268,11 @@ export default class ProductDetail extends Component {
           <div className="productInfoButtonBox">
             {BUTTONS.map(el => {
               return (
-                <button key={el.id} className={el.className}>
+                <button
+                  key={el.id}
+                  className={el.className}
+                  onClick={() => this.goToOtherPage(el.id)}
+                >
                   {el.name}
                 </button>
               );
@@ -264,3 +283,4 @@ export default class ProductDetail extends Component {
     );
   }
 }
+export default withRouter(ProductDetail);

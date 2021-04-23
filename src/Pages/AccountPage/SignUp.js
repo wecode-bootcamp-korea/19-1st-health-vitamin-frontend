@@ -19,25 +19,31 @@ class SignUp extends Component {
   }
 
   signUp = () => {
-    fetch('http://10.167.105.109:8000/users/signup', {
-      method: 'POST',
-      body: JSON.stringify({
-        division: true,
-        account: this.state.id,
-        email: this.state.email,
-        name: this.state.name,
-        password: this.state.pw,
-        phone_number: this.state.phone,
-        gender: this.state.gender,
-        date_of_birth: this.state.birth,
-      }),
-    })
-      .then(res => res.json())
-      .then(data => {});
+    console.log('sign');
+    console.log(this.state);
+    // fetch('http://10.167.105.109:8000/users/signup', {
+    //   method: 'POST',
+    //   body: JSON.stringify({
+    //     division: true,
+    //     account: this.state.id,
+    //     email: this.state.email,
+    //     name: this.state.name,
+    //     password: this.state.pw,
+    //     phone_number: this.state.phone,
+    //     gender: this.state.gender,
+    //     date_of_birth: this.state.birth,
+    //   }),
+    // })
+    //   .then(res => res.json())
+    //   .then(data => {});
   };
 
-  handleColor = () => {
-    this.signUp(this.state.id, this.state.pw);
+  change = e => {
+    const { name, value } = e.target;
+
+    this.setState({
+      [name]: value,
+    });
   };
 
   idChange = e => {
@@ -138,8 +144,9 @@ class SignUp extends Component {
                     <td className="naming">
                       <input
                         className="nameBox"
-                        name="information"
+                        name="name"
                         type="text"
+                        onChange={this.change}
                       />
                     </td>
                   </tr>
@@ -155,7 +162,12 @@ class SignUp extends Component {
                       <div className="callingBox">
                         <td className="calling">
                           <div className="submit">
-                            <input className="phone" type="tel" name="phone" />
+                            <input
+                              className="phone"
+                              type="tel"
+                              name="phone"
+                              onChange={this.change}
+                            />
                           </div>
                         </td>
                       </div>
@@ -175,7 +187,8 @@ class SignUp extends Component {
                           <input
                             className="email"
                             type="email"
-                            name="userEmail"
+                            name="email"
+                            onChange={this.change}
                           />
                         </div>
                       </td>
@@ -216,13 +229,18 @@ class SignUp extends Component {
                   </div>
                 </div>
                 <td className="dailyMonth">
-                  <input className="daily" type="date" />
+                  <input
+                    className="daily"
+                    type="date"
+                    name="birth"
+                    onChange={this.change}
+                  />
                 </td>
               </tr>
             </table>
           </div>
           <div className="endSignup">
-            <button className="memberBt" onClick={this.handleColor}>
+            <button className="memberBt" onClick={this.signUp}>
               <h4 style={{ color: this.state.color }}>회원가입</h4>
             </button>
           </div>

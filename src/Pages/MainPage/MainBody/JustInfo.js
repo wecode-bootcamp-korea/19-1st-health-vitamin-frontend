@@ -25,7 +25,7 @@ export default class JustInfo extends Component {
         <p className="viewMore">VIEW MORE</p>
         <img
           className="productImage"
-          src="//duftndoft.com/web/product/medium/202103/9655f27038725ecf16a260a7965532d4.jpg"
+          src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/cc6c9b8a-1107-44a0-912d-fea07d86213f/shutterstock_1888491445.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210422%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210422T124419Z&X-Amz-Expires=86400&X-Amz-Signature=3eb43781a613c6b1322cfdb812cbe2fcf5df2cc0f68f061321c5f4882a6718da&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22shutterstock_1888491445.jpg%22"
           alt="product"
         />
       </div>

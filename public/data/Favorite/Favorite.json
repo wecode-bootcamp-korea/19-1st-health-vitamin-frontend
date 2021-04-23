@@ -1,26 +1,48 @@
-[
-  {
-    "id": 1,
-    "imageUrl": "//duftndoft.com/web/product/medium/202104/fe4f11b5d7b4c8bb2c34d4c6ee717d45.jpg",
-    "name": "베스트 핸드크림 3종 틴케이스",
-    "price": 17400,
-    "discount": 30,
-    "delivery": "기본배송"
-  },
-  {
-    "id": 4,
-    "imageUrl": "//duftndoft.com/web/product/medium/202102/8ecc264b12dd724b71ee0d3d2708daad.jpg",
-    "name": "리싱 핸드크림 50ml(8종 택1)",
-    "price": 9800,
-    "discount": 20,
-    "delivery": "기본배송"
-  },
-  {
-    "id": 10,
-    "imageUrl": "//duftndoft.com/web/product/medium/202103/9a2e6bd5f9808d53f711237c400a0a22.jpg",
-    "name": "바디스프레이",
-    "price": 121800,
-    "discount": 20,
-    "delivery": "기본배송"
-  }
-]
+{
+  "category": [
+    {
+      "main_category_id": 1,
+      "main_category_list": [
+        {
+          "category_id": 1,
+          "category_name": "비타민 A"
+        },
+        {
+          "category_id": 2,
+          "category_name": "비타민 B"
+        },
+        {
+          "category_id": 3,
+          "category_name": "비타민 C"
+        },
+        {
+          "category_id": 4,
+          "category_name": "비타민 D"
+        }
+      ],
+      "main_category_name": "비타민별 제품"
+    },
+    {
+      "main_category_id": 2,
+      "main_category_list": [
+        {
+          "category_id": 5,
+          "category_name": "유아 & 어린이"
+        },
+        {
+          "category_id": 6,
+          "category_name": "청소년"
+        },
+        {
+          "category_id": 7,
+          "category_name": "성인 남성"
+        },
+        {
+          "category_id": 8,
+          "category_name": "성인 여성"
+        }
+      ],
+      "main_category_name": "연령별 제품"
+    }
+  ]
+}

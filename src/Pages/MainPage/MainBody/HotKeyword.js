@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import './HotKeyword.scss';
 
 const NAME_LIST = [
@@ -8,7 +9,7 @@ const NAME_LIST = [
   '# 눈이 침침해졌다고 느낄 땐?(비타민 c)',
 ];
 
-export default class HotKeyword extends Component {
+class HotKeyword extends Component {
   constructor() {
     super();
     this.state = {
@@ -19,7 +20,7 @@ export default class HotKeyword extends Component {
 
   componentDidMount() {
     // fetch('localhost:8000/products/main-hashtag')
-    fetch('/data/MainData/Hashtag.json')
+    fetch('http://18.116.64.187:8000/products/main-hashtag')
       .then(res => res.json())
       .then(data => {
         this.setState({
@@ -33,6 +34,10 @@ export default class HotKeyword extends Component {
     this.setState({
       currentCategory: category,
     });
+  };
+
+  productClick = id => {
+    this.props.history.push(`/productInfo/${id}`);
   };
 
   render() {
@@ -53,9 +58,9 @@ export default class HotKeyword extends Component {
                     onClick={() => this.categoryClickHandler(category)}
                   >
                     {category === currentCategory ? (
-                      <span className="liContent">{NAME_LIST[i]}</span>
-                    ) : (
                       <span className="liContent select">{NAME_LIST[i]}</span>
+                    ) : (
+                      <span className="liContent">{NAME_LIST[i]}</span>
                     )}
                   </li>
                 );
@@ -67,7 +72,11 @@ export default class HotKeyword extends Component {
               tagCategoryList[currentCategory].map(product => {
                 const { image, name, price, product_id, discount } = product;
                 return (
-                  <div key={product_id} className="product">
+                  <div
+                    key={product_id}
+                    className="product"
+                    onClick={() => this.productClick(product_id)}
+                  >
                     <img className="productImage" src={image} alt="product" />
                     <p className="name">
                       {name}
@@ -89,3 +98,5 @@ export default class HotKeyword extends Component {
     );
   }
 }
+
+export default withRouter(HotKeyword);

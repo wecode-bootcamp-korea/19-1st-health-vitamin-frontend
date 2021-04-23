@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import '../Nav/Nav.scss';
 
 class Nav extends Component {
@@ -9,6 +9,7 @@ class Nav extends Component {
     this.state = {
       navHidden: false,
       downClick: false,
+      navList: [],
     };
   }
 
@@ -30,14 +31,20 @@ class Nav extends Component {
   };
 
   componentDidMount() {
-    fetch('/data/Favorite/Favorite.json')
+    // fetch('/data/Favorite/Favorite.json');
+    fetch('http://18.116.64.187:8000/products/category')
       .then(res => res.json())
       .then(data => {
         this.setState({
-          downClick: data,
+          navList: data.category,
         });
       });
   }
+
+  cateClick = e => {
+    console.log(e.target.id);
+    this.props.history.push(`/product-list/${e.target.id * 1 - 1}`);
+  };
 
   render() {
     console.log(this.state.navHidden);
@@ -46,7 +53,7 @@ class Nav extends Component {
         <div className="nav">
           <div className="left">
             <div className="logo" onClick={this.goMain}>
-              <img src="http://duftndoft.com/_images/ft_logo.png"></img>
+              <img src="http://duftndoft.com/_images/ft_logo.png" alt="tet" />
             </div>
             <div className="menuBox">
               <button className="menuBtn" onClick={this.isNavHidden}>
@@ -72,33 +79,36 @@ class Nav extends Component {
               <div className="menu">
                 <ul>
                   <li className="goToSomething">
-                    <Link to="http://localhost:3000" className="goLink">
+                    <Link to="/" className="goLink">
                       Main
                     </Link>
 
-                    <Link
-                      // to="http://localhost:3000/product-list"
-                      className="goLink"
-                      onClick={this.isDownClick}
-                    >
+                    <div className="goLink" onClick={this.isDownClick}>
                       ProductList
                       {!this.state.downClick && (
                         <div className="aboutList">
-                          <div className="smallList">{}</div>
-                          <div className="smallList">{}</div>
+                          {!!this.state.navList.length &&
+                            this.state.navList.map(category => {
+                              return (
+                                <div
+                                  className="smallList"
+                                  onClick={this.cateClick}
+                                  id={category.main_category_id}
+                                >
+                                  {category.main_category_name}
+                                </div>
+                              );
+                            })}
                           <div className="smallList">Best_Product</div>
                           <div className="smallList">Sale_Product</div>
                         </div>
                       )}
-                    </Link>
+                    </div>
 
-                    <Link to="http://localhost:3000/basket/" className="goLink">
+                    <Link to="/basket" className="goLink">
                       Cart
                     </Link>
-                    <Link
-                      to="http://localhost:3000/favoriteproduct"
-                      className="goLink"
-                    >
+                    <Link to="/favoriteproduct" className="goLink">
                       My_List
                     </Link>
                   </li>
@@ -112,4 +122,4 @@ class Nav extends Component {
   }
 }
 
-export default Nav;
+export default withRouter(Nav);

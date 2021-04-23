@@ -23,7 +23,7 @@ export default class Routes extends Component {
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/favoriteproduct" component={FavoriteProduct} />
-          <Route exact path="/product-list" component={ProductList} />
+          <Route exact path="/product-list/:id" component={ProductList} />
           <Route exact path="/pay" component={Pay} />
           <Route exact path="/productInfo/:id" component={ProductDetail} />
         </Switch>

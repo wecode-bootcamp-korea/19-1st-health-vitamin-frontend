@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import Title from './ProductListComponent/Title/Title';
 import Products from './ProductListComponent/Products/Products';
 import './ProductList.scss';
@@ -14,17 +15,18 @@ class ProductList extends Component {
   }
 
   componentDidMount() {
-    fetch('/data/Category/category.json')
+    fetch('http://18.116.64.187:8000/products/category')
       .then(res => res.json())
       .then(data => {
         this.setState({
-          categoryData: data[0],
+          categoryData: data.category[this.props.match.params.id],
         });
       });
-    fetch('/data/ProductList/productList.json')
+    fetch(`http://18.116.64.187:8000/products/${this.props.match.params.id}`)
       .then(res => res.json())
       .then(data => {
-        this.setState({ ProductList: data });
+        console.log(data);
+        this.setState({ ProductList: data.product });
       });
   }
 
@@ -41,4 +43,4 @@ class ProductList extends Component {
   }
 }
 
-export default ProductList;
+export default withRouter(ProductList);

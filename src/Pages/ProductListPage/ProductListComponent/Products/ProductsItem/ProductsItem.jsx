@@ -1,26 +1,23 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import SalePrice from '../../../../../Components/SalePrice/SalePrice';
 import ItemHide from '../../../../../Components/SalePrice/SalePrice';
 import './ProductsItem.scss';
 
 class ProductsItem extends Component {
-  // noDiscount = () => {};
+  clickProduct = id => {
+    this.props.history.push(`/productInfo/${id}`);
+  };
   render() {
-    const { image, name, price, discount } = this.props.product;
+    const { image, name, price, discount, id } = this.props.product;
     return (
-      <div className="product_item">
-        <a href="/">
-          <img className="item_img" src={image} alt="vitamin" />
-        </a>
-        <a href="/">
-          <div className="item_title info">{name}</div>
-        </a>
-        <a href="/">
-          <div className="info_icon">
-            <i class="fab fa-elementor"></i>
-            <i class="fas fa-search"></i>
-          </div>
-        </a>
+      <div className="product_item" onClick={() => this.clickProduct(id)}>
+        <img className="item_img" src={image} alt="vitamin" />
+        <div className="item_title info">{name}</div>
+        <div className="info_icon">
+          <i class="fab fa-elementor"></i>
+          <i class="fas fa-search"></i>
+        </div>
         <div
           // onChange={noDiscount}
           className={
@@ -36,4 +33,4 @@ class ProductsItem extends Component {
   }
 }
 
-export default ProductsItem;
+export default withRouter(ProductsItem);

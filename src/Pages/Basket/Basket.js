@@ -18,9 +18,15 @@ class Basket extends Component {
 
   //[장바구니] (서버 -> 장바구니) Item 가져오기
   componentDidMount() {
-    fetch('/Basket/basket.json')
+    fetch('http://18.116.64.187:8000/carts', {
+      headers: {
+        Authorization: localStorage.getItem('token'),
+      },
+    })
       .then(res => res.json())
       .then(data => {
+        console.log('cart정보');
+        console.log(data);
         this.setState({ orderList: data });
       });
   }
@@ -33,9 +39,14 @@ class Basket extends Component {
         count: order.count,
       };
     });
+    console.log('products');
+    console.log(products);
 
-    fetch('http://10.5.30.109:8000/products/basket', {
+    fetch('http://18.116.64.187:8000/carts', {
       method: 'POST',
+      headers: {
+        Authorization: localStorage.getItem('token'),
+      },
       body: {
         products,
       },

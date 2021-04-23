@@ -29,8 +29,7 @@ class Pay extends Component {
   };
 
   componentDidMount() {
-    // fetch('http://localhost:8000/orders')
-    fetch('/data/Pay/PayData.json', {
+    fetch('http://18.116.64.187:8000/orders', {
       headers: {
         Authorization: localStorage.getItem('token'),
       },
@@ -56,7 +55,7 @@ class Pay extends Component {
   payBtnClick = () => {
     const { name, address, phone_number, email, message } = this.state;
 
-    fetch('http://localhost:8000/orders', {
+    fetch('http://18.116.64.187:8000/orders', {
       method: 'post',
       headers: {
         Authorization: localStorage.getItem('token'),
@@ -74,6 +73,7 @@ class Pay extends Component {
     })
       .then(res => res.json())
       .then(data => {
+        console.log('result', data);
         this.props.history.push('/');
       });
   };

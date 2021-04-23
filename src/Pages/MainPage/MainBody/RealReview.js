@@ -11,11 +11,12 @@ export default class RealReview extends Component {
   }
 
   componentDidMount() {
-    fetch('/data/MainData/Review.json')
+    fetch('http://18.116.64.187:8000/products/main-review')
       .then(res => res.json())
       .then(data => {
+        console.log(data);
         this.setState({
-          reviewList: data.REAL_REVIEW,
+          reviewList: data.MAIN_PAGE_REVIEW.slice(0, 8),
         });
       });
   }
