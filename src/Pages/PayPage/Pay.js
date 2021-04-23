@@ -31,7 +31,9 @@ class Pay extends Component {
   componentDidMount() {
     fetch('http://18.116.64.187:8000/orders', {
       headers: {
-        Authorization: localStorage.getItem('token'),
+        Authorization: localStorage
+          .getItem('token')
+          .slice(1, localStorage.getItem('token').length - 1),
       },
     })
       .then(res => res.json())
@@ -47,18 +49,27 @@ class Pay extends Component {
     const { productList, shippingFee } = this.state;
     const isFeeCharged = totalPrice(productList) > shippingFee.shipping_fee;
 
-    return totalPrice(productList) + isFeeCharged
-      ? shippingFee.shipping_fee
-      : 0;
+    return (
+      totalPrice(productList) + (isFeeCharged ? shippingFee.shipping_fee : 0)
+    );
   };
 
   payBtnClick = () => {
-    const { name, address, phone_number, email, message } = this.state;
+    const {
+      name,
+      address,
+      phone_number,
+      email,
+      message,
+      productList,
+    } = this.state;
 
     fetch('http://18.116.64.187:8000/orders', {
       method: 'post',
       headers: {
-        Authorization: localStorage.getItem('token'),
+        Authorization: localStorage
+          .getItem('token')
+          .slice(1, localStorage.getItem('token').length - 1),
       },
       body: JSON.stringify({
         shipping_information: {
@@ -68,17 +79,30 @@ class Pay extends Component {
           email,
           message,
         },
-        total: this.makeTotal(),
+        total: productList.reduce((acc, cur) => {
+          return (
+            acc + (cur.price - (cur.price * cur.discount) / 100) * cur.count
+          );
+        }, 0),
       }),
     })
       .then(res => res.json())
       .then(data => {
-        console.log('result', data);
-        this.props.history.push('/');
+        if (data.MESSAGE === 'FAIL') {
+          alert('한도 초과!!!!!!!!!');
+        } else {
+          this.props.history.push('/success');
+        }
       });
   };
 
   render() {
+    const { productList, shippingFee } = this.state;
+    console.log(
+      productList.reduce((acc, cur) => {
+        return acc + (cur.price - (cur.price * cur.discount) / 100) * cur.count;
+      }, 0)
+    );
     return (
       <div className="pay">
         <div className="header">
@@ -102,7 +126,15 @@ class Pay extends Component {
         })}
         <div className="payBox">
           <button className="payBtn" onClick={this.payBtnClick}>
-            {this.makeTotal().toLocaleString()}원 결제하기
+            {productList
+              .reduce((acc, cur) => {
+                return (
+                  acc +
+                  (cur.price - (cur.price * cur.discount) / 100) * cur.count
+                );
+              }, 0)
+              .toLocaleString()}
+            원 결제하기
           </button>
           <p className="desc">
             - 무이자할부가 적용되지 않은 상품과 무이자할부가 가능한 상품을

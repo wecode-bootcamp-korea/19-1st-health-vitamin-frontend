@@ -42,8 +42,8 @@ class Nav extends Component {
   }
 
   cateClick = e => {
-    console.log(e.target.id);
-    this.props.history.push(`/product-list/${e.target.id * 1 - 1}`);
+    console.log(`/product-list/${e.target.id * 1 - 1}`);
+    this.props.history.push(`/product-list/${e.target.id}`);
   };
 
   render() {
@@ -56,7 +56,7 @@ class Nav extends Component {
             </div>
             <div className="menuBox">
               <button className="menuBtn" onClick={this.isNavHidden}>
-                <i className="menuHamber fas fa-bars fa-3x"></i>
+                <i className="menuHamber fas fa-bars fa-2x"></i>
               </button>
               <div className="listMenu">
                 <Link to="/basket" className="goToBasket">
@@ -79,32 +79,31 @@ class Nav extends Component {
                     <Link to="/" className="goLink">
                       Main
                     </Link>
-                    <Link
-                      to="/product-list"
-                      className="goLink"
-                      onClick={this.isDownClick}
-                    >
+                    <div className="goLink" onClick={this.isDownClick}>
                       ProductList
                       {!this.state.downClick && (
                         <div className="aboutList">
                           {!!this.state.navList.length &&
                             this.state.navList.map(category => {
                               return (
-                                <div
+                                <Link
                                   className="smallList"
-                                  onClick={this.cateClick}
-                                  id={category.main_category_id}
+                                  // onClick={this.cateClick}
+                                  // id={category.main_category_id}
+                                  to={`/product-list/${
+                                    category.main_category_id * 1 - 1
+                                  }`}
                                 >
                                   {category.main_category_name}
-                                </div>
+                                </Link>
                               );
                             })}
                           <div className="smallList">Best_Product</div>
                           <div className="smallList">Sale_Product</div>
                         </div>
                       )}
-                    </Link>
-                    <Link to="/" className="goLink">
+                    </div>
+                    <Link to="/basket" className="goLink">
                       Cart
                     </Link>
                     <Link to="/favoriteproduct" className="goLink">

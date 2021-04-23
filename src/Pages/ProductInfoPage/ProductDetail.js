@@ -57,6 +57,32 @@ class ProductDetail extends Component {
       this.props.history.push('/pay');
     }
     if (id === 2) {
+      const { subItemList, subItemAddList, id, count } = this.state;
+      let nnn = subItemList.filter(product =>
+        subItemAddList.includes(product.id)
+      );
+
+      nnn = nnn.map(el => {
+        return { product_id: el.id, count: el.count };
+      });
+      // console.log([...nnn, { product_id: id, count: count }]);
+      fetch('http://18.116.64.187:8000/carts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: localStorage
+            .getItem('token')
+            .slice(1, localStorage.getItem('token').length - 1),
+        },
+        body: JSON.stringify({
+          products: [...nnn, { product_id: id, count: count }],
+        }),
+      })
+        .then(res => res.json())
+        .then(data => {
+          console.log('detail');
+          console.log(data);
+        });
       this.props.history.push('/basket');
     }
     if (id === 3) {

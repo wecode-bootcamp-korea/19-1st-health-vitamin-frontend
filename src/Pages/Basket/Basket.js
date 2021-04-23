@@ -3,8 +3,6 @@ import { withRouter } from 'react-router-dom';
 import MainBasket from './MainBasket/MainBasket';
 import './Basket.scss';
 
-const delivery = 2500;
-
 class Basket extends Component {
   constructor() {
     super();
@@ -20,14 +18,16 @@ class Basket extends Component {
   componentDidMount() {
     fetch('http://18.116.64.187:8000/carts', {
       headers: {
-        Authorization: localStorage.getItem('token'),
+        Authorization: localStorage
+          .getItem('token')
+          .slice(1, localStorage.getItem('token').length - 1),
       },
     })
       .then(res => res.json())
       .then(data => {
         console.log('cart정보');
         console.log(data);
-        this.setState({ orderList: data });
+        this.setState({ orderList: data.PRODUCT_LIST });
       });
   }
 
@@ -45,7 +45,9 @@ class Basket extends Component {
     fetch('http://18.116.64.187:8000/carts', {
       method: 'POST',
       headers: {
-        Authorization: localStorage.getItem('token'),
+        Authorization: localStorage
+          .getItem('token')
+          .slice(1, localStorage.getItem('token').length - 1),
       },
       body: {
         products,
@@ -55,7 +57,7 @@ class Basket extends Component {
       .then(data => {
         // { MESSAGE: SUCCESS }
       });
-    this.props.history.push('/');
+    this.props.history.push('/pay');
   };
 
   deleteBasketItem = cool => {
@@ -66,12 +68,26 @@ class Basket extends Component {
         return id !== cool;
       }),
     });
+    this.deleteFetch(cool);
   };
 
-  deleteAllOrder = e => {
-    const { orderList } = this.state;
+  deleteAllOrder = () => {
     this.setState({
       orderList: [],
+    });
+  };
+
+  deleteFetch = id => {
+    fetch('http://18.116.64.187:8000/carts', {
+      method: 'DELETE',
+      headers: {
+        Authorization: localStorage
+          .getItem('token')
+          .slice(1, localStorage.getItem('token').length - 1),
+      },
+      body: JSON.stringify({
+        products: [{ id }],
+      }),
     });
   };
 

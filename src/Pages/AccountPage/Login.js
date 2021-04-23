@@ -44,7 +44,8 @@ class Login extends Component {
     })
       .then(res => res.json())
       .then(data => {
-        localStorage.setItem('token', JSON.stringify(data['token']));
+        console.log(data);
+        localStorage.setItem('token', JSON.stringify(data['ACCESS_TOKEN']));
         this.props.history.push('/');
       });
   };

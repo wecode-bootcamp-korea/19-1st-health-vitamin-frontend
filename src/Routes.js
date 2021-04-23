@@ -10,6 +10,8 @@ import Pay from './Pages/PayPage/Pay';
 import ProductInfoHeader from './Pages/ProductInfoPage/ProductInfoHeader';
 import ProductList from './Pages/ProductListPage/ProductList';
 import Main from './Pages/MainPage/Main';
+import './Routes.scss';
+import Success from './Pages/Success/Success';
 
 export default class Routes extends Component {
   render() {
@@ -25,6 +27,7 @@ export default class Routes extends Component {
           <Route exact path="/favoriteproduct" component={FavoriteProduct} />
           <Route exact path="/product-list/:id" component={ProductList} />
           <Route exact path="/pay" component={Pay} />
+          <Route exact path="/success" component={Success} />
           <Route exact path="/productInfo/:id" component={ProductDetail} />
         </Switch>
       </Router>

@@ -4,10 +4,38 @@ import SalePrice from '../../../Components/SalePrice/SalePrice';
 class Item extends Component {
   upClick = () => {
     this.props.changeCount(this.props.id, this.props.prCount + 1);
+    fetch('http://18.116.64.187:8000/carts', {
+      method: 'PATCH',
+      headers: {
+        Authorization: localStorage
+          .getItem('token')
+          .slice(1, localStorage.getItem('token').length - 1),
+      },
+      body: JSON.stringify({
+        id: this.props.id,
+        count: this.props.prCount + 1,
+      }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+      });
   };
 
   downClick = () => {
     this.props.changeCount(this.props.id, this.props.prCount - 1);
+    fetch('http://18.116.64.187:8000/carts', {
+      method: 'PATCH',
+      headers: {
+        Authorization: localStorage
+          .getItem('token')
+          .slice(1, localStorage.getItem('token').length - 1),
+      },
+      body: JSON.stringify({
+        id: this.props.id,
+        count: this.props.prCount - 1,
+      }),
+    });
   };
 
   deleteItem = () => {
