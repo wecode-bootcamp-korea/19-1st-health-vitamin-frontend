@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import '../AccountPage/Login.scss';
 
 class Login extends Component {
@@ -49,7 +48,7 @@ class Login extends Component {
         this.props.history.push('/');
       });
   };
-  
+
   goToMembership = () => {
     this.props.history.push('/signup');
   };

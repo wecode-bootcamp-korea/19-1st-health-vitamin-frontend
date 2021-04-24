@@ -2,13 +2,6 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import './HotKeyword.scss';
 
-const NAME_LIST = [
-  '# 우리 아이 성장에 쑥쑥! 도움이 되는!',
-  '# 수험생인 우리 아이, 집중력을 높이고 싶을 땐?',
-  '# 탄력 있는 피부를 원해요! (비타민 a)',
-  '# 눈이 침침해졌다고 느낄 땐?(비타민 c)',
-];
-
 class HotKeyword extends Component {
   constructor() {
     super();
@@ -100,3 +93,10 @@ class HotKeyword extends Component {
 }
 
 export default withRouter(HotKeyword);
+
+const NAME_LIST = [
+  '# 우리 아이 성장에 쑥쑥! 도움이 되는!',
+  '# 수험생인 우리 아이, 집중력을 높이고 싶을 땐?',
+  '# 탄력 있는 피부를 원해요! (비타민 a)',
+  '# 눈이 침침해졌다고 느낄 땐?(비타민 c)',
+];

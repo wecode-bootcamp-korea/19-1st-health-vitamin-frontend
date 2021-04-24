@@ -39,6 +39,7 @@ class Best extends Component {
         <div className="productList">
           {bestList.map(product => {
             const { product_id, image, name, price, discount } = product;
+
             return (
               <div
                 key={product_id}
@@ -47,7 +48,7 @@ class Best extends Component {
               >
                 <img className="productImage" src={image} alt="product" />
                 <p className="name">
-                  {name} <i className="fas fa-search"></i>
+                  {name} <i className="fas fa-search" />
                 </p>
                 <p className="price">{price.toLocaleString()}원</p>
                 <p className="result">

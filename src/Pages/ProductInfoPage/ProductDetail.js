@@ -7,24 +7,6 @@ import ProductInfoimage from './ProductInfoimage';
 import ProductDescript from './ProductDescript';
 import './ProductDetail.scss';
 
-const BUTTONS = [
-  {
-    id: 1,
-    name: '바로 구매하기',
-    className: 'btnBuy btn',
-  },
-  {
-    id: 2,
-    name: '장바구니',
-    className: 'btnBasket btn',
-  },
-  {
-    id: 3,
-    name: '관심상품',
-    className: 'btnInterest btn',
-  },
-];
-
 class ProductDetail extends Component {
   constructor() {
     super();
@@ -310,3 +292,21 @@ class ProductDetail extends Component {
   }
 }
 export default withRouter(ProductDetail);
+
+const BUTTONS = [
+  {
+    id: 1,
+    name: '바로 구매하기',
+    className: 'btnBuy btn',
+  },
+  {
+    id: 2,
+    name: '장바구니',
+    className: 'btnBasket btn',
+  },
+  {
+    id: 3,
+    name: '관심상품',
+    className: 'btnInterest btn',
+  },
+];

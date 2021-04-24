@@ -14,7 +14,6 @@ export default class RealReview extends Component {
     fetch('http://18.116.64.187:8000/products/main-review')
       .then(res => res.json())
       .then(data => {
-        console.log(data);
         this.setState({
           reviewList: data.MAIN_PAGE_REVIEW.slice(0, 8),
         });
@@ -31,6 +30,10 @@ export default class RealReview extends Component {
 
   getGradeValue = () => {
     return Math.round(Math.random() * 10 + 40) / 10;
+  };
+
+  makeRandomNum = (min, max, digit) => {
+    return Math.round(Math.random() * (max - min) + min) / digit;
   };
 
   render() {
@@ -81,13 +84,13 @@ export default class RealReview extends Component {
                       <span className="reviewCount">
                         리뷰
                         <span className="reviewValue">
-                          {this.getReviewValue()}
+                          {this.makeRandomNum(200, 150, 1)}
                         </span>
                       </span>
                       <span className="grade">
                         평점
                         <span className="gradeValue">
-                          {this.getGradeValue()}
+                          {this.makeRandomNum(50, 40, 10)}
                         </span>
                       </span>
                     </div>
