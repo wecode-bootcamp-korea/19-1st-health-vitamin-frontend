@@ -2,18 +2,12 @@ import React, { Component } from 'react';
 import './ProductInfoimage.scss';
 
 export default class ProductInfoimage extends Component {
-  imageMouseOver = () => {
-    const { index, changeCurrentImage } = this.props;
-    changeCurrentImage(index);
-  };
-
   render() {
-    const { id, image } = this.props;
-    const { imageMouseOver } = this;
+    const { id, index, image, changeCurrentImage } = this.props;
 
     return (
       <div className="infoImage">
-        <li onMouseOver={imageMouseOver}>
+        <li onMouseOver={() => changeCurrentImage(index)}>
           <img src={image} alt={id} />
         </li>
       </div>
