@@ -49,7 +49,7 @@ class Login extends Component {
         this.props.history.push('/');
       });
   };
-
+  
   goToMembership = () => {
     this.props.history.push('/signup');
   };
@@ -58,19 +58,6 @@ class Login extends Component {
     return (
       <div className="loginHome">
         <div className="loginIcon">
-          <header className="olLonginBox">
-            <ol className="loginList">
-              <li>
-                <Link to="/" className="goToLink">
-                  <i className="fas fa-home" />
-                </Link>
-              </li>
-              <li>
-                <i className="fas fa-angle-right" />
-              </li>
-              <li className="goSignUp">로그인</li>
-            </ol>
-          </header>
           <div className="loginKo">
             <h2 className="nameLogin">로그인</h2>
           </div>
@@ -110,9 +97,9 @@ class Login extends Component {
                   className={'loginBtBox ' + this.state.isBtnAble}
                   onClick={this.goToMain}
                 >
-                  <a className="loginBt" href="/">
-                    로그인
-                  </a>
+                  {/* <a className="loginBt" href="/"> */}
+                  로그인
+                  {/* </a> */}
                 </button>
               </div>
             </div>
