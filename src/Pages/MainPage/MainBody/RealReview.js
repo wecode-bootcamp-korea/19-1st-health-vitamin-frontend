@@ -24,14 +24,6 @@ export default class RealReview extends Component {
     return '****' + user_account.slice(4, user_account.length);
   };
 
-  getReviewValue = () => {
-    return Math.round(Math.random() * 50 + 150);
-  };
-
-  getGradeValue = () => {
-    return Math.round(Math.random() * 10 + 40) / 10;
-  };
-
   makeRandomNum = (min, max, digit) => {
     return Math.round(Math.random() * (max - min) + min) / digit;
   };
@@ -39,9 +31,9 @@ export default class RealReview extends Component {
   render() {
     const { reviewList } = this.state;
     return (
-      <div className="realReview">
-        <h1 className="header">REAL REVIEW</h1>
-        <div className="reviewList">
+      <section className="realReviewSection">
+        <header className="header">REAL REVIEW</header>
+        <ul className="reviewList">
           {reviewList.map(review => {
             const {
               product_image,
@@ -54,7 +46,7 @@ export default class RealReview extends Component {
             } = review;
 
             return (
-              <div key={review_id} className="review">
+              <article key={review_id} className="review">
                 {user_review_image ? (
                   <img
                     src={user_review_image}
@@ -96,11 +88,11 @@ export default class RealReview extends Component {
                     </div>
                   </div>
                 </div>
-              </div>
+              </article>
             );
           })}
-        </div>
-      </div>
+        </ul>
+      </section>
     );
   }
 }

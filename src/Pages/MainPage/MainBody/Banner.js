@@ -21,13 +21,13 @@ export default class Banner extends Component {
     const { currentBannerIndex } = this.state;
 
     return (
-      <div className="banner" onClick={this.changeImage}>
+      <section className="bannerSection" onClick={this.changeImage}>
         <img
           src={bannerList[currentBannerIndex]}
           alt="benner"
           className="bennerImage"
         />
-      </div>
+      </section>
     );
   }
 }

@@ -37,9 +37,9 @@ class HotKeyword extends Component {
     const { tagCategoryList, currentCategory } = this.state;
 
     return (
-      <div className="hotKeyword">
-        <div className="content">
-          <div className="header">
+      <section className="hotKeywordSection">
+        <article className="content">
+          <header>
             <h2 className="title">라인별 HOT 키워드</h2>
             <p className="desc">향기 맛집 더프트앤도프트.</p>
             <ul className="categoryList">
@@ -59,13 +59,14 @@ class HotKeyword extends Component {
                 );
               })}
             </ul>
-          </div>
-          <div className="productList">
+          </header>
+          <ul className="productList">
             {tagCategoryList[currentCategory] &&
               tagCategoryList[currentCategory].map(product => {
                 const { image, name, price, product_id, discount } = product;
+
                 return (
-                  <div
+                  <article
                     key={product_id}
                     className="product"
                     onClick={() => this.productClick(product_id)}
@@ -82,12 +83,12 @@ class HotKeyword extends Component {
                       </span>
                       <span className="discount">({discount}%)할인</span>
                     </p>
-                  </div>
+                  </article>
                 );
               })}
-          </div>
-        </div>
-      </div>
+          </ul>
+        </article>
+      </section>
     );
   }
 }

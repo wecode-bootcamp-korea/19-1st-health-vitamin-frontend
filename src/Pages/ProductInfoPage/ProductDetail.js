@@ -205,7 +205,7 @@ class ProductDetail extends Component {
     } = this;
     return (
       <div className="productDetail">
-        <div className="imageBox">
+        <aside className="imageBox">
           <img className="productImage" src={currentImageUrl} alt="product" />
           <ol className="productImageBox">
             {imageList.map((image, index) => {
@@ -225,8 +225,8 @@ class ProductDetail extends Component {
             &nbsp;
             <span className="expandImageSpan">확대보기</span>
           </div>
-        </div>
-        <div className="infoBox">
+        </aside>
+        <article className="infoBox">
           <ProductDescript
             name={name}
             price={price}
@@ -286,7 +286,7 @@ class ProductDetail extends Component {
               );
             })}
           </div>
-        </div>
+        </article>
       </div>
     );
   }
