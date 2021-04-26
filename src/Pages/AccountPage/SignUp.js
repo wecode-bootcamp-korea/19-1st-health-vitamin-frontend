@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import '../AccountPage/SignUp.scss';
 
 class SignUp extends Component {
@@ -20,22 +21,37 @@ class SignUp extends Component {
 
   signUp = () => {
     console.log('sign');
-    console.log(this.state);
-    // fetch('http://10.167.105.109:8000/users/signup', {
-    //   method: 'POST',
-    //   body: JSON.stringify({
-    //     division: true,
-    //     account: this.state.id,
-    //     email: this.state.email,
-    //     name: this.state.name,
-    //     password: this.state.pw,
-    //     phone_number: this.state.phone,
-    //     gender: this.state.gender,
-    //     date_of_birth: this.state.birth,
-    //   }),
-    // })
-    //   .then(res => res.json())
-    //   .then(data => {});
+    console.log({
+      division: true,
+      account: this.state.id,
+      email: this.state.email,
+      name: this.state.name,
+      password: this.state.pw,
+      phone_number: this.state.phone,
+      gender: this.state.gender,
+      date_of_birth: this.state.birth,
+    });
+    fetch('http://18.116.64.187:8000/users/signup', {
+      method: 'POST',
+      body: JSON.stringify({
+        division: true,
+        account: this.state.id,
+        email: this.state.email,
+        name: this.state.name,
+        password: this.state.pw,
+        phone_number: this.state.phone,
+        gender: this.state.gender,
+        date_of_birth: this.state.birth,
+      }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.MESSAGE === 'SUCCESS') {
+          this.props.history.push('/login');
+        } else {
+          alert(data.MESSAGE);
+        }
+      });
   };
 
   change = e => {
@@ -126,7 +142,7 @@ class SignUp extends Component {
                     <input
                       className={'pw ' + this.state.inputClass}
                       name="information"
-                      type="text"
+                      type="password"
                       onChange={this.pwChange}
                     />
                     <div className="pwEnglish">
@@ -250,4 +266,4 @@ class SignUp extends Component {
   }
 }
 
-export default SignUp;
+export default withRouter(SignUp);

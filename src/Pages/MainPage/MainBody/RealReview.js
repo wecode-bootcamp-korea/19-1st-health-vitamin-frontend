@@ -14,7 +14,6 @@ export default class RealReview extends Component {
     fetch('http://18.116.64.187:8000/products/main-review')
       .then(res => res.json())
       .then(data => {
-        console.log(data);
         this.setState({
           reviewList: data.MAIN_PAGE_REVIEW.slice(0, 8),
         });
@@ -25,20 +24,16 @@ export default class RealReview extends Component {
     return '****' + user_account.slice(4, user_account.length);
   };
 
-  getReviewValue = () => {
-    return Math.round(Math.random() * 50 + 150);
-  };
-
-  getGradeValue = () => {
-    return Math.round(Math.random() * 10 + 40) / 10;
+  makeRandomNum = (min, max, digit) => {
+    return Math.round(Math.random() * (max - min) + min) / digit;
   };
 
   render() {
     const { reviewList } = this.state;
     return (
-      <div className="realReview">
-        <h1 className="header">REAL REVIEW</h1>
-        <div className="reviewList">
+      <section className="realReviewSection">
+        <header className="header">REAL REVIEW</header>
+        <ul className="reviewList">
           {reviewList.map(review => {
             const {
               product_image,
@@ -51,7 +46,7 @@ export default class RealReview extends Component {
             } = review;
 
             return (
-              <div key={review_id} className="review">
+              <article key={review_id} className="review">
                 {user_review_image ? (
                   <img
                     src={user_review_image}
@@ -81,23 +76,23 @@ export default class RealReview extends Component {
                       <span className="reviewCount">
                         리뷰
                         <span className="reviewValue">
-                          {this.getReviewValue()}
+                          {this.makeRandomNum(200, 150, 1)}
                         </span>
                       </span>
                       <span className="grade">
                         평점
                         <span className="gradeValue">
-                          {this.getGradeValue()}
+                          {this.makeRandomNum(50, 40, 10)}
                         </span>
                       </span>
                     </div>
                   </div>
                 </div>
-              </div>
+              </article>
             );
           })}
-        </div>
-      </div>
+        </ul>
+      </section>
     );
   }
 }

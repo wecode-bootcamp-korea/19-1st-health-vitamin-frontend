@@ -134,15 +134,18 @@ class Basket extends Component {
         <div className="basket_page">
           <div className="title">장바구니</div>
           <div className="basket">
-            <MainBasket
-              total={this.state.total}
-              discount={this.state.discount}
-              delivery={this.state.delivery}
-              orderList={orderList}
-              changeCount={this.changeCount}
-              deleteBasketItem={this.deleteBasketItem}
-              deleteAllOrder={this.deleteAllOrder}
-            />
+            {orderList !== {} && (
+              <MainBasket
+                total={this.state.total}
+                discount={this.state.discount}
+                delivery={this.state.delivery}
+                orderList={orderList}
+                changeCount={this.changeCount}
+                deleteBasketItem={this.deleteBasketItem}
+                deleteAllOrder={this.deleteAllOrder}
+              />
+            )}
+
             <div className="btns">
               <div className="order_btns">
                 <button className="order_all_btn" onClick={this.giveItemList}>

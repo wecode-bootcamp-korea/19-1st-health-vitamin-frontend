@@ -7,24 +7,6 @@ import ProductInfoimage from './ProductInfoimage';
 import ProductDescript from './ProductDescript';
 import './ProductDetail.scss';
 
-const BUTTONS = [
-  {
-    id: 1,
-    name: '바로 구매하기',
-    className: 'btnBuy btn',
-  },
-  {
-    id: 2,
-    name: '장바구니',
-    className: 'btnBasket btn',
-  },
-  {
-    id: 3,
-    name: '관심상품',
-    className: 'btnInterest btn',
-  },
-];
-
 class ProductDetail extends Component {
   constructor() {
     super();
@@ -50,6 +32,43 @@ class ProductDetail extends Component {
   componentDidMount() {
     this.fetchProductDetailItem();
   }
+
+  fetchProductDetailItem = () => {
+    fetch(
+      `http://18.116.64.187:8000/products/detail/${this.props.match.params.id}`
+    )
+      .then(res => res.json())
+      .then(data => {
+        const {
+          id,
+          name,
+          detail,
+          price,
+          stock,
+          shipping_fee,
+          discount,
+          minimum_free,
+          detail_images,
+          option_items,
+        } = data.RESULT[0];
+        this.setState({
+          id,
+          name,
+          detail,
+          price,
+          stock,
+          shipping_fee,
+          discount,
+          minimum_free,
+          imageList: detail_images,
+          subItemList: option_items.map(item => {
+            item.count = 1;
+            return item;
+          }),
+          currentImageUrl: detail_images[0].image_url,
+        });
+      });
+  };
 
   goToOtherPage = id => {
     console.log(id);
@@ -90,47 +109,24 @@ class ProductDetail extends Component {
     }
   };
 
-  fetchProductDetailItem = () => {
-    fetch(
-      `http://18.116.64.187:8000/products/detail/${this.props.match.params.id}`
-    )
-      .then(res => res.json())
-      .then(data => {
-        const {
-          id,
-          name,
-          detail,
-          price,
-          stock,
-          shipping_fee,
-          discount,
-          minimum_free,
-          detail_images,
-          option_items,
-        } = data.RESULT[0];
-        this.setState({
-          id,
-          name,
-          detail,
-          price,
-          stock,
-          shipping_fee,
-          discount,
-          minimum_free,
-          imageList: detail_images,
-          subItemList: option_items.map(item => {
-            item.count = 1;
-            return item;
-          }),
-          currentImageUrl: detail_images[0].image_url,
-        });
-      });
-  };
-
   changeCurrentImage = index => {
     this.setState({
       currentImageUrl: this.state.imageList[index].image_url,
     });
+  };
+
+  calcTotalPrice = () => {
+    const { price, count, discount, subItemList, subItemAddList } = this.state;
+    return (
+      price * count -
+      price * (discount / 100) * count +
+      subItemList
+        .filter(subItem => subItemAddList.includes(subItem.id))
+        .reduce((acc, subItem) => {
+          if (!subItem.count) subItem.count = 1;
+          return acc + subItem.price * subItem.count;
+        }, 0)
+    );
   };
 
   addSubItemList = id => {
@@ -141,6 +137,12 @@ class ProductDetail extends Component {
         subItemAddList: [...subItemAddList, id],
       });
     }
+  };
+
+  updateItem = (type, count, id) => {
+    type === 'main'
+      ? this.updateMainCount(count)
+      : this.updateSubCount(count, id);
   };
 
   updateMainCount = count => {
@@ -160,10 +162,8 @@ class ProductDetail extends Component {
     });
   };
 
-  updateItem = (type, count, id) => {
-    type === 'main'
-      ? this.updateMainCount(count)
-      : this.updateSubCount(count, id);
+  deleteItem = (type, id) => {
+    type === 'main' ? this.deleteMainItem() : this.deleteSubItem(id);
   };
 
   deleteMainItem = () => {
@@ -180,24 +180,6 @@ class ProductDetail extends Component {
         return item;
       }),
     });
-  };
-
-  deleteItem = (type, id) => {
-    type === 'main' ? this.deleteMainItem() : this.deleteSubItem(id);
-  };
-
-  calcTotalPrice = () => {
-    const { price, count, discount, subItemList, subItemAddList } = this.state;
-    return (
-      price * count -
-      price * (discount / 100) * count +
-      subItemList
-        .filter(subItem => subItemAddList.includes(subItem.id))
-        .reduce((acc, subItem) => {
-          if (!subItem.count) subItem.count = 1;
-          return acc + subItem.price * subItem.count;
-        }, 0)
-    );
   };
 
   render() {
@@ -223,7 +205,7 @@ class ProductDetail extends Component {
     } = this;
     return (
       <div className="productDetail">
-        <div className="imageBox">
+        <aside className="imageBox">
           <img className="productImage" src={currentImageUrl} alt="product" />
           <ol className="productImageBox">
             {imageList.map((image, index) => {
@@ -243,8 +225,8 @@ class ProductDetail extends Component {
             &nbsp;
             <span className="expandImageSpan">확대보기</span>
           </div>
-        </div>
-        <div className="infoBox">
+        </aside>
+        <article className="infoBox">
           <ProductDescript
             name={name}
             price={price}
@@ -304,9 +286,27 @@ class ProductDetail extends Component {
               );
             })}
           </div>
-        </div>
+        </article>
       </div>
     );
   }
 }
 export default withRouter(ProductDetail);
+
+const BUTTONS = [
+  {
+    id: 1,
+    name: '바로 구매하기',
+    className: 'btnBuy btn',
+  },
+  {
+    id: 2,
+    name: '장바구니',
+    className: 'btnBasket btn',
+  },
+  {
+    id: 3,
+    name: '관심상품',
+    className: 'btnInterest btn',
+  },
+];

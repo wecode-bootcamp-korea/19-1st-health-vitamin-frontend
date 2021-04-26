@@ -31,23 +31,24 @@ class Best extends Component {
     const { bestList } = this.state;
 
     return (
-      <div className="best">
-        <div className="header">
+      <section className="bestSection">
+        <header>
           <h1>BEST</h1>
           <p>지금 가장 잘나가는 상품을 만나보세요</p>
-        </div>
-        <div className="productList">
+        </header>
+        <ul className="productList">
           {bestList.map(product => {
             const { product_id, image, name, price, discount } = product;
+
             return (
-              <div
+              <article
                 key={product_id}
                 className="product"
                 onClick={() => this.goDetailPage(product_id)}
               >
                 <img className="productImage" src={image} alt="product" />
                 <p className="name">
-                  {name} <i className="fas fa-search"></i>
+                  {name} <i className="fas fa-search" />
                 </p>
                 <p className="price">{price.toLocaleString()}원</p>
                 <p className="result">
@@ -56,11 +57,11 @@ class Best extends Component {
                   </span>
                   <span className="discount">({discount}%)할인</span>
                 </p>
-              </div>
+              </article>
             );
           })}
-        </div>
-      </div>
+        </ul>
+      </section>
     );
   }
 }
